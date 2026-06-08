@@ -1,0 +1,15 @@
+[ ] Frontend Setup
+    [ ] constants
+    [ ] images
+    [ ] icons
+    [ ] fonts
+    [ ] types
+    [ ] globals.css
+[ ] Backend Setup
+[ ] git setup
+[ ] Loginlogic Backend
+    [ ] authentification
+    [ ] email Logic
+    [ ] backend returns
+[ ] Login Logic Frontend
+    [ ] styling
