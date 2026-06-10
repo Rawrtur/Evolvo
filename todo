@@ -1,8 +1,8 @@
-[ ] Frontend Setup
+[x] Frontend Setup
     [x] constants
     [x] images
     [x] icons
-    [ ] fonts
+    [x] fonts
     [x] types
     [x] globals.css
 [ ] Backend Setup
