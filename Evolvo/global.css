@@ -18,6 +18,13 @@
   --color-destructive: #dc2626;
   --color-subscription: #8fd1bd;
 
+  --font-rubik: rubik-regular;
+  --font-rubik-semibold: rubik-semibold;
+  --font-rubik-bold: rubik-bold;
+  --font-rubik-extrabold: rubik-extrabold;
+  --font-rubik-light: rubik-light;
+  --font-rubik-medium: rubik-medium
+
   --spacing-0: 0px;
   --spacing-1: 4px;
   --spacing-2: 8px;

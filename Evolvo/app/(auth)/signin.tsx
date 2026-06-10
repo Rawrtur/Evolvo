@@ -5,7 +5,7 @@ const signin = () => {
     return (
         <View className='w-full h-full bg-background items-center justify-center'>
             <View className='recommended'>
-                <Text>E</Text>
+                
             </View>
         </View>
     )

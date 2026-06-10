@@ -1,12 +1,12 @@
 [ ] Frontend Setup
-    [ ] constants
-    [ ] images
-    [ ] icons
+    [x] constants
+    [x] images
+    [x] icons
     [ ] fonts
-    [ ] types
-    [ ] globals.css
+    [x] types
+    [x] globals.css
 [ ] Backend Setup
-[ ] git setup
+[x] git setup
 [ ] Loginlogic Backend
     [ ] authentification
     [ ] email Logic
