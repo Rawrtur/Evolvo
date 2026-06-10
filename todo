@@ -5,7 +5,7 @@
     [x] fonts
     [x] types
     [x] globals.css
-[ ] Backend Setup
+[x] Backend Setup
 [x] git setup
 [ ] Loginlogic Backend
     [ ] authentification
