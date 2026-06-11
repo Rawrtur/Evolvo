@@ -7,6 +7,7 @@ import authRouter from "./routes/auth.routes.js";
 import connectToDataBase from "./database/mongodb.js";
 import errorMiddleware from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
+import { limiter } from "./middleware/limiter.middleware.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/lectures", lectureRouter);
 
 app.use(errorMiddleware)
+app.use(limiter)
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Evolvo API!");

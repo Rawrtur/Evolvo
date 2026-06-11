@@ -1,9 +1,12 @@
 import { Router } from "express";
+import { signIn, signOut, signUp, verify } from "../controlers/auth.controller.js";
+import { authLimiter} from "../middleware/limiter.middleware.js";
 
 const authRouter = Router();
 
-authRouter.post("/sign-up", (req, res) => res.send({ message: "Sign up" }));
-authRouter.post("/sign-in", (req, res) => res.send({ message: "Sign in" }));
-authRouter.post("/sign-out", (req, res) => res.send({ message: "Sign out" }));
+authRouter.post("/sign-up",authLimiter, signUp);
+authRouter.post("/verify",authLimiter, verify);
+authRouter.post("/sign-in",authLimiter, signIn);
+authRouter.post("/sign-out",authLimiter, signOut);
 
 export default authRouter;

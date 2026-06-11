@@ -8,8 +8,14 @@
 [x] Backend Setup
 [x] git setup
 [ ] Loginlogic Backend
-    [ ] authentification
+    [x] authentification
     [ ] email Logic
-    [ ] backend returns
+        [ ] email erstellen (über google am besten)
+        [ ] verificationcode senden
+        [ ] verificationcode hashen
+    [ ] send new Code
+    [x] backend returns
 [ ] Login Logic Frontend
-    [ ] styling
+    [ ] sing up
+    [ ] code verification
+    [ ] sing in
