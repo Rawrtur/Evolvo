@@ -5,6 +5,8 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET, JWT_EXPIRES_IN } from "../config/env.js";
 import { generateVerficationCode } from "../utils/codegenerator.util.js";
 import { sendVerificationEmail } from "../utils/sendEmail.util.js";
+import Lecture from "../models/lecture.model.js";
+import Question from "../models/question.model.js";
 
 export const signUp = async (req, res, next) => {
   const session = await mongoose.startSession();
@@ -93,6 +95,8 @@ export const verify = async (req, res, next) => {
       data: {
         token,
         user,
+        questions: [],
+        lectures: []
       },
     });
   } catch (error) {
@@ -119,6 +123,9 @@ export const signIn = async (req, res, next) => {
       throw error;
     }
 
+    const lectures = await Lecture.find({user: user._id});
+    const questions = await Question.find({user: user._id});
+
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
       expiresIn: JWT_EXPIRES_IN,
     });
@@ -129,6 +136,8 @@ export const signIn = async (req, res, next) => {
       data: {
         token,
         user,
+        lectures,
+        questions
       },
     });
   } catch (error) {

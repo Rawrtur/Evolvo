@@ -8,8 +8,18 @@ import connectToDataBase from "./database/mongodb.js";
 import errorMiddleware from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
 import { limiter } from "./middleware/limiter.middleware.js";
+import cors from "cors";
+
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:8081",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
@@ -26,8 +36,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Evolvo API!");
 });
 
-app.listen(PORT,async () => {
-  console.log(`Subscriptiontracker API is running on http://localhost:${PORT}`);
+app.listen(PORT,"0.0.0.0", async () => {
+  console.log(`Evolvo API is running on http://0.0.0.0:${PORT}`);
 
   await connectToDataBase()
 });

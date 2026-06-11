@@ -23,9 +23,7 @@
   --font-rubik-bold: rubik-bold;
   --font-rubik-extrabold: rubik-extrabold;
   --font-rubik-light: rubik-light;
-  --font-rubik-medium: rubik-medium
-
-  --spacing-0: 0px;
+  --font-rubik-medium: rubik-medium --spacing-0: 0px;
   --spacing-1: 4px;
   --spacing-2: 8px;
   --spacing-3: 12px;
@@ -51,8 +49,16 @@
     @apply size-12 items-center justify-center;
   }
 
+  .tabs-pill {
+    @apply size-12 items-center justify-center rounded-full bg-transparent;
+  }
+
   .tabs-active {
     @apply bg-accent;
+  }
+
+  .tabs-glyph {
+    @apply size-6;
   }
 
   .home-header {
@@ -72,10 +78,10 @@
   }
 
   .board {
-    @apply rounded-bl-3xl rounded-tr-3xl bg-accent p-4
+    @apply rounded-bl-3xl rounded-tr-3xl bg-accent p-4;
   }
 
   .recommended {
-    @apply p-3 border border-black rounded-3xl w-50 h-50
+    @apply p-3 border border-black rounded-3xl w-50 h-50;
   }
 }

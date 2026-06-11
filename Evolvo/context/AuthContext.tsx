@@ -1,0 +1,213 @@
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export interface AuthContextType {
+    isLoggedIn: boolean;
+    user: User | null;
+    lectures: Lecture[];
+    questions: Question[];
+    token: string | null;
+    signIn: (email: string, password: string) => Promise<({ success: boolean, message: string })>;
+    signUp: (name: string, email: string, password: string) => Promise<({ success: boolean, message: string })>;
+    logout: () => Promise<(void)>;
+    error: string | null;
+    isLoading: boolean;
+    clearError: () => void;
+    setError: (error:string)=>void;
+    PrevLanguage: string;
+    setPrevLanguage: (lang: string) => Promise<void>;
+
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+const safeAsyncStorage = {
+    getItem: async (key: string): Promise<string | null> => {
+        try {
+            const raw = await AsyncStorage.getItem(key);
+            if (key === "authToken") {
+                return raw; // Return token as is (string or null)
+            }
+            return raw ? JSON.parse(raw) : null;
+        } catch (error) {
+            if (error instanceof Error && error.message.includes("Native module is null")) {
+                return null;
+            }
+            console.warn('AsyncStorage getItem failed, using fallback:', error);
+            return null;
+        }
+    },
+    setItem: async (key: string, value: string): Promise<void> => {
+        try {
+            const serialized = JSON.stringify(value);
+
+            await AsyncStorage.setItem(String(key), serialized ?? null);
+
+        } catch (error) {
+            if (error instanceof Error && error.message.includes("Native module is null")) {
+                return;
+            }
+            console.warn('AsyncStorage getItem failed, using fallback:', error);
+            return;
+        }
+    },
+    removeItem: async (key: string): Promise<void> => {
+        try {
+            await AsyncStorage.removeItem(key);
+        } catch (error) {
+            console.warn('AsyncStorage removeItem failed, using fallback:', error);
+        }
+    }
+}
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
+    const [lectures, setLectures] = useState<Lecture[]>([]);
+    const [questions, setQuestions] = useState<Question[]>([]);
+    const [token, setToken] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [PrevLanguage, setPrevLanguage] = useState<string>("en");
+
+    useEffect(() => {
+        const initializeAuth = async () => {
+            try {
+                // Small delay to ensure AsyncStorage is ready
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                const storedToken = await safeAsyncStorage.getItem("authToken");
+                const storedUser = await safeAsyncStorage.getItem("user");
+                const storedLectures = await safeAsyncStorage.getItem("lectures");
+                const storedQuestions = await safeAsyncStorage.getItem("questions");
+                const storedLang = await safeAsyncStorage.getItem("lang");
+
+                if (storedToken && storedUser) {
+                    setToken(storedToken);
+                    setUser(storedUser);
+                    setIsLoggedIn(true);
+
+                    if (storedLectures) {
+                        
+                        setLectures(storedLectures);
+                    }
+                    if (storedQuestions) {
+                        setQuestions(storedQuestions);
+                    }
+                    if (storedLang) {
+                        setPrevLanguage(storedLang);
+                    }
+                }
+
+            } catch (error) {
+                console.error("Error initializing auth: ", error)
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        initializeAuth();
+    }, [])
+
+
+    const signIn = async (email: string, password: string) => {
+        try {
+            setError(null);
+            setIsLoading(true);
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/auth/sign-in`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "Login Failed at line 123 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return {success: false, message: data.error}
+            }
+
+            const {token, user, lectures, questions} = data.data;
+
+            await safeAsyncStorage.setItem("authToken", token);
+            await safeAsyncStorage.setItem("user", user);
+            await safeAsyncStorage.setItem("lectures", lectures);
+            await safeAsyncStorage.setItem("quesions", questions);
+
+        } catch (error: any) {
+            const errorMessage = error.message || "An Error occoured during login";
+            setError(errorMessage);
+            console.error("Login Error", error);
+            return { success: false, message: errorMessage };
+        } finally {
+            setIsLoading(false);
+            return {success: true, message: "User logged in successfully"};
+        }
+    }
+
+
+    const signUp = async (name: string, email: string, password: string) => { }
+    
+    
+    const logout = async () => {
+        try {
+            setIsLoading(true);
+
+            await safeAsyncStorage.removeItem("authToken");
+            await safeAsyncStorage.removeItem("user");
+            await safeAsyncStorage.removeItem("lectures");
+            await safeAsyncStorage.removeItem("questions");
+
+            setToken(null);
+            setUser(null);
+            setLectures([]);
+            setQuestions([]);
+            setIsLoggedIn(false);
+            setError(null)
+
+        } catch (error) {
+            console.error("Logout error:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+
+    const clearError = () => setError(null);
+
+    return (
+        <AuthContext.Provider
+            value={
+                {
+                    isLoggedIn,
+                    user,
+                    lectures,
+                    questions,
+                    token,
+                    signIn,
+                    signUp,
+                    logout,
+                    error,
+                    isLoading,
+                    clearError,
+                    setError,
+                    PrevLanguage,
+                    setPrevLanguage
+                }
+            }
+        >
+            {children}
+        </AuthContext.Provider>
+    )
+}
+
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error("useAuth must be used within an AuthProvider");
+    }
+    return context;
+}

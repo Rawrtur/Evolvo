@@ -26,16 +26,21 @@ declare global {
     _id: string;
   }
   interface User {
+    __v: number;
     _id: string;
+    createdAt: Date,
+    email: string;
     name: string;
     password: string;
-    email: string;
+    updatedAt: Date;
+    verficationCode: string|null;
+    verificationExpiresIn: Date;
+    verified: boolean;  
     profilePicture: ImageSourcePropType;
   }
-  interface AppTab {
-    name:string,
-    title: string,
-    icon: ImageSourcePropType
+  interface TabIconProbs {
+    focused: boolean;
+    icon: ImageSourcePropType;
   }
 }
 
