@@ -26,8 +26,8 @@ export default function RootLayout() {
 
   return (
     <AuthProvider>
-      <View className="w-full h-full">
-        <Stack screenOptions={{ headerShown: false }} />
+      <View className="w-full h-full bg-backgound">
+        <Stack screenOptions={{ headerShown: false }}/>
       </View>
     </AuthProvider>)
 }

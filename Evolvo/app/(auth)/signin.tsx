@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { View, Text, TextInput, Alert } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
 import AddButton from '@/components/AddButton'
@@ -9,7 +9,13 @@ import { Link, router } from 'expo-router'
 
 const signin = () => {
 
-    const { signIn, error, isLoading, clearError, setError } = useAuth();
+    const { signIn, error, isLoading, clearError, setError, isLoggedIn } = useAuth();
+
+    useEffect(() => {
+        if (isLoggedIn) router.replace("/(tabs)")
+
+    }, [isLoggedIn])
+
 
     const [email, setEmail] = useState("nico-dierking@web.de");
     const [password, setPassword] = useState("123123");

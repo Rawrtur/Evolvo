@@ -9,7 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function settings() {
 
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   const handleLogOut = async () => {
     Alert.alert(
@@ -38,6 +38,8 @@ export default function settings() {
       <Text className="text-xl font-bold text-blue-500">
         Welcome to Nativewind!
       </Text>
+      <Text>{user?.email || "mmm@mm.mm"}</Text>
+      <Text>{user?.name || "User"}</Text>
       <Button title="Logout" onPress={handleLogOut} />
     </SafeAreaView>
   );

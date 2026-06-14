@@ -13,7 +13,7 @@
         [ ] email erstellen (über google am besten)
         [ ] verificationcode senden
         [ ] verificationcode hashen
-    [ ] send new Code
+    [x] send new Code
     [x] backend returns
 [x] Login Logic Frontend
     [x] sing up
