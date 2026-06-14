@@ -5,7 +5,7 @@ import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
 import AddButton from '@/components/AddButton'
 import CloseButton from '@/components/CloseButton'
-import { router } from 'expo-router'
+import { Link, router } from 'expo-router'
 
 const signin = () => {
 
@@ -81,7 +81,6 @@ const signin = () => {
                     />
                     <View className='flex-row'>
                         <CloseButton onPress={() => setPasswordVisible(!passwordVisible)} />
-
                     </View>
                 </View>
                 {error && (
@@ -91,7 +90,14 @@ const signin = () => {
                     title={isLoading ? "Loading..." : "Continue"}
                     onPress={handleSignIn}
                     style='my-5'
+                    fontStyle='text-white'
+                    disabled={isLoading}
                 />
+                <Text className='font-rubik text-center'>
+                    You don't have an account? <Link href="/(auth)/signup" className='underline pl-2 text-accent'>
+                        Sign Up here!
+                    </Link>
+                </Text>
             </View>
         </View>
     )

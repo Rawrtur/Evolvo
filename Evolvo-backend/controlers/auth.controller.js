@@ -19,34 +19,51 @@ export const signUp = async (req, res, next) => {
     // Check if User already exists
     const existingUser = await User.findOne({ email });
 
-    if (existingUser) {
-      const error = new Error("User already exists");
-      error.statusCode = 409;
-      throw error;
-    }
-
     // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const verificationCode = generateVerficationCode();
 
-    const newUsers = await User.create(
-      [
-        {
-          name,
-          email,
-          password: hashedPassword,
-          verified: false,
-          verificationCode,
-          verificationExpiresIn: Date.now() + 15 * 60 * 10000,
-        },
-      ],
-      {
-        session,
-      },
-    );
+    if (existingUser) {
+      const isCorrectPassword = await bcrypt.compare(
+        password,
+        existingUser.password,
+      );
 
+      if (existingUser.verified) {
+        const error = new Error("User already exists.");
+        error.statusCode = 409;
+        throw error;
+      }
+
+      if (!isCorrectPassword) {
+        const error = new Error("User already exists with other details.");
+        error.statusCode = 409;
+        throw error;
+      }
+
+      existingUser.verificationCode = verificationCode;
+      existingUser.verificationExpiresIn = Date.now() + 15 * 60 * 10000;
+
+      await existingUser.save();
+    } else {
+      const newUsers = await User.create(
+        [
+          {
+            name,
+            email,
+            password: hashedPassword,
+            verified: false,
+            verificationCode,
+            verificationExpiresIn: Date.now() + 15 * 60 * 10000,
+          },
+        ],
+        {
+          session,
+        },
+      );
+    }
     // await sendVerificationEmail(email, verificationCode);
 
     await session.commitTransaction();
@@ -69,7 +86,7 @@ export const verify = async (req, res, next) => {
 
     const user = await User.findOne({ email });
 
-    if (user.verificationExpires < Date.now()) {
+    if (user.verificationExpiresIn < Date.now()) {
       return res.status(400).json({
         error: "Code is expired",
       });
@@ -96,8 +113,36 @@ export const verify = async (req, res, next) => {
         token,
         user,
         questions: [],
-        lectures: []
+        lectures: [],
       },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const resendVerify = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      const error = new Error("User does not exist. Create a Accoutn first");
+      error.statusCode = 409;
+      throw error;
+    }
+
+    const verificationCode = generateVerficationCode();
+
+    user.verificationCode = verificationCode;
+    user.verificationExpiresIn = Date.now() + 15 * 60 * 10000;
+
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "VerificationCode sended",
     });
   } catch (error) {
     next(error);
@@ -123,8 +168,8 @@ export const signIn = async (req, res, next) => {
       throw error;
     }
 
-    const lectures = await Lecture.find({user: user._id});
-    const questions = await Question.find({user: user._id});
+    const lectures = await Lecture.find({ user: user._id });
+    const questions = await Question.find({ user: user._id });
 
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
       expiresIn: JWT_EXPIRES_IN,
@@ -137,7 +182,7 @@ export const signIn = async (req, res, next) => {
         token,
         user,
         lectures,
-        questions
+        questions,
       },
     });
   } catch (error) {

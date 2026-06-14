@@ -5,6 +5,7 @@ declare global {
     title: string;
     onPress: () => void;
     style?: string;
+    fontStyle?: string;
     disabled?: boolean;
   }
   interface AddButtonProps {

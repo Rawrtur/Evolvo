@@ -9,11 +9,14 @@ export interface AuthContextType {
     token: string | null;
     signIn: (email: string, password: string) => Promise<({ success: boolean, message: string })>;
     signUp: (name: string, email: string, password: string) => Promise<({ success: boolean, message: string })>;
+    verify: (email: string, code: string) => Promise<({ success: boolean, message: string })>;
+    resendVerify: (email: string) => Promise<({ success: boolean, message: string })>
+    verified: string | null;
     logout: () => Promise<(void)>;
     error: string | null;
     isLoading: boolean;
     clearError: () => void;
-    setError: (error:string)=>void;
+    setError: (error: string) => void;
     PrevLanguage: string;
     setPrevLanguage: (lang: string) => Promise<void>;
 
@@ -70,6 +73,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [PrevLanguage, setPrevLanguage] = useState<string>("en");
+    const [verified, setVerified] = useState<string | null>(null);
 
     useEffect(() => {
         const initializeAuth = async () => {
@@ -82,6 +86,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 const storedLectures = await safeAsyncStorage.getItem("lectures");
                 const storedQuestions = await safeAsyncStorage.getItem("questions");
                 const storedLang = await safeAsyncStorage.getItem("lang");
+                const storedVerify = await safeAsyncStorage.getItem("verified");
+
+                if (storedVerify) {
+                    setVerified(storedVerify);
+                }
 
                 if (storedToken && storedUser) {
                     setToken(storedToken);
@@ -89,7 +98,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     setIsLoggedIn(true);
 
                     if (storedLectures) {
-                        
+
                         setLectures(storedLectures);
                     }
                     if (storedQuestions) {
@@ -127,16 +136,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             if (data.error) {
                 setError(data.error);
-                return {success: false, message: data.error}
+                return { success: false, message: data.error }
             }
 
-            const {token, user, lectures, questions} = data.data;
+            const { token, user, lectures, questions } = data.data;
 
             await safeAsyncStorage.setItem("authToken", token);
             await safeAsyncStorage.setItem("user", user);
             await safeAsyncStorage.setItem("lectures", lectures);
             await safeAsyncStorage.setItem("quesions", questions);
 
+            setIsLoggedIn(true);
+
+            return { success: true, message: "User logged in successfully" };
         } catch (error: any) {
             const errorMessage = error.message || "An Error occoured during login";
             setError(errorMessage);
@@ -144,14 +156,121 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             return { success: false, message: errorMessage };
         } finally {
             setIsLoading(false);
-            return {success: true, message: "User logged in successfully"};
         }
     }
 
 
-    const signUp = async (name: string, email: string, password: string) => { }
-    
-    
+    const signUp = async (name: string, email: string, password: string) => {
+        try {
+            setError(null);
+            setIsLoading(true);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/auth/sign-up`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "SignUp Failed at line 166 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            await safeAsyncStorage.setItem("verified", email);
+
+            return data;
+
+        } catch (error: any) {
+            const errorMessage = error.message || "An Error occoured during sign up.";
+            setError(errorMessage);
+            console.error("Sign up Error: ", error);
+            return { success: false, message: errorMessage };
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const verify = async (email: string, code: string) => {
+        try {
+            setError(null);
+            setIsLoading(true);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/auth/verify`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, code }),
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "verification Failed at line 212 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            const { token, user, lectures, questions } = data.data;
+
+            await safeAsyncStorage.setItem("authToken", token);
+            await safeAsyncStorage.setItem("user", user);
+            await safeAsyncStorage.setItem("lectures", lectures);
+            await safeAsyncStorage.setItem("quesions", questions);
+
+            setIsLoggedIn(true);
+
+            return { success: true, message: data.message };
+        } catch (error: any) {
+            const errorMessage = error.message || "An Error occoured during Verification.";
+            setError(errorMessage);
+            console.error("Sign up Error: ", error);
+            return { success: false, message: errorMessage };
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const resendVerify = async (email: string) => {
+        try {
+            setError(null);
+            setIsLoading(true);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/auth/resend-verify`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "Resend Failed at line 253 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            return data;
+
+        } catch (error: any) {
+            const errorMessage = error.message || "An Error occoured during Verification.";
+            setError(errorMessage);
+            console.error("Sign up Error: ", error);
+            return { success: false, message: errorMessage };
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+
     const logout = async () => {
         try {
             setIsLoading(true);
@@ -190,6 +309,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     signIn,
                     signUp,
                     logout,
+                    verify,
+                    resendVerify,
+                    verified,
                     error,
                     isLoading,
                     clearError,

@@ -1,14 +1,14 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const Button = ({ title, onPress, style, disabled }: ButtonProps) => {
+const Button = ({ title, onPress, style, disabled, fontStyle }: ButtonProps) => {
   return (
     <TouchableOpacity
-        onPress={disabled ? ()=>{} : onPress}
-        key={1}
-        className={`items-center ${ disabled ? "bg-accent/70" : `bg-accent` } py-4 px-20 rounded-full ${style}`}
+      onPress={disabled ? () => { } : onPress}
+      key={1}
+      className={`items-center ${disabled ? "bg-accent/70" : `bg-accent`} py-4 px-20 rounded-full ${style}`}
     >
-      <Text className='text-white text-xl'>{title}</Text>
+      <Text className={`${fontStyle} text-xl font-rubik`}>{title}</Text>
     </TouchableOpacity>
   )
 }

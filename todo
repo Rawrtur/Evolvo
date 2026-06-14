@@ -15,8 +15,8 @@
         [ ] verificationcode hashen
     [ ] send new Code
     [x] backend returns
-[ ] Login Logic Frontend
-    [ ] sing up
-    [ ] code verification
-    [ ] sing in
-    [ ] logout vervollständigen
+[x] Login Logic Frontend
+    [x] sing up
+    [x] code verification
+    [x] sing in
+    [x] logout vervollständigen
