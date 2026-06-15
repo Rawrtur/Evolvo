@@ -10,47 +10,53 @@ export const tabs = [
 export const recommendedLectures: Lecture[] = [
   {
     title: "Mathematics",
-    icon: icons.activity,
+    icon: "calculator",
     _id: "1234",
     lastLecture: new Date(),
     color: "#c6a465",
+    type: "Calculate"
   },
   {
     title: "Theoretical Informatics",
-    icon: icons.activity,
+    icon: "calculator",
     _id: "5678",
     lastLecture: new Date(),
     color: "#5ec9d1",
+    type: "Theory"
   },
   {
     title: "English",
-    icon: icons.activity,
+    icon: "book",
     _id: "9101",
     lastLecture: new Date(),
     color: "#afba63",
+    type: "Practise"
   },
 ];
 
 export const lectures: Lecture[] = [
   {
     title: "Mathematics",
-    icon: icons.activity,
+    icon: "calculator",
     _id: "1234",
-    lastLecture: new Date(),
-    color: "#c6a465",
+    lastLecture: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+    color: "#f5c542",
+    type: "Calculate"
   },
   {
     title: "Theoretical Informatics",
-    icon: icons.activity,
+    icon: "calculator",
     _id: "5678",
-    lastLecture: new Date(),
-    color: "#5ec9d1",
+    lastLecture: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+    color: "#e8def8",
+    type: "Theory"
   },
   {
     title: "English",
-    icon: icons.activity,
+    icon: "book",
     _id: "9101",
-    lastLecture: new Date(),
-    color: "#afba63",
+    lastLecture: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+    color: "#b8d4e3",
+    type: "Practise"
   },
 ];

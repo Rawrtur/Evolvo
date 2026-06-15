@@ -1,27 +1,31 @@
-import Button from "@/components/Button";
 import { useAuth } from "@/context/AuthContext";
 import "@/global.css"
-import { Text, View, Alert, Image, FlatList, ScrollView } from "react-native";
+import { Text, View, Image, FlatList, ScrollView } from "react-native";
 import { router } from 'expo-router'
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import images from "@/constants/images";
 import AddButton from "@/components/AddButton";
 import LottieView from 'lottie-react-native';
 import SecondButton from "@/components/SecondButton";
 import { recommendedLectures, lectures } from "@/constants/data";
+import RecommendedLecture from "@/components/RecommendedLecture";
+import LectureCard from "@/components/LectureCard";
+
 
 
 export default function App() {
 
+  const [expandedLectureId, setExpandedLectureId] = useState<string | null>(null);
 
-  const { user } = useAuth();
-  // useEffect(() => {
+  const { user, isLoading, isLoggedIn } = useAuth();
+  useEffect(() => {
 
-  //   if (!isLoggedIn) {
-  //     router.replace("/(auth)/signin");
-  //   }
-  // }, [isLoggedIn])
+    if (!isLoggedIn && !isLoading) {
+      router.replace("/(auth)/signin");
+      return;
+    }
+  }, [isLoggedIn, isLoading])
 
   return (
     <SafeAreaView className="flex-1 items-center justify-center">
@@ -29,7 +33,7 @@ export default function App() {
         <View className="home-header">
           <View className="home-user">
             <Image source={images.avatar} className="home-avatar" />
-            <Text className="home-user-name"> {user?.name || "User" } </Text>
+            <Text className="home-user-name"> {user?.name || "User"} </Text>
           </View>
           <AddButton onPress={() => { }} />
         </View>
@@ -45,31 +49,69 @@ export default function App() {
             style={{ width: 200, height: 200 }}
           />
         </View>
-        <View className="flex-row items-center justify-between pt-5">
+        <View className="flex-row items-center justify-between py-5">
           <Text className="font-rubik-semibold text-2xl">Recommended</Text>
           <SecondButton onPress={() => { }} title="View All" />
         </View>
+
         <FlatList
           data={recommendedLectures}
-          horizontal
-          className="h-[200px]"
-          renderItem={(lecture) => (
-            <View className="recommended m-3">
-
-            </View>
+          className="w-full"
+          renderItem={({ item }) => (
+            <RecommendedLecture data={item} />
           )}
+          keyExtractor={(item) => item._id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={
+            <View className="w-full items-center justify-center">
+              <View className="relative h-30 w-full flex-row items-center overflow-visible rounded-2xl border border-gray-200 bg-white px-4">
+                <View className="absolute -left-5">
+                  <LottieView
+                    source={require('../../assets/animations/sleep.json')}
+                    autoPlay
+                    loop
+                    style={{ width: 140, height: 140 }}
+                  />
+                </View>
+
+                <View className="ml-24 flex-1">
+                  <Text className="font-rubik-bold text-base text-gray-800">
+                    No Recommended Lectures
+                  </Text>
+                  <Text className="mt-1 font-rubik text-sm text-gray-500">
+                    Complete more lectures to receive{`\n`}personalized recommendations.
+                  </Text>
+                </View>
+              </View>
+            </View>
+          }
         />
-        <View className="flex-row items-center justify-between pt-5">
+
+        <View className="flex-row items-center justify-between py-5">
           <Text className="font-rubik-semibold text-2xl">All Lectures</Text>
           <SecondButton onPress={() => { }} title="View All" />
         </View>
         {lectures.map((lec, key) => (
-          <View
-            key={key}
-          >
-            <Text>{lec.title}</Text>
-          </View>
+          <LectureCard 
+          key={key} 
+          {...lec} 
+          onPress={() => { setExpandedLectureId((currentId) => (currentId === lec._id ? null : lec._id)) }} 
+          expanded={expandedLectureId === lec._id} 
+          shortTermQuestions={2}
+          mediumTermQuestions={4}
+          longTermQuestions={7}
+          />
         ))}
+        <View className="w-full items-center justify-center h-[200px]">
+          <LottieView
+            source={require('../../assets/animations/thumbup.json')}
+            autoPlay
+            loop
+            style={{ width: 300, height: 300 }}
+          />
+        </View>
+        <View className="h-30" />
       </ScrollView>
     </SafeAreaView>
   );

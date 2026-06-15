@@ -15,9 +15,23 @@ declare global {
   interface Lecture {
     title: string;
     color?: string;
-    icon: ImageSourcePropType;
+    icon: string;
     _id: string;
+    type: "Theory" | "Practise" | "Calculate" | "Experiments" | "Projects";
     lastLecture: Date;
+  }
+  interface LectureCardProps {
+    title: string;
+    color?: string;
+    icon: string;
+    _id: string;
+    type: "Theory" | "Practise" | "Calculate" | "Experiments" | "Projects";
+    lastLecture: Date;
+    onPress: ()=>void;
+    expanded: boolean;
+    shortTermQuestions: number;
+    mediumTermQuestions: number;
+    longTermQuestions: number;
   }
   interface Question {
     question: string;

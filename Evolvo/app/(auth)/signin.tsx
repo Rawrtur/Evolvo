@@ -11,12 +11,6 @@ const signin = () => {
 
     const { signIn, error, isLoading, clearError, setError, isLoggedIn } = useAuth();
 
-    useEffect(() => {
-        if (isLoggedIn) router.replace("/(tabs)")
-
-    }, [isLoggedIn])
-
-
     const [email, setEmail] = useState("nico-dierking@web.de");
     const [password, setPassword] = useState("123123");
     const [passwordVisible, setPasswordVisible] = useState(true);

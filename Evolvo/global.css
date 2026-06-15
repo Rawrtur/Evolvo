@@ -82,6 +82,106 @@
   }
 
   .recommended {
-    @apply p-3 border border-black rounded-3xl w-50 h-50;
+    @apply mr-4 w-64 rounded-2xl border border-black/10 bg-background p-4;
   }
+
+  .recommended-row {
+        @apply flex-row items-center gap-3;
+    }
+
+    .recommended-icon {
+        @apply size-14 bg-muted rounded-xl justify-center items-center ;
+    }
+
+    .recommended-date {
+        @apply text-lg font-rubik-bold text-primary;
+    }
+
+    .recommended-meta {
+        @apply text-sm font-rubik-semibold text-muted-foreground;
+    }
+
+    .recommended-name {
+        @apply mt-2 text-lg font-rubik-bold text-primary;
+    }
+
+    .lecture-card {
+        @apply rounded-2xl border border-border p-4;
+    }
+
+    .lecture-card-expanded {
+        @apply bg-subscription;
+    }
+
+    .lecture-head {
+        @apply flex-row items-center py-2;
+    }
+
+    .lecture-main {
+        @apply min-w-0 flex-1 flex-row items-center gap-3;
+    }
+
+    .lecture-icon {
+        @apply size-16 rounded-lg;
+    }
+
+    .lecture-copy {
+        @apply min-w-0 flex-1;
+    }
+
+    .lecture-title {
+        @apply mb-1 text-lg font-rubik-bold text-primary;
+    }
+
+    .lecture-meta {
+        @apply text-sm font-rubik-semibold text-muted-foreground;
+    }
+
+    .lecture-info-box {
+        @apply ml-3 shrink-0 items-end;
+    }
+
+    .lecture-info {
+        @apply mb-1 text-lg font-rubik-bold text-primary;
+    }
+
+    .lecture-last {
+        @apply text-sm font-rubik-medium text-muted-foreground;
+    }
+
+    .lecture-body {
+        @apply mt-6 gap-4;
+    }
+
+    .lecture-details {
+        @apply gap-3;
+    }
+
+    .lecture-row {
+        @apply flex-row items-center justify-between gap-3;
+    }
+
+    .lecture-row-copy {
+        @apply min-w-0 flex-1 flex-row items-center gap-2;
+    }
+
+    .lecture-label {
+        @apply shrink-0 text-base font-rubik-medium text-muted-foreground;
+    }
+
+    .lecture-value {
+        @apply flex-1 font-rubik-bold text-primary;
+    }
+
+    .lecture-cancel {
+        @apply mt-2 items-center rounded-full bg-primary py-4;
+    }
+
+    .lecture-cancel-disabled {
+        @apply bg-primary/35;
+    }
+
+    .lecture-cancel-text {
+        @apply font-rubik-bold text-background;
+    }
 }

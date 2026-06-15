@@ -27,7 +27,7 @@ export default function RootLayout() {
   return (
     <AuthProvider>
       <View className="w-full h-full bg-backgound">
-        <Stack screenOptions={{ headerShown: false }}/>
+        <Stack screenOptions={{ headerShown: false }} initialRouteName="(tabs)" />
       </View>
     </AuthProvider>)
 }
