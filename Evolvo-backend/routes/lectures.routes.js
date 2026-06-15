@@ -1,30 +1,26 @@
 import { Router } from "express";
 import { limiter } from "../middleware/limiter.middleware.js";
+import {
+  createLecture,
+  deleteLecture,
+  getAllUserLectures,
+  getLecture,
+  getLectures,
+  updateLecture,
+} from "../controlers/lecture.controller.js";
 
 const lectureRouter = Router();
 
-lectureRouter.get("/", limiter, (req, res) =>
-  res.send({ message: "GET All Lectures" }),
-);
+lectureRouter.get("/", limiter, getLectures);
 
-lectureRouter.get("/:id", limiter, (req, res) =>
-  res.send({ message: "GET Lecture Details" }),
-);
+lectureRouter.get("/:id", limiter, getLecture);
 
-lectureRouter.post("/", limiter, (req, res) =>
-  res.send({ message: "CREATE Lecture" }),
-);
+lectureRouter.post("/", limiter, createLecture);
 
-lectureRouter.put("/:id", limiter, (req, res) =>
-  res.send({ message: "UPDATE Lecture" }),
-);
+lectureRouter.put("/:id", limiter, updateLecture);
 
-lectureRouter.delete("/:id", limiter, (req, res) =>
-  res.send({ message: "DELETE Lecture" }),
-);
+lectureRouter.delete("/:id", limiter, deleteLecture);
 
-lectureRouter.get("/user/:id", limiter, (req, res) =>
-  res.send({ message: "GET All User Lectures" }),
-);
+lectureRouter.get("/user/:id", limiter, getAllUserLectures);
 
 export default lectureRouter;
