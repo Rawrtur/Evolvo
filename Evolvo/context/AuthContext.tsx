@@ -19,6 +19,7 @@ export interface AuthContextType {
     setError: (error: string) => void;
     PrevLanguage: string;
     setPrevLanguage: (lang: string) => Promise<void>;
+    createLecture: (title: string, color: string, icon: string, user: string) => Promise<({ success: boolean, message: string, lecture: object })>
 
 }
 
@@ -83,8 +84,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
                 const storedToken = await safeAsyncStorage.getItem("authToken");
                 const storedUser = await safeAsyncStorage.getItem("user");
-                const storedLectures = await safeAsyncStorage.getItem("lectures");
-                const storedQuestions = await safeAsyncStorage.getItem("questions");
                 const storedLang = await safeAsyncStorage.getItem("lang");
                 const storedVerify = await safeAsyncStorage.getItem("verified");
 
@@ -97,16 +96,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     setUser(storedUser);
                     setIsLoggedIn(true);
 
-                    if (storedLectures) {
-
-                        setLectures(storedLectures);
-                    }
-                    if (storedQuestions) {
-                        setQuestions(storedQuestions);
-                    }
                     if (storedLang) {
                         setPrevLanguage(storedLang);
                     }
+                    const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/user/${storedUser._id}`, {
+                        method: 'GET',
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+                    const data = await response.json();
+
+                    if (!response) {
+                        throw new Error(data.message || "Login Failed at line 123 AuthContext.tsx");
+                    }
+
+                    if (data.error) {
+                        setError(data.error);
+                        return { success: false, message: data.error }
+                    }
+                    const { lectures } = data.data;
+                    setLectures(lectures)
                 }
 
             } catch (error) {
@@ -297,6 +305,38 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const clearError = () => setError(null);
 
+    const createLecture = async (title: string, color: string, icon: string, user: string) => {
+        try {
+            setIsLoading(true);
+            setError(null);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, color, icon, user }),
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "Resend Failed at line 314 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            setLectures((prev) => [...prev, data.lecture])
+
+            return data;
+
+        } catch (error) {
+            console.error("Error while creating Lecture: ", error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     return (
         <AuthContext.Provider
             value={
@@ -317,7 +357,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     clearError,
                     setError,
                     PrevLanguage,
-                    setPrevLanguage
+                    setPrevLanguage,
+                    createLecture
                 }
             }
         >

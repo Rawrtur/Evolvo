@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { View, Text, TextInput, Alert } from 'react-native'
+import { View, Text, TextInput} from 'react-native'
 import React, { useState } from 'react'
 import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
-import AddButton from '@/components/AddButton'
 import CloseButton from '@/components/CloseButton'
 import { Link, router } from 'expo-router'
 
@@ -57,10 +56,6 @@ const signup = () => {
           <Text className='font-rubik'>Smart Learning</Text>
         </View>
       </View>
-      {/* <View className='w-full pt-8 pb-6 items-center'>
-                <Text className='font-rubik-bold text-2xl'>Welcome Back!</Text>
-                <Text className='font-rubik-light'>Sign In to continue learning.</Text>
-            </View> */}
       <View className='bg-white m-5 border border-accent w-[90%] p-5 rounded-3xl'>
         <Text className='font-rubik-semibold'>Name</Text>
         <View className='flex-row w-full bg-background my-4 p-2 justify-between border border-accent rounded-xl '>

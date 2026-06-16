@@ -8,6 +8,7 @@ import {
   getLectures,
   updateLecture,
 } from "../controlers/lecture.controller.js";
+import authorize from "../middleware/auth.middleware.js";
 
 const lectureRouter = Router();
 

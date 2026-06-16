@@ -22,11 +22,13 @@
     [x] logout vervollständigen
 [ ] Home Page
     [x] static design
-    [ ] Add Button Logic
+    [x] Add Button Logic
     [ ] View Button Logic
     [ ] lectures list
+    [ ] no lecture Screen
 [ ] dark theme
 [ ] languag
+[ ] backend Admin authorize
 
 AI FLOW:
 request -> look for subscription -> if yes then generate content

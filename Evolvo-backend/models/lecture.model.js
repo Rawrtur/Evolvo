@@ -10,8 +10,13 @@ const lectureSchema = new mongoose.Schema(
     },
     color: {
       type: String,
-      enum: ["yellow", "red", "blue", "green"],
-      default: "blue",
+      enum: ["#c6a465", "#ba6363", "#5ec9d1", "#afba63"],
+      default: "#ba6363",
+    },
+    type: {
+      type: String,
+      enum: ["Calculate", "Theory", "Practise", "Experimental", "Project"],
+      default: "Practise",
     },
     icon: {
       type: String,
@@ -22,15 +27,15 @@ const lectureSchema = new mongoose.Schema(
       type: Date,
     },
     user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: [true, "User is required"],
-        index: true
-    }
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: [true, "User is required"],
+      index: true,
+    },
   },
   { timestamps: true },
 );
 
-const Lecture = mongoose.model("Lecture",lectureSchema)
+const Lecture = mongoose.model("Lecture", lectureSchema);
 
 export default Lecture;

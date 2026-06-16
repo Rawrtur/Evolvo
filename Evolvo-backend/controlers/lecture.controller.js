@@ -55,7 +55,6 @@ export const createLecture = async (req, res, next) => {
         session,
       },
     );
-
     await session.commitTransaction();
     session.endSession();
 

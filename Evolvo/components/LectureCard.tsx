@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 
-const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expanded, shortTermQuestions, mediumTermQuestions, longTermQuestions }: LectureCardProps) => {
+const LectureCard = ({ title, icon, color, lastLecture, type, onPress, expanded, shortTermQuestions, mediumTermQuestions, longTermQuestions }: LectureCardProps) => {
     const animatedStyle = useAnimatedStyle(() => {
         return {
             maxHeight: expanded ? withTiming(300) : withTiming(0),
@@ -33,7 +33,7 @@ const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expa
                 </View>
                 <View className='lecture-info-box'>
                     <Text className='lecture-info'>7 Questions</Text>
-                    <Text className='lecture-last'>{timeAgo(lastLecture)}</Text>
+                    <Text className='lecture-last'>{lastLecture !== undefined ? timeAgo(new Date(lastLecture)) : ""}</Text>
                 </View>
             </View>
             {expanded && (
