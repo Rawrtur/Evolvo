@@ -39,13 +39,14 @@ export const createLecture = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
-    const { title, color, icon, user } = req.body;
+    const { title, color, icon, user, type } = req.body;
 
     const newLectures = await Lecture.create(
       [
         {
           title,
           color,
+          type,
           icon,
           user,
           lastLecture: new Date(),

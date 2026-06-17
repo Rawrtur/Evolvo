@@ -11,6 +11,7 @@ export interface AuthContextType {
     signUp: (name: string, email: string, password: string) => Promise<({ success: boolean, message: string })>;
     verify: (email: string, code: string) => Promise<({ success: boolean, message: string })>;
     resendVerify: (email: string) => Promise<({ success: boolean, message: string })>
+    getLectureDetails: (id:string) => Promise<({success:boolean, message:string})>
     verified: string | null;
     logout: () => Promise<(void)>;
     error: string | null;
@@ -18,8 +19,8 @@ export interface AuthContextType {
     clearError: () => void;
     setError: (error: string) => void;
     PrevLanguage: string;
-    setPrevLanguage: (lang: string) => Promise<void>;
-    createLecture: (title: string, color: string, icon: string, user: string) => Promise<({ success: boolean, message: string, lecture: object })>
+    setPrevLanguage: (lang: string) => void;
+    createLecture: (title: string, color: string, icon: string,type:string, user: string) => Promise<({ success: boolean, message: string, lecture: object })>
 
 }
 
@@ -305,7 +306,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const clearError = () => setError(null);
 
-    const createLecture = async (title: string, color: string, icon: string, user: string) => {
+    const createLecture = async (title: string, color: string, icon: string,type:string, user: string) => {
         try {
             setIsLoading(true);
             setError(null);
@@ -313,7 +314,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title, color, icon, user }),
+                body: JSON.stringify({ title, color, icon,type, user }),
             });
             const data = await response.json();
 
@@ -337,6 +338,36 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }
 
+    const getLectureDetails = async (id:string) => {
+        try {
+            setIsLoading(true);
+            setError(null);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/${id}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "Resend Failed at line 314 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            return data;
+
+
+        } catch (error) {
+            console.error("Error while fetching LectureDetails: ", error);
+        } finally {
+            setIsLoading(false);
+        }
+    } 
+
     return (
         <AuthContext.Provider
             value={
@@ -351,6 +382,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     logout,
                     verify,
                     resendVerify,
+                    getLectureDetails,
                     verified,
                     error,
                     isLoading,

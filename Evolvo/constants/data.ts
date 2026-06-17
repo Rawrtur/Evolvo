@@ -2,8 +2,8 @@ import { icons } from "./icons";
 
 export const tabs = [
   { title: "Home", name: "index", icon: icons.home },
-  { title: "Activity", name: "activity", icon: icons.activity },
   { title: "Lectures", name: "lectures", icon: icons.activity },
+  { title: "Activity", name: "activity", icon: icons.activity },
   { title: "Settings", name: "settings", icon: icons.settings },
 ];
 

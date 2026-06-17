@@ -32,12 +32,14 @@ declare global {
     shortTermQuestions: number;
     mediumTermQuestions: number;
     longTermQuestions: number;
+    expandedDetails?: boolean;
   }
   interface Question {
     question: string;
     answer: string;
     state: string;
     lastAnswered: Date;
+    lecture: string,
     _id: string;
   }
   interface User {

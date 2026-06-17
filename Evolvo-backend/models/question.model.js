@@ -18,6 +18,11 @@ const questionSchema = new mongoose.Schema(
     lastAnswered: {
       type: Date,
     },
+    lecture: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Lecture",
+      required: [true, "Lecture is required"],
+    },
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "User",

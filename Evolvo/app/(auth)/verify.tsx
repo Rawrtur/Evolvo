@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { View, Text, TextInput, Alert } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
-import AddButton from '@/components/AddButton'
 import CloseButton from '@/components/CloseButton'
 import { Link, router } from 'expo-router'
 
@@ -15,14 +14,16 @@ const verify = () => {
 
     const handleResend = async () => {
         clearError();
-        const result = await resendVerify(verified);
+        if (verified !== null) {
+            const result = await resendVerify(verified);
 
-        if (result.success) {
-            setError(`Verification Code sended to ${verified}`);
-        } else {
-            setError(result.message);
+            if (result.success) {
+                setError(`Verification Code sended to ${verified}`);
+            } else {
+                setError(result.message);
+            }
+
         }
-
     }
 
     const handleVerify = async () => {
@@ -36,13 +37,15 @@ const verify = () => {
             setError("You Account is not listed.")
         }
 
-        const result = await verify(verified, code);
+        if (verified !== null) {
 
+            const result = await verify(verified, code);
 
-        if (result.success) {
-            router.replace("/(tabs)")
-        } else {
-            setError(result.message);
+            if (result.success) {
+                router.replace("/(tabs)")
+            } else {
+                setError(result.message);
+            }
         }
     }
 

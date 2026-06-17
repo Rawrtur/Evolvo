@@ -1,12 +1,15 @@
-import { View, Text, Pressable, LayoutAnimation } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import timeAgo from '@/utils/formatter';
 import clsx from 'clsx';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { colors } from '@/constants/theme';
+import Button from './Button';
+import { router } from 'expo-router';
 
 
-const LectureCard = ({ title, icon, color, lastLecture, type, onPress, expanded, shortTermQuestions, mediumTermQuestions, longTermQuestions }: LectureCardProps) => {
+const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expanded, shortTermQuestions, mediumTermQuestions, longTermQuestions, expandedDetails = false }: LectureCardProps) => {
     const animatedStyle = useAnimatedStyle(() => {
         return {
             maxHeight: expanded ? withTiming(300) : withTiming(0),
@@ -15,7 +18,7 @@ const LectureCard = ({ title, icon, color, lastLecture, type, onPress, expanded,
     });
     return (//className='lecture-card bg-card my-3'
         <Pressable onPress={onPress} className={clsx('lecture-card', 'my-3', expanded ? "lecture-card-expanded" : "bg-card")} style={!expanded && color ? {
-            backgroundColor: color
+            backgroundColor: expandedDetails ? colors.background : color
         } : undefined}>
             <View className='lecture-head'>
                 <View className='lecture-main'>
@@ -32,7 +35,7 @@ const LectureCard = ({ title, icon, color, lastLecture, type, onPress, expanded,
                     </View>
                 </View>
                 <View className='lecture-info-box'>
-                    <Text className='lecture-info'>7 Questions</Text>
+                    <Text className='lecture-info'>{shortTermQuestions + mediumTermQuestions + longTermQuestions} Questions</Text>
                     <Text className='lecture-last'>{lastLecture !== undefined ? timeAgo(new Date(lastLecture)) : ""}</Text>
                 </View>
             </View>
@@ -57,6 +60,24 @@ const LectureCard = ({ title, icon, color, lastLecture, type, onPress, expanded,
                                 <Text className='lecture-value' numberOfLines={1} ellipsizeMode='tail'>{longTermQuestions}</Text>
                             </View>
                         </View>
+                    </View>
+                    <View className='items-center justify-center'>
+
+                    </View>
+                    <View className='w-full gap-2'>
+                        <Button
+                            title='Start Lecture'
+                            onPress={() => { }}
+                            style='bg-black'
+                            fontStyle='text-white'
+                        />
+                        {expandedDetails && (
+                            <Button
+                                title='Show more Details'
+                                onPress={() => router.navigate(`/lectures/${_id}`)}
+                                style='bg-subscription border border-black'
+                            />
+                        )}
                     </View>
                 </Animated.View>
             )}

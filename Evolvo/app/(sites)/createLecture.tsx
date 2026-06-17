@@ -10,8 +10,9 @@ import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
 import { Ionicons } from '@expo/vector-icons'
 
-const colors = ["#c6a465", "#ba6363", "#5ec9d1", "#afba63"]
-const displayIcons = ["book", "calculator", "pulse", "flask", "code"]
+
+const colors: ["#f5c542", "#e8def8", "#b8d4e3", "#b8e8d0"] = ["#f5c542", "#e8def8", "#b8d4e3", "#b8e8d0"]
+const displayIcons: ["book", "calculator", "pulse", "flask", "code"] = ["book", "calculator", "pulse", "flask", "code"]
 
 const types = ["Practise", "Calculate", "Theory", "Experimental", "Project"]
 
@@ -19,10 +20,15 @@ const createLecture = () => {
 
     const { isLoading, createLecture, user, error, setError } = useAuth();
 
+    const [title, setTitle] = useState("");
+    const [color, setColor] = useState("#f5c542");
+    const [icon, setIcon] = useState("book");
+    const [type, setType] = useState("Practise");
+
     const handleCreate = async () => {
         try {
             if (user) {
-                const data = await createLecture(title, color, icon, user._id);
+                const data = await createLecture(title, color, icon, type, user._id);
 
                 if (data.success) {
                     setTitle("");
@@ -36,11 +42,6 @@ const createLecture = () => {
             setError(error.message)
         }
     };
-
-    const [title, setTitle] = useState("");
-    const [color, setColor] = useState("#ba6363");
-    const [icon, setIcon] = useState("book");
-    const [type, setType] = useState("Practise");
 
 
     return (

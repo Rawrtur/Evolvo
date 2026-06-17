@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { View, Text, TextInput, Alert } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, TextInput} from 'react-native'
+import React, { useState } from 'react'
 import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
-import AddButton from '@/components/AddButton'
 import CloseButton from '@/components/CloseButton'
 import { Link, router } from 'expo-router'
 
 const signin = () => {
 
-    const { signIn, error, isLoading, clearError, setError, isLoggedIn } = useAuth();
+    const { signIn, error, isLoading, clearError, setError} = useAuth();
 
     const [email, setEmail] = useState("nico-dierking@web.de");
     const [password, setPassword] = useState("123123");
@@ -94,7 +93,7 @@ const signin = () => {
                     disabled={isLoading}
                 />
                 <Text className='font-rubik text-center'>
-                    You don't have an account? <Link href="/(auth)/signup" className='underline pl-2 text-accent'>
+                    {"You don't have an account?"} <Link href="/(auth)/signup" className='underline pl-2 text-accent'>
                         Sign Up here!
                     </Link>
                 </Text>

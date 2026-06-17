@@ -10,8 +10,8 @@ const lectureSchema = new mongoose.Schema(
     },
     color: {
       type: String,
-      enum: ["#c6a465", "#ba6363", "#5ec9d1", "#afba63"],
-      default: "#ba6363",
+      enum: ["#f5c542","#e8def8","#b8d4e3","#b8e8d0"],
+      default: "#f5c542",
     },
     type: {
       type: String,
@@ -20,7 +20,7 @@ const lectureSchema = new mongoose.Schema(
     },
     icon: {
       type: String,
-      enum: ["calculator", "book", "code", "pulse"],
+      enum: ["book", "calculator", "pulse", "flask", "code"],
       default: "book",
     },
     lastLecture: {

@@ -16,7 +16,7 @@ const RecommendedLecture = ({ data: { title, color, icon, lastLecture } }: Lectu
                 </View>
                 <View>
                     <Text className='recommended-date'>Last lecture:</Text>
-                    <Text className='recommeded-meta' numberOfLines={1}>{lastLecture ? timeAgo(lastLecture) : ""}</Text>
+                    <Text className='recommeded-meta' numberOfLines={1}>{lastLecture ? timeAgo(new Date(lastLecture)) : ""}</Text>
                 </View>
             </View>
             <Text className='recommended-name' numberOfLines={1}>{title}</Text>
