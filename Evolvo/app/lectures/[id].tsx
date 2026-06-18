@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useAuth } from '@/context/AuthContext';
@@ -10,6 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/theme';
 import { PieChart } from "react-native-chart-kit";
 import LottieView from 'lottie-react-native';
+import { LinearGradient } from "expo-linear-gradient";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -22,7 +23,7 @@ const states = [
 
 const LectureDetails = () => {
     const { id } = useLocalSearchParams();
-    const { getLectureDetails, isLoading, questions } = useAuth();
+    const { getLectureDetails, isLoading, questions, deleteLecture } = useAuth();
     const [lecture, setLecture] = useState(null);
 
 
@@ -38,6 +39,19 @@ const LectureDetails = () => {
 
         fetchLecture();
     }, [id]);
+
+    const handleDelete = async () => {
+        try {
+            const data = await deleteLecture(id);
+
+            if (data.success) {
+                router.back();
+            };
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const currentQuestions = questions.filter((ques) => ques.lecture === id)
 
@@ -67,7 +81,10 @@ const LectureDetails = () => {
                     />
                     <Text className='font-rubik-semibold text-2xl'>{lecture.title}</Text>
                     <TouchableOpacity
-                        onPress={() => { }}
+                        onPress={() => Alert.alert(`Delete Lecture?`, `Do you want to delete ${lecture.title}?`, [
+                            { text: "Yes", onPress: () => handleDelete() },
+                            { text: "No", onPress: () => { }, style: "cancel" }
+                        ])}
                         className='border border-accent rounded-full p-2'
                     >
                         <Ionicons
@@ -101,6 +118,35 @@ const LectureDetails = () => {
                         <Text className='font-rubik-light'>Add questions to show the Pie Chart</Text>
                     </View>
                 )}
+                <View className='w-full'>
+                    {questions.map((q) => (
+                        <Text key={q._id} className='font-rubik'>{q.question}</Text>
+                    ))}
+                </View>
+                <View className='w-full items-center p-5 mt-10 border border-accent rounded-3xl bg-muted'>
+                    <Text className='font-rubik-semibold text-xl pb-3'>
+                        👑 Ask AI (Premium)
+                    </Text>
+
+                    <Text className='font-rubik text-center pb-3'>
+                        Generate personalised questions automatically with the help of AI.
+                    </Text>
+                    <TouchableOpacity
+                        className='border border-accent border-2'
+                        onPress={() => { }}
+                    >
+                        <LinearGradient
+                            colors={["#FBBF24", "#F59E0B"]}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            className="rounded-2xl px-6 py-4"
+                        >
+                            <Text className="text-center font-rubik-semibold text-white">
+                                ✨ generate AI-Questions
+                            </Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                </View>
             </SafeAreaView>
         </View>
     );

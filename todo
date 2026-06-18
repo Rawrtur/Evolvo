@@ -20,15 +20,25 @@
     [x] code verification
     [x] sing in
     [x] logout vervollständigen
-[ ] Home Page
+[x] Home Page
     [x] static design
     [x] Add Button Logic
-    [ ] View Button Logic
-    [ ] lectures list
-    [ ] no lecture Screen
-    [ ] loading screen
+    [x] View Button Logic
+    [x] lectures list
+    [x] no lecture Screen
+    [x] loading screen
+[ ] Lecture Screen 
+    [ ] Menu Button Logic
+[ ] Analytic screen
+[ ] Settings screen
+[ ] Lecture Details Screen
+    [ ] Questions anzeigen
+    [ ] Questions löschen
+        [ ] Questions Backend router
+    [ ] Questions edit
+    [ ] Questions durchgehen
 [ ] dark theme
-[ ] languag
+[ ] language
 [ ] backend Admin authorize
 
 AI FLOW:

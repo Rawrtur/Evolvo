@@ -10,8 +10,9 @@ export interface AuthContextType {
     signIn: (email: string, password: string) => Promise<({ success: boolean, message: string })>;
     signUp: (name: string, email: string, password: string) => Promise<({ success: boolean, message: string })>;
     verify: (email: string, code: string) => Promise<({ success: boolean, message: string })>;
-    resendVerify: (email: string) => Promise<({ success: boolean, message: string })>
-    getLectureDetails: (id:string) => Promise<({success:boolean, message:string})>
+    resendVerify: (email: string) => Promise<({ success: boolean, message: string })>;
+    getLectureDetails: (id:string) => Promise<({success:boolean, message:string})>;
+    deleteLecture: (id:string) => Promise<({success: true, message: boolean})>;
     verified: string | null;
     logout: () => Promise<(void)>;
     error: string | null;
@@ -368,6 +369,37 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     } 
 
+    const deleteLecture = async (id:string) => {
+        try {
+            setIsLoading(true);
+            setError(null);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/${id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "Resend Failed at line 314 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            setLectures(lectures.filter(lec=>lec._id !== id)) // Anzeige updaten
+
+            return data;
+            
+        } catch (error) {
+            console.error("Error while deleting LEcture Details: ", error);
+        }finally {
+            setIsLoading(false);
+        }
+    }
+
     return (
         <AuthContext.Provider
             value={
@@ -383,6 +415,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     verify,
                     resendVerify,
                     getLectureDetails,
+                    deleteLecture,
                     verified,
                     error,
                     isLoading,

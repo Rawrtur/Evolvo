@@ -8,9 +8,11 @@ import images from "@/constants/images";
 import AddButton from "@/components/AddButton";
 import LottieView from 'lottie-react-native';
 import SecondButton from "@/components/SecondButton";
-import { recommendedLectures } from "@/constants/data";
 import RecommendedLecture from "@/components/RecommendedLecture";
 import LectureCard from "@/components/LectureCard";
+import LoadingScreen from "@/components/LoadingScreen";
+import { recommendedLectures } from "@/utils/recommendedLectures";
+import { progress } from "@/utils/progress";
 
 
 
@@ -28,16 +30,11 @@ export default function App() {
   }, [isLoggedIn, isLoading])
 
 
-  if (isLoading) return (
-    <View className="w-full h-full items-center justify-center">
-      <LottieView
-        source={require('../../assets/animations/loading.json')}
-        autoPlay
-        loop
-        style={{ width: 200, height: 200 }}
-      />
-    </View>
-  )
+  if (isLoading) return <LoadingScreen />
+
+  const n = (lectures.length + (lectures.length % 2 === 0 ? 0 : 1)) / 2;
+  const recommended = recommendedLectures(lectures).slice(0, n);
+
 
   return (
     <View className='w-full h-full bg-background'>
@@ -54,7 +51,7 @@ export default function App() {
           <View className="board flex-row justify-between">
             <View className="p-5 justify-between">
               <Text className="font-rubik text-white text-xl pb-5">Learn Rate</Text>
-              <Text className="font-rubik-bold text-5xl text-white">73%</Text>
+              <Text className="font-rubik-bold text-5xl text-white">{progress(questions).toFixed(0)}%</Text>
             </View>
             <LottieView
               source={require('../../assets/animations/thumbup.json')}
@@ -65,11 +62,11 @@ export default function App() {
           </View>
           <View className="flex-row items-center justify-between py-5">
             <Text className="font-rubik-semibold text-2xl">Recommended</Text>
-            <SecondButton onPress={() => { }} title="View All" />
+            <SecondButton onPress={() => router.navigate("/(sites)/recommended")} title="View All" />
           </View>
 
           <FlatList
-            data={lectures}
+            data={recommended}
             className="w-full"
             renderItem={({ item }) => (
               <RecommendedLecture data={item} />
