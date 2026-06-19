@@ -3,7 +3,7 @@ import "@/global.css"
 import { useFonts } from "expo-font"
 import { useEffect } from "react";
 import { AuthProvider } from "@/context/AuthContext";
-import { View } from "react-native";
+import { TouchableWithoutFeedback, View, Keyboard } from "react-native";
 
 export default function RootLayout() {
 
@@ -26,8 +26,11 @@ export default function RootLayout() {
 
   return (
     <AuthProvider>
-      <View className="w-full h-full bg-backgound">
-        <Stack screenOptions={{ headerShown: false }} initialRouteName="(tabs)" />
-      </View>
+      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+
+        <View className="w-full h-full bg-backgound">
+          <Stack screenOptions={{ headerShown: false }} initialRouteName="(tabs)" />
+        </View>
+      {/* </TouchableWithoutFeedback> */}
     </AuthProvider>)
 }

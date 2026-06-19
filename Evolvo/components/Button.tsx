@@ -7,6 +7,7 @@ const Button = ({ title, onPress, style, disabled, fontStyle }: ButtonProps) => 
       onPress={disabled ? () => { } : onPress}
       key={1}
       className={`items-center ${disabled ? "bg-accent/70" : `bg-accent`} py-4 px-20 rounded-full ${style}`}
+      disabled={disabled}
     >
       <Text className={`${fontStyle} text-xl font-rubik`}>{title}</Text>
     </TouchableOpacity>

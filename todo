@@ -31,10 +31,13 @@
     [ ] Menu Button Logic
 [ ] Analytic screen
 [ ] Settings screen
+    [ ] Problem notification/sending (also on Sign In)
+    [ ] User Daten ändern
 [ ] Lecture Details Screen
-    [ ] Questions anzeigen
-    [ ] Questions löschen
-        [ ] Questions Backend router
+    [x] Question erstellen
+    [x] Questions anzeigen
+    [x] Questions löschen
+        [x] Questions Backend router
     [ ] Questions edit
     [ ] Questions durchgehen
 [ ] dark theme
@@ -44,3 +47,5 @@
 [ ] Werbung in Email erlauben ins Settings Einstellung
 AI FLOW:
 request -> look for subscription -> if yes then generate content
+[ ] Ki Fragen generieren
+[ ] KI Tests generieren (mit pdf vorlage?)
