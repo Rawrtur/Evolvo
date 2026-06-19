@@ -18,7 +18,7 @@ const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expa
     });
     return (//className='lecture-card bg-card my-3'
         <Pressable onPress={onPress} className={clsx('lecture-card', 'my-3', expanded ? "lecture-card-expanded" : "bg-card")} style={!expanded && color ? {
-            backgroundColor: expandedDetails ? colors.background : color
+            backgroundColor: expandedDetails ? colors.muted : color
         } : undefined}>
             <View className='lecture-head'>
                 <View className='lecture-main'>

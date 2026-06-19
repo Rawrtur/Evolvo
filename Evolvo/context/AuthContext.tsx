@@ -11,7 +11,7 @@ export interface AuthContextType {
     signUp: (name: string, email: string, password: string) => Promise<({ success: boolean, message: string })>;
     verify: (email: string, code: string) => Promise<({ success: boolean, message: string })>;
     resendVerify: (email: string) => Promise<({ success: boolean, message: string })>;
-    getLectureDetails: (id:string) => Promise<({success:boolean, message:string})>;
+    getLectureDetails: (id:string) => Promise<({success:boolean, message:string, data:object})>;
     deleteLecture: (id:string) => Promise<({success: true, message: boolean})>;
     verified: string | null;
     logout: () => Promise<(void)>;

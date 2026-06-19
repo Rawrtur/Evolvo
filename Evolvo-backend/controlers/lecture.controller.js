@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Lecture from "../models/lecture.model.js";
+import Question from "../models/question.model.js";
 
 export const getLectures = async (req, res, next) => {
   try {
@@ -82,13 +83,13 @@ export const updateLecture = async (req, res, next) => {
     lecture.icon = icon;
     lecture.lastLecture = lastLecture;
 
-    await lecture.save();
-
     res.status(200).json({
       success: true,
       message: "Lecture updatet successfully",
       lecture,
     });
+
+    await lecture.save();
   } catch (error) {
     next(error);
   }
@@ -97,6 +98,7 @@ export const updateLecture = async (req, res, next) => {
 export const deleteLecture = async (req, res, next) => {
   try {
     await Lecture.deleteOne({ _id: req.params.id });
+    await Question.deleteMany({ lecture: req.params.id });
 
     res.status(200).json({
       success: true,

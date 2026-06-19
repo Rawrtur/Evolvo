@@ -39,7 +39,8 @@
     [ ] Questions durchgehen
 [ ] dark theme
 [ ] language
+[ ] Onboarding flow
 [ ] backend Admin authorize
-
+[ ] Werbung in Email erlauben ins Settings Einstellung
 AI FLOW:
 request -> look for subscription -> if yes then generate content
