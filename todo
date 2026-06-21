@@ -41,10 +41,10 @@
     [ ] Questions edit
     [ ] Questions durchgehen
 [ ] Monitor
-    [ ] Monitor model
-    [ ] monitor routes
-    [ ] monitor controller
-    [ ] monitir in frontend implentieren
+    [x] Monitor model
+    [x] monitor routes
+    [x] monitor controller
+    [ ] monitor in frontend implentieren
 [ ] backend effizienter gestalten
 [ ] dark theme
 [ ] language
