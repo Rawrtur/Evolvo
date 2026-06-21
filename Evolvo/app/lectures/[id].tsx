@@ -37,7 +37,7 @@ const LectureDetails = () => {
         const fetchLecture = async () => {
             setIsloding(true);
             try {
-                const data = await getLectureDetails(id);
+                const data = await getLectureDetails(String(id));
                 setLecture(data.data.lecture);
             } catch (error) {
                 console.error('Fehler beim Laden der Lecture:', error);
@@ -47,12 +47,12 @@ const LectureDetails = () => {
         };
 
         fetchLecture();
-    }, [id]);
+    }, [id, getLectureDetails]);
 
 
     const handleDelete = async () => {
         try {
-            const data = await deleteLecture(id);
+            const data = await deleteLecture(String(id));
 
             if (data.success) {
                 router.back();
@@ -65,7 +65,7 @@ const LectureDetails = () => {
 
     const handleDeleteQuestion = async (id: string) => {
         try {
-            const data = await deleteQuestion(id);
+            await deleteQuestion(id);
         } catch (error) {
             console.log(error)
         }
@@ -74,7 +74,7 @@ const LectureDetails = () => {
     const handleAddQuestion = async () => {
         try {
             setIsloding(true);
-            const data = await createQuestion(question, answer, lecture?._id, user?._id)
+            await createQuestion(question, answer, lecture?._id, user?._id)
         } catch (error: any) {
             console.error(error)
         } finally {

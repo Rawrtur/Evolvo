@@ -11,6 +11,7 @@ import { limiter } from "./middleware/limiter.middleware.js";
 import cors from "cors";
 import questionRouter from "./routes/questions.routes.js";
 import subscriptionRouter from "./routes/subcription.routes.js";
+import assetRouter from "./routes/asset.route.js";
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/lectures", lectureRouter);
 app.use("/api/v1/questions", questionRouter);
 app.use("/api/v1/subscriptions", subscriptionRouter);
+app.use("/api/v1/monitors", assetRouter);
 
 app.use(errorMiddleware);
 app.use(limiter);

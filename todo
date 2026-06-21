@@ -40,6 +40,12 @@
         [x] Questions Backend router
     [ ] Questions edit
     [ ] Questions durchgehen
+[ ] Monitor
+    [ ] Monitor model
+    [ ] monitor routes
+    [ ] monitor controller
+    [ ] monitir in frontend implentieren
+[ ] backend effizienter gestalten
 [ ] dark theme
 [ ] language
 [ ] Onboarding flow
