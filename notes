@@ -1,0 +1,242 @@
+## 1. Active Recall (wichtigste Methode)
+
+Statt Informationen wiederholt zu lesen, zwingst du dein Gehirn, sie abzurufen.
+
+**Schlecht:**
+
+* Skript 5-mal lesen
+* Folien markieren
+
+**Gut:**
+
+* Buch zuklappen
+* Fragen beantworten
+* Konzepte aus dem Gedächtnis erklären
+
+Beispiel:
+
+* Nicht: „Ich lese die Definition eines DFA.“
+* Sondern: „Was ist ein DFA? Welche Bestandteile hat er?“
+
+Der Abruf selbst erzeugt einen starken Lerneffekt.
+
+---
+
+## 2. Spaced Repetition (wissenschaftlich sehr gut belegt)
+
+Wiederhole Informationen genau dann, wenn du sie fast vergessen hast.
+
+Typischer Rhythmus:
+
+* Tag 1
+* Tag 3
+* Tag 7
+* Tag 14
+* Tag 30
+
+Tools wie Anki automatisieren das.
+
+Besonders gut für:
+
+* Formeln
+* Definitionen
+* Vokabeln
+* Faktenwissen
+
+---
+
+## 3. Feynman-Technik
+
+Wenn du etwas wirklich verstanden hast, kannst du es einfach erklären.
+
+Vorgehen:
+
+1. Konzept aufschreiben
+2. So erklären, als wäre dein Gegenüber 12 Jahre alt
+3. Verständnislücken identifizieren
+4. Nachlernen
+5. Erklärung verbessern
+
+Gerade für Informatik und Mathematik extrem effektiv.
+
+---
+
+## 4. Interleaving (Themen mischen)
+
+Viele lernen so:
+
+```
+2h Thema A
+2h Thema A
+2h Thema A
+```
+
+Effektiver:
+
+```
+45min Thema A
+45min Thema B
+45min Thema C
+```
+
+Dadurch trainierst du die Fähigkeit zu erkennen:
+
+> Welches Werkzeug löst welches Problem?
+
+Das verbessert insbesondere Klausurleistungen.
+
+---
+
+## 5. Deliberate Practice
+
+Nicht üben, was du kannst.
+
+Übe gezielt:
+
+* Fehler
+* Schwachstellen
+* Grenzfälle
+
+Beispiel Theoretische Informatik:
+
+Statt:
+
+* 20 einfache Aufgaben zu regulären Sprachen
+
+Lieber:
+
+* Die 5 Aufgaben, die du falsch gelöst hast
+
+---
+
+## 6. Retrieval First, Notes Second
+
+Viele machen:
+
+```
+Lernen → Notizen
+```
+
+Besser:
+
+```
+Erinnern → Notizen kontrollieren
+```
+
+Beispiel:
+
+1. Blatt Papier nehmen
+2. Alles aufschreiben, was du über ein Thema weißt
+3. Mit den Unterlagen vergleichen
+
+Die Differenz zeigt exakt deine Wissenslücken.
+
+---
+
+## 7. Die 80/20-Regel
+
+Suche die 20 % Stoff, die 80 % des Ergebnisses liefern.
+
+Frage dich:
+
+* Welche Konzepte kommen ständig vor?
+* Welche Themen bauen auf allem anderen auf?
+* Welche Aufgabenarten tauchen immer wieder auf?
+
+In der Theoretischen Informatik wären das oft:
+
+* Automaten
+* Grammatiken
+* Reguläre Ausdrücke
+* Pumping Lemma
+* Reduktionen
+
+---
+
+## 8. Projektbasiertes Lernen
+
+Wissen bleibt besser hängen, wenn du es anwendest.
+
+Beispiele:
+
+* Programmieren → eigenes Projekt
+* Assembler → eigenen Debugger ausprobieren
+* Video Editing → echtes Video produzieren
+* Boxen → Kombinationen praktisch trainieren
+
+Anwendung schlägt passiven Konsum fast immer.
+
+---
+
+## 9. Fehlerjournal führen
+
+Nach jeder Lernsession:
+
+| Fehler         | Ursache                | Lösung                |
+| -------------- | ---------------------- | --------------------- |
+| Aufgabe falsch | Definition verwechselt | Karteikarte erstellen |
+
+Dadurch vermeidest du, dieselben Fehler zehnmal zu machen.
+
+---
+
+## 10. Schlaf als Lernmultiplikator
+
+Während des Schlafs werden Erinnerungen konsolidiert.
+
+Faustregel:
+
+* 7–9 Stunden Schlaf
+* Besonders wichtig nach intensivem Lernen
+
+2 Stunden konzentriertes Lernen + guter Schlaf schlagen oft 4 Stunden Lernen mit Schlafmangel.
+
+---
+
+## 11. Fokusblöcke statt Marathon-Sessions
+
+Für die meisten Menschen:
+
+* 45–60 Minuten volle Konzentration
+* 5–10 Minuten Pause
+
+ist effizienter als:
+
+* 4 Stunden halb konzentriert
+
+Qualität der Aufmerksamkeit ist wichtiger als Lernzeit.
+
+---
+
+## 12. Die Meta-Methode: Lernen durch Lehren
+
+Wenn du ein Thema anderen erklärst:
+
+* erkennst du Wissenslücken
+* strukturierst Wissen
+* erzeugst viele Abrufvorgänge gleichzeitig
+
+Deshalb lernen Tutoren und Lehrer oft am meisten.
+
+---
+
+## Falls du wirklich maximale Effizienz willst
+
+Eine der effektivsten Kombinationen überhaupt ist:
+
+1. Neues Thema verstehen (30–60 min)
+2. Sofort Active Recall
+3. Feynman-Erklärung schreiben
+4. Anki-Karten erstellen
+5. Spaced Repetition über Wochen
+6. Praxisaufgaben lösen
+7. Fehlerjournal führen
+
+Diese Kombination wird von vielen Spitzenstudenten, Medizinstudenten und Wettkampfprogrammierern genutzt, weil sie fast alle bekannten Lernprinzipien gleichzeitig ausnutzt.
+
+Für deine Themen (Theoretische Informatik, Assembler, Video-Editing und Boxen) würde ich die Methoden unterschiedlich gewichten:
+
+* **Theoretische Informatik:** Active Recall + Feynman + Aufgaben
+* **Assembler:** Projektarbeit + Debugging + Fehlerjournal
+* **Video-Editing:** Projektbasiertes Lernen + gezielte Analyse guter Videos
+* **Boxen:** Deliberate Practice + Videoanalyse + unmittelbares Feedback im Training.
