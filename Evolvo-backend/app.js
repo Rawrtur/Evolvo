@@ -16,14 +16,15 @@ import supportRouter from "./routes/support.route.js";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:8081",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:8081",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   }),
+// );
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

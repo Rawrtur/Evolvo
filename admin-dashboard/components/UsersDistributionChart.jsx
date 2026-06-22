@@ -12,13 +12,19 @@ import { motion } from "framer-motion";
 
 const COLORS = ["green", "yellow", "gray"];
 
-const data = [
-  { value: 0.3, name: "Premium Users" },
-  { value: 0.6, name: "normal Users" },
-  { value: 0.1, name: "Void Users" },
-];
 
-function UsersDistributionChart() {
+const modifyUserData = (data) => {
+  const premiumUsers = data.map((da) => (da.premium ? 1 : 0));
+  const voidUsers = data.map((da) => (da.verified ? 0 : 1));
+  const normalUsers = data.length - premiumUsers - voidUsers;
+  return [
+    { value: premiumUsers/data.length, name: "Premium Users" },
+    { value: normalUsers/data.length, name: "Normal Users" },
+    { value: voidUsers/data.length, name: "Void Users" },
+  ];
+};
+
+function UsersDistributionChart({ data }) {
   const [isSmallOrMediumScreen, setIsSmallOrMediumScreen] = useState(false);
 
   useEffect(() => {
@@ -46,7 +52,7 @@ function UsersDistributionChart() {
         <ResponsiveContainer width={"100%"} height={"100%"}>
           <PieChart>
             <Pie
-              data={data}
+              data={modifyUserData(data)}
               cx="50%"
               cy="50%"
               outerRadius={outerRadius}
@@ -56,7 +62,7 @@ function UsersDistributionChart() {
                 `${name} ${(percent * 100).toFixed(0)}%`
               }
             >
-              {data.map((entry, index) => (
+              {modifyUserData(data).map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}

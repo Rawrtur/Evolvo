@@ -5,7 +5,7 @@ import { limiter } from "../middleware/limiter.middleware.js";
 
 const userRouter = Router();
 
-userRouter.get("/",limiter, getUsers)
+userRouter.get("/",getUsers)
 
 userRouter.get("/:id",limiter, authorize, getUser)
 

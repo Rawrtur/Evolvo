@@ -38,14 +38,9 @@ const USERS = [
   },
 ];
 
-const UsersTable = () => {
+const UsersTable = ({users}) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [users, setUsers] = useState(USERS);
-
-  useEffect(()=> {
-    // daten fetchen
-  },[])
 
   const filterUsers = users.filter(
     (user) =>
@@ -127,7 +122,7 @@ const UsersTable = () => {
                     </div>
                   </div>
                   <div className="mt-2 text-gray-300">
-                    <div>Id: {user.id}</div>
+                    <div>Id: {user._id}</div>
                     <div>Premium: {user.premium ? "true": "false"}</div>
                   </div>
                 </td>
@@ -143,7 +138,7 @@ const UsersTable = () => {
                   {user.email}
                 </td>
                 <td className="hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {user.id}
+                  {user._id}
                 </td>
                 <td className={`hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm ${user.premium ? "text-green-500" :"text-red-500"}`}>
                   {user.premium ? "true": "false"}
