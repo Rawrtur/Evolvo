@@ -14,8 +14,8 @@ const COLORS = ["green", "yellow", "gray"];
 
 
 const modifyUserData = (data) => {
-  const premiumUsers = data.map((da) => (da.premium ? 1 : 0));
-  const voidUsers = data.map((da) => (da.verified ? 0 : 1));
+  const premiumUsers = data.filter(da=>da.filter).length;
+  const voidUsers = data.filter(da=>!da.verified).length;
   const normalUsers = data.length - premiumUsers - voidUsers;
   return [
     { value: premiumUsers/data.length, name: "Premium Users" },

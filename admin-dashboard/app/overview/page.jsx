@@ -8,6 +8,35 @@ import SalesoverviewShart from "@/components/SalesoverviewShart";
 import UsersDistributionChart from "@/components/UsersDistributionChart";
 import { fetchUsers } from "../utils/fetchData";
 
+const transformUsersToChartData = (users) => {
+  const map = { May: 0 };
+  const premium = { May: 0, Jun:0 };
+
+  users.forEach((user) => {
+    const month = new Date(user.createdAt).toLocaleString("en-US", {
+      month: "short",
+    });
+
+    if (!map[month]) {
+      map[month] = 0;
+    }
+
+    if (user.premium) {
+      if (!premium[month]) premium[month] = 0;
+
+      premium[month] += 1;
+    }
+
+    map[month] += 1;
+  });
+
+  return Object.entries(map).map(([month, count]) => ({
+    name: month, // "Jan", "Feb", ...
+    sales: count, // Anzahl User
+    kiCosts: premium[month],
+  }));
+};
+
 function Overview() {
   const salesData = [
     { sales: 300, kiCosts: 100, name: "Jan" },
@@ -24,25 +53,10 @@ function Overview() {
     { sales: 766, kiCosts: 260, name: "Dez" },
   ];
 
-  const usersData = [
-    { kiCosts: 0, sales: 0, name: "Jan" },
-    { kiCosts: 5, sales: 50, name: "Feb" },
-    { kiCosts: 12, sales: 123, name: "Mar" },
-    { kiCosts: 23, sales: 235, name: "Apr" },
-    { kiCosts: 38, sales: 389, name: "May" },
-    { kiCosts: 40, sales: 400, name: "Jun" },
-    { kiCosts: 55, sales: 550, name: "Jul" },
-    { kiCosts: 61, sales: 613, name: "Aug" },
-    { kiCosts: 71, sales: 718, name: "Sep" },
-    { kiCosts: 88, sales: 889, name: "Oct" },
-    { kiCosts: 95, sales: 953, name: "Nov" },
-    { kiCosts: 206, sales: 1066, name: "Dez" },
-  ];
-
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetchUsers(setUsers)
+    fetchUsers(setUsers);
   }, []);
 
   return (
@@ -56,13 +70,20 @@ function Overview() {
         >
           <StatCard name="Total Sales" icon={DollarSign} value={0} />
           <StatCard name="Total Users" icon={Users} value={users.length} />
-          <StatCard name="Total Premium Users" icon={Users} value={users.length} />
+          <StatCard
+            name="Total Premium Users"
+            icon={Users}
+            value={users.length}
+          />
           <StatCard name="Events" icon={SquareActivity} value={0} />
         </motion.div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <SalesoverviewShart data={salesData} title={"Sales Overview"} />
-          <SalesoverviewShart data={usersData} title={"Users Overview"} />
-          <UsersDistributionChart data={users}/>
+          <SalesoverviewShart
+            data={transformUsersToChartData(users)}
+            title={"Users Overview"}
+          />
+          <UsersDistributionChart data={users} />
         </div>
       </main>
     </div>
