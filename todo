@@ -52,6 +52,11 @@
 [ ] backend Admin authorize
 [ ] Werbung in Email erlauben ins Settings Einstellung
 [ ] Warteliste und Onboarding website -> überführung zum Social Media Content
+    [x] App setup
+    [ ] stylen
+    [ ] backend Logik
+    [ ] backend verbindung
+    [ ] frontend logic erweitern
 AI FLOW:
 request -> look for subscription -> if yes then generate content
 [ ] Ki Fragen generieren

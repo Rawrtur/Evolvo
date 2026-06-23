@@ -1,0 +1,25 @@
+.header {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+
+  .icon {
+    background-color: #ea7a53;
+    margin-right: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+  }
+  .sub-title {
+    color: rgb(66, 66, 66);
+    font-size: small;
+  }
+}
