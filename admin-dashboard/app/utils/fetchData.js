@@ -1,6 +1,7 @@
+
+const api = "http://192.168.0.11:5500"
 export const fetchUsers = async (setUsers) => {
   try {
-    const api = "http://192.168.137.1:5500";
     const response = await fetch(`${api}/api/v1/users`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -20,7 +21,6 @@ export const fetchUsers = async (setUsers) => {
 
 export const fetchData = async (setUsers) => {
   try {
-    const api = "http://192.168.137.1:5500";
     const response = await fetch(`${api}/api/v1/users`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },

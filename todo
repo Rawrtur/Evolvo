@@ -44,19 +44,21 @@
     [x] Monitor model
     [x] monitor routes
     [x] monitor controller
-    [ ] monitor in frontend implentieren
+    [ ] monitor in admin frontend implentieren
 [ ] backend effizienter gestalten
-[ ] dark theme
-[ ] language
 [ ] Onboarding flow
 [ ] backend Admin authorize
 [ ] Werbung in Email erlauben ins Settings Einstellung
+[ ] forgot password
+    [ ] backend reset Password
+    [ ] frontend reset password
 [ ] Warteliste und Onboarding website -> überführung zum Social Media Content
     [x] App setup
     [ ] stylen
     [ ] backend Logik
-    [ ] backend verbindung
+    [x] backend verbindung
     [ ] frontend logic erweitern
+    [ ] User Roles
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content
@@ -64,3 +66,5 @@ request -> look for subscription -> if yes then generate content
 [ ] KI Tests generieren (mit pdf vorlage?)
 [ ] Lernlectures
 [ ] Feyman technique Ai
+
+[ ] dark theme ?

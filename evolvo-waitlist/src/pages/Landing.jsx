@@ -2,17 +2,23 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import animationData from "../assets/animations/wave.json";
-import * as Lottie from "lottie-react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Landing() {
   const navigate = useNavigate();
-  console.log(animationData);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
-    <div className="">
+    <div className="w-full">
       <motion.div
-        className="w-full flex gap-4 pt-10 px-5"
+        className="w-full items-center justify-center flex gap-4 pt-10 px-5"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}

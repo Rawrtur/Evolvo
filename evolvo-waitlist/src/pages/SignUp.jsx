@@ -5,12 +5,18 @@ import Button from "../components/Button";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const ThemedInput = ({ value, onChange, placeholder, title }) => {
+const ThemedInput = ({
+  value,
+  onChange,
+  placeholder,
+  title,
+  type = "text",
+}) => {
   return (
     <div className="py-2">
       <p className="text-bold pb-2">{title}</p>
       <input
-        type="text"
+        type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
@@ -45,10 +51,10 @@ export default function Signup() {
   const navigate = useNavigate();
   const [ref, setRef] = useState(null);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("Artur");
+  const [email, setEmail] = useState("test@web.de");
+  const [password, setPassword] = useState("123456");
+  const [confirmPassword, setConfirmPassword] = useState("123456");
 
   const isEmailValid = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -70,20 +76,26 @@ export default function Signup() {
 
   const handleSignup = async () => {
     if (!allValid) return;
-    const res = await fetch(`${apiUrl}/api/v1/auth/signup`, {
+    const res = await fetch(`${apiUrl}/api/v1/auth/sign-up`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        name: name,
         email: email,
         password: password,
-        ref: ref,
+        // ref: ref,
       }),
     });
-
     const data = await res.json();
-
-    localStorage.setItem("token", data.token);
-    navigate("/dashboard");
+    
+    if (!res.ok) {
+      console.error("errrrr")
+    }
+    
+    if (data.success) {
+      localStorage.setItem("email", email);
+      navigate("/code")
+    } 
   };
 
   return (
@@ -99,18 +111,21 @@ export default function Signup() {
         <ThemedInput
           value={email}
           onChange={setEmail}
+          type="email"
           title={"Email"}
           placeholder={"Enter you email"}
         />
         <ThemedInput
           value={password}
           onChange={setPassword}
+          type="password"
           title={"Password"}
           placeholder={"Enter you password"}
         />
         <ThemedInput
           value={confirmPassword}
           onChange={setConfirmPassword}
+          type="password"
           title={"Confirm Password"}
           placeholder={"confirm password"}
         />
