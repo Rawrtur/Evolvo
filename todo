@@ -57,6 +57,7 @@
     [ ] backend Logik
     [ ] backend verbindung
     [ ] frontend logic erweitern
+    
 AI FLOW:
 request -> look for subscription -> if yes then generate content
 [ ] Ki Fragen generieren

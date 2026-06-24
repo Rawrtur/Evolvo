@@ -1,13 +1,12 @@
 // pages/Dashboard.jsx
 import { useEffect, useState } from "react";
-import "./dashboard.css";
 import animationData from "../assets/animations/wave.json";
 import Lottie from "lottie-react";
 
 export default function Dashboard() {
   const [user, setUser] = useState({
     inviteCode: "12234",
-    referralCount:3
+    referralCount: 3,
   });
 
   useEffect(() => {
@@ -22,12 +21,11 @@ export default function Dashboard() {
       .then(setUser);
   }, []);
 
-
   if (!user) return <div>Loading...</div>;
   const inviteLink = `http://localhost:5173/signup?ref=${user.inviteCode}`;
 
   return (
-    <div className="window">
+    <div className="h-screen">
       <h1 className="text-2xl font-bold">Your Dashboard</h1>
 
       <p>Invites: {user.referralCount}</p>
