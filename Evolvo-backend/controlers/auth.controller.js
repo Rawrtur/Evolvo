@@ -19,11 +19,9 @@ export const signUp = async (req, res, next) => {
     // Check if User already exists
     const existingUser = await User.findOne({ email });
 
-    const referencedUser = await User.findById({ ref });
-
-    referencedUser.invited += 1;
-
-    await referencedUser.save();
+    if (ref && mongoose.Types.ObjectId.isValid(ref)) {
+      await User.findByIdAndUpdate(ref, { $inc: { invited: 1 } });
+    }
 
     // Hash password
     const salt = await bcrypt.genSalt(10);

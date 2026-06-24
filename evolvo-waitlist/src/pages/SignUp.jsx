@@ -76,6 +76,7 @@ export default function Signup() {
 
   const handleSignup = async () => {
     if (!allValid) return;
+    console.log(typeof ref)
     const res = await fetch(`${apiUrl}/api/v1/auth/sign-up`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -83,7 +84,7 @@ export default function Signup() {
         name: name,
         email: email,
         password: password,
-        ref: ref,
+        ref: ref.ref,
       }),
     });
     const data = await res.json();

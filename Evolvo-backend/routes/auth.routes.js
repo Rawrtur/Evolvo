@@ -10,7 +10,7 @@ import { authLimiter } from "../middleware/limiter.middleware.js";
 
 const authRouter = Router();
 
-authRouter.post("/sign-up", authLimiter, signUp);
+authRouter.post("/sign-up", signUp);
 authRouter.post("/verify", authLimiter, verify);
 authRouter.post("/resend-verify", authLimiter, resendVerify);
 authRouter.post("/sign-in", authLimiter, signIn);
