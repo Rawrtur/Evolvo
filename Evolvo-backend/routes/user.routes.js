@@ -1,18 +1,34 @@
 import { Router } from "express";
-import { getUser, getUsers } from "../controlers/user.controller.js";
+import {
+  createUser,
+  deleteUser,
+  getLeaderBoard,
+  getUser,
+  getUsers,
+  updateEmail,
+  updateName,
+  updatePassword,
+} from "../controlers/user.controller.js";
 import authorize from "../middleware/auth.middleware.js";
 import { limiter } from "../middleware/limiter.middleware.js";
+import authorizeAdmin from "../middleware/admin.middleware.js";
 
 const userRouter = Router();
 
-userRouter.get("/",getUsers)
+userRouter.get("/",limiter, getUsers);
 
-userRouter.get("/:id",limiter, authorize, getUser)
+userRouter.get("/user/:id", limiter, authorize, getUser);
 
-userRouter.post("/",limiter, (req,res)=>res.send({message:"CREATE new User"}))
+userRouter.post("/", limiter, authorizeAdmin, createUser);
 
-userRouter.put("/:id",limiter,authorize, (req,res)=>res.send({message:"UPDATE User"}))
+userRouter.put("/password/:id", limiter, authorize, updatePassword);
 
-userRouter.delete("/:id",limiter,authorize, (req,res)=>res.send({message:"DELETE User"}))
+userRouter.put("/email/:id", limiter, authorize, updateEmail);
+
+userRouter.put("/name/:id", limiter, authorize, updateName);
+
+userRouter.delete("/:id", limiter, deleteUser);
+
+userRouter.get("/leaderboard/:id", limiter, getLeaderBoard) 
 
 export default userRouter;

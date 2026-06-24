@@ -14,10 +14,16 @@ export const signUp = async (req, res, next) => {
 
   try {
     // Logic to create a new User
-    const { email, name, password } = req.body;
+    const { email, name, password, ref } = req.body;
 
     // Check if User already exists
     const existingUser = await User.findOne({ email });
+
+    const referencedUser = await User.findById({ ref });
+
+    referencedUser.invited += 1;
+
+    await referencedUser.save();
 
     // Hash password
     const salt = await bcrypt.genSalt(10);

@@ -83,7 +83,7 @@ export default function Signup() {
         name: name,
         email: email,
         password: password,
-        // ref: ref,
+        ref: ref,
       }),
     });
     const data = await res.json();

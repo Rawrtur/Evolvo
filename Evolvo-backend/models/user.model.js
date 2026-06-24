@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema(
     verificationExpiresIn: {
       type: Date,
       required: [true, "VerficationExpiresIn is required"],
+    },
+    invited: {
+      type: Number,
+      default: 0
     }
   },
   { timestamps: true },
