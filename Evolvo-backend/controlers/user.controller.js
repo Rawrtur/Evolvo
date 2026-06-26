@@ -196,24 +196,35 @@ export const getLeaderBoard = async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
     const above = await User.find({
-      invited: { $gt: user.counter },
+      invited: { $gt: user.invited },
     })
-      .select("name invited")
+      .select("name invited -_id")
       .sort({ invited: -1, _id: 1 })
       .limit(3);
 
     const below = await User.find({
-      invited: { $lt: user.counter },
+      invited: { $lt: user.invited },
     })
-      .select("name invited")
+      .select("name invited -_id")
       .sort({ invited: 1, _id: 1 })
+      .limit(3);
+
+    const rank =
+      (await User.countDocuments({
+        invited: { $gt: user.invited },
+      })) + 1;
+
+    const top = await User.find({})
+      .select("name invited -_id")
+      .sort({ invited: -1, _id: 1 })
       .limit(3);
 
     res.status(200).json({
       success: true,
       message: "Got Leaderboard",
+      top,
       above,
-      user,
+      rank,
       below,
     });
   } catch (error) {

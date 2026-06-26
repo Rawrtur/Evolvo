@@ -20,6 +20,7 @@ export const signUp = async (req, res, next) => {
     const existingUser = await User.findOne({ email });
 
     if (ref && mongoose.Types.ObjectId.isValid(ref)) {
+      console.log("increased")
       await User.findByIdAndUpdate(ref, { $inc: { invited: 1 } });
     }
 

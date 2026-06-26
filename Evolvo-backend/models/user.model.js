@@ -38,6 +38,14 @@ const userSchema = new mongoose.Schema(
     invited: {
       type: Number,
       default: 0
+    },
+    role: {
+      type: String,
+      enum: ["Tester", "Premium", "Admin", "User"],
+      default: "User",
+    },
+    subscription : {
+      type: Boolean,
     }
   },
   { timestamps: true },
