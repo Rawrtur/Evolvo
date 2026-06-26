@@ -16,7 +16,7 @@ export default function Dashboard() {
   const [above, setAbove] = useState([]);
   const [below, setBelow] = useState([]);
   const [top, setTop] = useState([]);
-  const [rank, setRank] = useState(0);
+  const [rank, setRank] = useState(null);
   const [invited, setInvited] = useState(null);
 
   const logout = () => {
@@ -65,7 +65,6 @@ export default function Dashboard() {
         />
       </div>
     );
-
   const inviteLink = `http://192.168.2.171:5173/signup?ref=${user._id}`;
 
   return (
@@ -89,13 +88,13 @@ export default function Dashboard() {
         <div className="w-[95%] flex-col items-center justify-center rounded-xl overflow-hidden">
           {top.map((us, key) => (
             <div
-              className={`flex justify-between border-b py-3 px-5 ${key + 1 === rank ? "text-[#ea7a53] font-bold bg-gray-200" : "bg-white"}`}
+              className={`flex justify-between border-b py-3 px-5 ${user._id === us._id ? "text-[#ea7a53] font-bold bg-gray-200" : "bg-white"}`}
             >
               <p>{key + 1}</p>
               <p>
                 {key === 0 && "👑  "}
-                {rank === key + 1 ? us.name : us.name[0]}
-                {rank !== key + 1 && "•••••"}
+                {key+1 === rank  ? us.name : us.name[0]}
+                {key+1 !== rank && "•••••"}
                 {key === 0 && "  👑"}
               </p>
               <p>{us.invited}</p>

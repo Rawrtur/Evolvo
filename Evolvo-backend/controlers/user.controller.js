@@ -196,26 +196,38 @@ export const getLeaderBoard = async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
     const above = await User.find({
-      invited: { $gt: user.invited },
+      $or: [
+        { invited: { $gt: user.invited } },
+        {
+          invited: user.invited,
+          createdAt: { $lt: user.createdAt },
+        },
+      ],
     })
-      .select("name invited -_id")
-      .sort({ invited: -1, _id: 1 })
+      .select("name invited")
+      .sort({ invited: -1, createdAt: 1 })
       .limit(3);
 
     const below = await User.find({
       invited: { $lt: user.invited },
     })
       .select("name invited -_id")
-      .sort({ invited: 1, _id: 1 })
+      .sort({ invited: 1, createdAt: -1 })
       .limit(3);
 
     const rank =
       (await User.countDocuments({
-        invited: { $gt: user.invited },
+        $or: [
+          { invited: { $gt: user.invited } },
+          {
+            invited: user.invited,
+            createdAt: { $lt: user.createdAt },
+          },
+        ],
       })) + 1;
 
     const top = await User.find({})
-      .select("name invited -_id")
+      .select("name invited")
       .sort({ invited: -1, _id: 1 })
       .limit(3);
 
