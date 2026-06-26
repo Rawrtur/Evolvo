@@ -1,6 +1,6 @@
 // pages/Signup.jsx
 import { useEffect, useState } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import Button from "../components/Button";
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -76,7 +76,6 @@ export default function Signup() {
 
   const handleSignup = async () => {
     if (!allValid) return;
-    console.log(ref)
     const res = await fetch(`${apiUrl}/api/v1/auth/sign-up`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -160,6 +159,7 @@ export default function Signup() {
             disabled={!allValid}
           />
         </div>
+          <a href="/login" className="text-gray-600">You already have an account?</a>
       </div>
     </div>
   );

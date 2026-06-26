@@ -8,7 +8,6 @@ import { useEffect } from "react";
 
 export default function Landing() {
   const navigate = useNavigate();
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/dashboard");

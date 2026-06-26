@@ -225,6 +225,7 @@ export const getLeaderBoard = async (req, res, next) => {
       top,
       above,
       rank,
+      invited: user.invited,
       below,
     });
   } catch (error) {

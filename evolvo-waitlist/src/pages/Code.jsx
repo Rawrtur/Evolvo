@@ -28,7 +28,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 function Code() {
   const navigate = useNavigate();
 
-  const [code, setCode] = useState("192716");
+  const [code, setCode] = useState("");
 
   const handleSignup = async () => {
     const res = await fetch(`${apiUrl}/api/v1/auth/verify`, {
@@ -47,7 +47,7 @@ function Code() {
 
     if (data.success) {
       localStorage.setItem("token", data.data.token);
-      localStorage.setItem("user", JSON.stringify(data.user))
+      localStorage.setItem("user", JSON.stringify(data.data.user))
       navigate("/dashboard");
     }
   };

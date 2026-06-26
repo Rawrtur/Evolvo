@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import Button from '../components/Button';
+import { useState } from "react";
+import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 
 const apiUrl = import.meta.env.VITE_API_URL;
-
 
 const ThemedInput = ({
   value,
@@ -27,44 +26,51 @@ const ThemedInput = ({
 };
 
 function LogIn() {
-    const navigate = useNavigate();
-    
-    const [email, setEmail] = useState("test@web.de");
-    const [password, setPassword] = useState("123456");
+  const navigate = useNavigate();
 
-    const isEmailValid = (email) => {
+  const [email, setEmail] = useState("test@web.de");
+  const [password, setPassword] = useState("123456");
+  const [error, setError] = useState(null);
+
+  const isEmailValid = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
   const validations = {
     emailValid: isEmailValid(email),
     passwordLengthValid: password.length >= 6,
-};
+  };
 
-const allValid = Object.values(validations).every(Boolean);
-
-
+  const allValid = Object.values(validations).every(Boolean);
 
   const handleSignin = async () => {
-    if (!allValid) return;
-    const res = await fetch(`${apiUrl}/api/v1/auth/sign-in`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-    const data = await res.json();
-    
-    if (!res.ok) {
-      console.error("errrrr")
+    try {
+      if (!allValid) return;
+      setError(apiUrl)
+      const res = await fetch(`${apiUrl}/api/v1/auth/sign-in`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error("errrrr");
+        setError("There was an error");
+      }
+
+      if (data.success) {
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+        navigate("/dashboard");
+      } else {
+        setError(data.message | "There was an error");
+      }
+    } catch (error) {
+      setError(error);
     }
-    
-    if (data.success) {
-      localStorage.setItem("user", JSON.stringify(data.data.user));
-      navigate("/dashboard")
-    } 
   };
 
   return (
@@ -85,7 +91,7 @@ const allValid = Object.values(validations).every(Boolean);
           title={"Password"}
           placeholder={"Enter you password"}
         />
-        
+        {error}
         <div className="w-full flex justify-center pt-5 items-center">
           <Button
             title={"Sign In"}
@@ -98,4 +104,4 @@ const allValid = Object.values(validations).every(Boolean);
   );
 }
 
-export default LogIn
+export default LogIn;
