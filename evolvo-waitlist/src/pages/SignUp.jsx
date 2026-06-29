@@ -1,6 +1,6 @@
 // pages/Signup.jsx
 import { useEffect, useState } from "react";
-import { useSearchParams, useNavigate, Link } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -87,15 +87,15 @@ export default function Signup() {
       }),
     });
     const data = await res.json();
-    
+
     if (!res.ok) {
-      console.error("errrrr")
+      console.error("errrrr");
     }
-    
+
     if (data.success) {
       localStorage.setItem("email", email);
-      navigate("/code")
-    } 
+      navigate("/code");
+    }
   };
 
   return (
@@ -152,14 +152,16 @@ export default function Signup() {
             isValid={validations.passwordsMatch}
           />
         </div>
-        <div className="w-full flex justify-center pt-5 items-center">
+        <div className="w-full flex flex-col justify-center pt-5 items-center">
           <Button
             title={"Sign Up"}
             onPress={handleSignup}
             disabled={!allValid}
           />
+          <a href="/login" className="text-gray-600 text-center pt-5">
+            You already have an account?
+          </a>
         </div>
-          <a href="/login" className="text-gray-600">You already have an account?</a>
       </div>
     </div>
   );

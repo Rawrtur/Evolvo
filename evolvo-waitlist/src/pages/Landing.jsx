@@ -37,7 +37,7 @@ export default function Landing() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
       >
-        <p className="text-center max-w-md pt-10">
+        <p className="text-center max-w-md px-5 pt-10">
           Get early access and unlock premium faster by inviting friends.
         </p>
         <Player
@@ -47,7 +47,7 @@ export default function Landing() {
           style={{ width: 150, height: 150 }}
         />
         <div className="w-full items-center justify-center flex mb-20">
-          <Button onPress={() => navigate("/signup")} title={"Join Now!"} />
+          <Button onPress={() => navigate("/onboard/1")} title={"Join Now!"} />
         </div>
       </motion.div>
     </div>

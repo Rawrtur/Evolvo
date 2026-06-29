@@ -10,6 +10,10 @@ import { useNavigate } from "react-router-dom";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
+const displayName = (key, name, rank) => {
+  return `${key === 0 ? "👑  " : ""}${key + 1 === rank ? name : name[0]}${key + 1 !== rank ? "•••••" : ""}${key === 0 ? "  👑" : ""}`;
+};
+
 export default function Dashboard() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -48,7 +52,7 @@ export default function Dashboard() {
         setBelow(data.below);
         setTop(data.top);
         setRank(data.rank);
-        setInvited(data.invited)
+        setInvited(data.invited);
       }
     };
     fetchData();
@@ -91,12 +95,7 @@ export default function Dashboard() {
               className={`flex justify-between border-b py-3 px-5 ${user._id === us._id ? "text-[#ea7a53] font-bold bg-gray-200" : "bg-white"}`}
             >
               <p>{key + 1}</p>
-              <p>
-                {key === 0 && "👑  "}
-                {key+1 === rank  ? us.name : us.name[0]}
-                {key+1 !== rank && "•••••"}
-                {key === 0 && "  👑"}
-              </p>
+              <p>{displayName(key, us.name, rank)}</p>
               <p>{us.invited}</p>
             </div>
           ))}
@@ -104,12 +103,12 @@ export default function Dashboard() {
             rank !== 3 && (
               <div className="flex justify-center border-b py-3 px-5 bg-white">
                 . . .
-              </div>  
+              </div>
             )}
           {rank === 5 && (
             <div className="flex justify-between border-b py-3 px-5 bg-white">
               <p>4</p>
-              <p>{above[2].name}</p>
+              <p>{displayName(1, above[2].name, rank)}</p>
               <p>{above[2].invited}</p>
             </div>
           )}
@@ -117,7 +116,7 @@ export default function Dashboard() {
             above.slice(-2).map((us, key) => (
               <div className="flex justify-between border-b py-3 px-5 bg-white">
                 <p>{rank - (2 - key)}</p>
-                <p>{us.name}</p>
+                <p>{displayName(1, us.name, rank)}</p>
                 <p>{us.invited}</p>
               </div>
             ))}
@@ -125,7 +124,7 @@ export default function Dashboard() {
             above.slice(3 - rank).map((us, key) => (
               <div className="flex justify-between border-b py-3 px-5 bg-white">
                 <p>{rank - (3 - key)}</p>
-                <p>{us.name}</p>
+                <p>{displayName(key + 1, us.name, rank)}</p>
                 <p>{us.invited}</p>
               </div>
             ))}

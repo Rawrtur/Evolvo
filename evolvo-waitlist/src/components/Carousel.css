@@ -1,0 +1,22 @@
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.carousel-window {
+  width: 500px;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.45s ease-in-out;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

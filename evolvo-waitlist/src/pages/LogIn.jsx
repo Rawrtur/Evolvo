@@ -46,7 +46,6 @@ function LogIn() {
   const handleSignin = async () => {
     try {
       if (!allValid) return;
-      setError(apiUrl)
       const res = await fetch(`${apiUrl}/api/v1/auth/sign-in`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

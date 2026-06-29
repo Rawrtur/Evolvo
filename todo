@@ -52,13 +52,15 @@
 [ ] forgot password
     [ ] backend reset Password
     [ ] frontend reset password
-[ ] Warteliste und Onboarding website -> überführung zum Social Media Content
+[x] Warteliste und Onboarding website -> überführung zum Social Media Content
     [x] App setup
     [x] stylen
+    [ ] images
     [x] backend Logik
     [x] backend verbindung
     [x] frontend logic erweitern
-    [ ] User Roles
+    [x] User Roles
+    [ ] testing
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content
