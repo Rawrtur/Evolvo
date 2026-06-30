@@ -54,6 +54,12 @@ function LogIn() {
           password: password,
         }),
       });
+
+      if (res.status === 429) {
+        setError("To many requests. Wait 15 minutes and try again")
+        return
+      }
+
       const data = await res.json();
 
       if (!res.ok) {
@@ -63,9 +69,10 @@ function LogIn() {
 
       if (data.success) {
         localStorage.setItem("user", JSON.stringify(data.data.user));
+        localStorage.setItem("token", data.data.token)
         navigate("/dashboard");
       } else {
-        setError(data.message | "There was an error");
+        setError(data.message || data.error || "There was an error");
       }
     } catch (error) {
       setError(error);

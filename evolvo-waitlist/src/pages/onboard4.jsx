@@ -10,7 +10,9 @@ function Onboard4() {
   return (
     <div className="w-full">
       <Progress page={4} totalPages={5} />
-
+      <h1 className="font-bold text-center pt-5 text-2xl text-[#ea7a53]">
+        Explore the Features
+      </h1>
       <motion.div
         className="p-3 w-full"
         initial={{ opacity: 0, y: 20 }}
@@ -48,7 +50,7 @@ function Onboard4() {
               Understand rather than learn by heart. Explain a topic relating to
               AI.
             </p>
-            <img src="" alt="ki tutor" />
+            <img src="/images/tutor.png" alt="ki tutor" />
             <p className="text-center py-5">
               She spots where you’re struggling to understand and helps you out.
             </p>
@@ -59,7 +61,7 @@ function Onboard4() {
             <p className="text-center">
               The AI automatically generates perfect revision questions.
             </p>
-            <img src="" alt="ki questions" />
+            <img src="/images/questions.png" alt="ki questions" />
             <p className="text-center py-5">
               You no longer need to write flashcards.
             </p>
@@ -67,7 +69,7 @@ function Onboard4() {
         </Carousel>
       </motion.div>
       <motion.div
-        className="w-full p-5 flex justify-center items-center"
+        className="w-full p-5 flex justify-center items-center pb-15"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.8 }}

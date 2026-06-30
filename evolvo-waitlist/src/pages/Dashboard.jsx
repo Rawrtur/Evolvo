@@ -4,11 +4,28 @@ import { useEffect, useState } from "react";
 import animationData from "../assets/animations/wave.json";
 import loadingAnimation from "../assets/animations/loading.json";
 import { Player } from "@lottiefiles/react-lottie-player";
-import Button from "../components/Button";
 import InviteBox from "../components/InviteBox";
 import { useNavigate } from "react-router-dom";
 
 const apiUrl = import.meta.env.VITE_API_URL;
+
+function DeleteButton({ onConfirm }) {
+  const handleClick = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to carry out this action?",
+    );
+
+    if (confirmed) {
+      onConfirm();
+    }
+  };
+
+  return (
+    <button onClick={handleClick} className="text-gray-500 underline">
+      Löschen
+    </button>
+  );
+}
 
 const displayName = (key, name, rank) => {
   return `${key === 0 ? "👑  " : ""}${key + 1 === rank ? name : name[0]}${key + 1 !== rank ? "•••••" : ""}${key === 0 ? "  👑" : ""}`;
@@ -28,6 +45,34 @@ export default function Dashboard() {
     localStorage.removeItem("email");
     localStorage.removeItem("token");
     navigate("/");
+  };
+
+  const leave = async () => {
+    try {
+
+      const res = await fetch(`${apiUrl}/api/v1/users/${user._id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error("error while delete user");
+      }
+
+      if (data.success) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("email");
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -92,6 +137,7 @@ export default function Dashboard() {
         <div className="w-[95%] flex-col items-center justify-center rounded-xl overflow-hidden">
           {top.map((us, key) => (
             <div
+            key={key}
               className={`flex justify-between border-b py-3 px-5 ${user._id === us._id ? "text-[#ea7a53] font-bold bg-gray-200" : "bg-white"}`}
             >
               <p>{key + 1}</p>
@@ -114,7 +160,7 @@ export default function Dashboard() {
           )}
           {rank === 6 &&
             above.slice(-2).map((us, key) => (
-              <div className="flex justify-between border-b py-3 px-5 bg-white">
+              <div  key={key} className="flex justify-between border-b py-3 px-5 bg-white">
                 <p>{rank - (2 - key)}</p>
                 <p>{displayName(1, us.name, rank)}</p>
                 <p>{us.invited}</p>
@@ -122,7 +168,7 @@ export default function Dashboard() {
             ))}
           {rank > 6 &&
             above.slice(3 - rank).map((us, key) => (
-              <div className="flex justify-between border-b py-3 px-5 bg-white">
+              <div key={key} className="flex justify-between border-b py-3 px-5 bg-white">
                 <p>{rank - (3 - key)}</p>
                 <p>{displayName(key + 1, us.name, rank)}</p>
                 <p>{us.invited}</p>
@@ -150,7 +196,13 @@ export default function Dashboard() {
           )}
         </div>
       </div>
-      <Button title={"Logout"} onPress={logout} />
+
+      <div className="p-5 w-full flex justify-between items-center">
+        <button className="text-gray-500 underline" onClick={logout}>
+          Log out
+        </button>
+        <DeleteButton onConfirm={leave} />
+      </div>
     </div>
   );
 }

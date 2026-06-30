@@ -15,7 +15,7 @@ export default function Landing() {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full min-h-[650px]">
       <motion.div
         className="w-full items-center justify-center flex gap-4 pt-10 px-5"
         initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ export default function Landing() {
           autoplay
           loop
           src={animationData}
-          style={{ width: 150, height: 150 }}
+          style={{ width: 300, height: 300 }}
         />
         <div className="w-full items-center justify-center flex mb-20">
           <Button onPress={() => navigate("/onboard/1")} title={"Join Now!"} />

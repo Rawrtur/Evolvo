@@ -55,6 +55,7 @@ export default function Signup() {
   const [email, setEmail] = useState("test@web.de");
   const [password, setPassword] = useState("123456");
   const [confirmPassword, setConfirmPassword] = useState("123456");
+  const [error, setError] = useState(null);
 
   const isEmailValid = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -76,6 +77,7 @@ export default function Signup() {
 
   const handleSignup = async () => {
     if (!allValid) return;
+    try {
     const res = await fetch(`${apiUrl}/api/v1/auth/sign-up`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -86,15 +88,27 @@ export default function Signup() {
         ref: ref,
       }),
     });
+
+    if (res.status === 429) {
+        setError("To many requests. Wait 15 minutes and try again")
+        return
+      }
+
     const data = await res.json();
 
     if (!res.ok) {
-      console.error("errrrr");
+      setError("there was an unknown error.")
     }
 
     if (data.success) {
       localStorage.setItem("email", email);
       navigate("/code");
+    } else {
+      setError(data.error || data.message || "There was an error")
+    }
+  
+  } catch (error) {
+      setError(error.message || "There was an error")
     }
   };
 
@@ -152,6 +166,7 @@ export default function Signup() {
             isValid={validations.passwordsMatch}
           />
         </div>
+        {error}
         <div className="w-full flex flex-col justify-center pt-5 items-center">
           <Button
             title={"Sign Up"}

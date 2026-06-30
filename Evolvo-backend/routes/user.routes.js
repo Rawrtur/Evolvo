@@ -27,7 +27,7 @@ userRouter.put("/email/:id", limiter, authorize, updateEmail);
 
 userRouter.put("/name/:id", limiter, authorize, updateName);
 
-userRouter.delete("/:id", limiter, deleteUser);
+userRouter.delete("/:id", limiter, authorize, deleteUser);
 
 userRouter.get("/leaderboard/:id", limiter, getLeaderBoard) 
 
