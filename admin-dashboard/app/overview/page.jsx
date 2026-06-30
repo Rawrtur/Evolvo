@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SalesoverviewShart from "@/components/SalesoverviewShart";
 import UsersDistributionChart from "@/components/UsersDistributionChart";
-import { fetchUsers } from "../utils/fetchData";
+import { fetchProblemCount, fetchUsers } from "../utils/fetchData";
 
 const transformUsersToChartData = (users) => {
   const map = { May: 0 };
@@ -54,9 +54,11 @@ function Overview() {
   ];
 
   const [users, setUsers] = useState([]);
+  const [problems, setProblems] = useState(0);
 
   useEffect(() => {
     fetchUsers(setUsers);
+    fetchProblemCount(setProblems);
   }, []);
 
   return (
@@ -75,7 +77,7 @@ function Overview() {
             icon={Users}
             value={users.length}
           />
-          <StatCard name="Events" icon={SquareActivity} value={0} />
+          <StatCard name="Problems" icon={SquareActivity} value={problems} />
         </motion.div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <SalesoverviewShart data={salesData} title={"Sales Overview"} />

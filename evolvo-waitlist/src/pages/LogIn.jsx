@@ -75,7 +75,7 @@ function LogIn() {
         setError(data.message || data.error || "There was an error");
       }
     } catch (error) {
-      setError(error);
+      setError("Connection failed");
     }
   };
 

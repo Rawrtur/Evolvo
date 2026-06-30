@@ -19,9 +19,9 @@ export const fetchUsers = async (setUsers) => {
   }
 };
 
-export const fetchData = async (setUsers) => {
+export const fetchProblemCount = async (setState) => {
   try {
-    const response = await fetch(`${api}/api/v1/users`, {
+    const response = await fetch(`${api}/api/v1/support`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -32,7 +32,26 @@ export const fetchData = async (setUsers) => {
     if (data.error) {
       console.error("Error while fetching data: ", data.error);
     }
-    return data.data
+    setState(data.data.length)
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchProblems = async (setState) => {
+  try {
+    const response = await fetch(`${api}/api/v1/support`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to fetched data");
+    }
+    if (data.error) {
+      console.error("Error while fetching data: ", data.error);
+    }
+    setState(data.data)
   } catch (error) {
     console.error(error);
   }

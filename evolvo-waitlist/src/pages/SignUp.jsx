@@ -108,7 +108,7 @@ export default function Signup() {
     }
   
   } catch (error) {
-      setError(error.message || "There was an error")
+      setError(error.message || "connection failed")
     }
   };
 

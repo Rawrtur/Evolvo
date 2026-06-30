@@ -10,6 +10,7 @@ function Footer() {
         </p>
         <p className="py-1 hover:underline">© 2026 Artur Dierking</p>
         <p className="py-1 hover:underline">Early access coming soon.</p>
+        <a className="py-1 underline" href="/support">Report a Problem.</a>
       </div>
       <div className="w-full flex gap-5 pt-3 border-t mt-3">
         <a href="https://youtube.com" target="_blank">

@@ -10,6 +10,7 @@ import Onboard2 from "./pages/onboard2";
 import Onboard3 from "./pages/onboard3";
 import Onboard4 from "./pages/onboard4";
 import Onboard5 from "./pages/onboard5";
+import Support from "./pages/Support";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/onboard/3" element={<Onboard3 />} />
         <Route path="/onboard/4" element={<Onboard4 />} />
         <Route path="/onboard/5" element={<Onboard5 />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
     </BrowserRouter>
   );
