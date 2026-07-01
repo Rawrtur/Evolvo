@@ -22,6 +22,6 @@ lectureRouter.put("/:id", limiter, updateLecture);
 
 lectureRouter.delete("/:id", limiter, deleteLecture);
 
-lectureRouter.get("/user/:id", limiter, getAllUserLectures);
+lectureRouter.get("/user/:id", getAllUserLectures);
 
 export default lectureRouter;

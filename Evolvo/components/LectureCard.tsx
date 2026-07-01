@@ -7,6 +7,8 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { colors } from '@/constants/theme';
 import Button from './Button';
 import { router } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expanded, shortTermQuestions, mediumTermQuestions, longTermQuestions, expandedDetails = false }: LectureCardProps) => {
@@ -67,7 +69,10 @@ const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expa
                     <View className='w-full gap-2'>
                         <Button
                             title='Start Lecture'
-                            onPress={() => { }}
+                            onPress={async () => {
+                            await AsyncStorage.setItem('currentLecture', _id);
+                            router.navigate(`/(flow)/${_id}`);
+                        }} 
                             style='bg-black'
                             fontStyle='text-white'
                         />

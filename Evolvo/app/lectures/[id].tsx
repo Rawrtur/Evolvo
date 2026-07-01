@@ -14,6 +14,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import ThemeTextInput from '@/components/ThemeTextInput';
 import Button from '@/components/Button';
 import Question from '@/components/Question';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -47,7 +49,7 @@ const LectureDetails = () => {
         };
 
         fetchLecture();
-    }, [id, getLectureDetails]);
+    }, [id]);
 
 
     const handleDelete = async () => {
@@ -164,7 +166,10 @@ const LectureDetails = () => {
                         </View>
                     )}
                     <View className='w-full py-5 gap-3'>
-                        <Button title='Start Learning' onPress={() => { }} fontStyle='font-rubik-semibold text-white' />
+                        <Button title='Start Learning' onPress={async () => {
+                            await AsyncStorage.setItem('currentLecture', lecture._id);
+                            router.navigate(`/(flow)/${lecture._id}`);
+                        }} fontStyle='font-rubik-semibold text-white' />
                         <Button title='Learn Questions' disabled={currentQuestions.length === 0} onPress={() => { }} fontStyle='font-rubik-semibold ' style='bg-background border border-black' />
                     </View>
 
