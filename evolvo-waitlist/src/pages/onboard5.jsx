@@ -1,12 +1,24 @@
-import React from "react";
 import Progress from "../components/progress";
 import animationData from "../assets/animations/wave.json";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function Onboard5() {
+  useEffect(() => {
+    fetch(`${apiUrl}/api/v1/monitors`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "onboard5",
+      }),
+    });
+  }, []);
+
   const navigate = useNavigate();
 
   return (

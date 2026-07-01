@@ -1,12 +1,12 @@
 "use Client";
 
 import StatCard from "@/components/StatCard";
-import { DollarSign, ShoppingBag, SquareActivity, Users } from "lucide-react";
+import { DollarSign, SquareActivity, Users } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SalesoverviewShart from "@/components/SalesoverviewShart";
 import UsersDistributionChart from "@/components/UsersDistributionChart";
-import { fetchProblemCount, fetchUsers } from "../utils/fetchData";
+import { fetchAssets, fetchProblemCount, fetchUsers } from "../utils/fetchData";
 
 const transformUsersToChartData = (users) => {
   const map = { May: 0 };
@@ -19,9 +19,10 @@ const transformUsersToChartData = (users) => {
 
     if (!map[month]) {
       map[month] = 0;
+      premium[month] = 0;
     }
 
-    if (user.premium) {
+    if (user.role === "Premium") {
       if (!premium[month]) premium[month] = 0;
 
       premium[month] += 1;
@@ -55,10 +56,12 @@ function Overview() {
 
   const [users, setUsers] = useState([]);
   const [problems, setProblems] = useState(0);
+  const [assets, setAssets] = useState([]);
 
   useEffect(() => {
     fetchUsers(setUsers);
     fetchProblemCount(setProblems);
+    fetchAssets(setAssets);
   }, []);
 
   return (
@@ -71,16 +74,17 @@ function Overview() {
           transition={{ duration: 1 }}
         >
           <StatCard name="Total Sales" icon={DollarSign} value={0} />
-          <StatCard name="Total Users" icon={Users} value={users.length} />
+          <StatCard name="Total Users" icon={Users} value={users.filter(user=>user.verified).length} />
           <StatCard
             name="Total Premium Users"
             icon={Users}
-            value={users.length}
+            value={users.filter(user=>user.role==="Premium").length}
           />
           <StatCard name="Problems" icon={SquareActivity} value={problems} />
         </motion.div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <SalesoverviewShart data={salesData} title={"Sales Overview"} />
+          <SalesoverviewShart data={assets} title={"Onboarding Flow"} />
           <SalesoverviewShart
             data={transformUsersToChartData(users)}
             title={"Users Overview"}

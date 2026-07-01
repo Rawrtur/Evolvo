@@ -3,9 +3,8 @@ import Asset from "../models/asset.model.js";
 
 export const getAssetCount = async (req, res, next) => {
   try {
-    const { name } = req.body;
 
-    const asset = await Asset.findOne({ name });
+    const asset = await Asset.findOne({ name: req.params.name });
 
     if (!asset) {
       const error = new Error("Asset Not Found");
@@ -26,8 +25,7 @@ export const increaseAssetCount = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
-    const { name } = req.body;
-
+    const {name} = req.body;
     const asset = await Asset.findOne({ name });
 
     if (!asset) {
@@ -61,3 +59,15 @@ export const increaseAssetCount = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getAllAssets = async (req, res, next) => {
+  try {
+    const assets = await Asset.find();
+    res.status(200).json({
+      success: true,
+      data: assets,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

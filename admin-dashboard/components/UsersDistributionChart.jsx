@@ -14,7 +14,7 @@ const COLORS = ["green", "yellow", "gray"];
 
 
 const modifyUserData = (data) => {
-  const premiumUsers = data.filter(da=>da.filter).length;
+  const premiumUsers = data.filter(da=>da.role === "Premium").length;
   const voidUsers = data.filter(da=>!da.verified).length;
   const normalUsers = data.length - premiumUsers - voidUsers;
   return [

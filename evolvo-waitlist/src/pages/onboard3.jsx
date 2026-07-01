@@ -1,11 +1,23 @@
-import React from "react";
+import { useEffect } from "react";
 import Progress from "../components/progress";
 import { useNavigate } from "react-router-dom";
 import { Check } from "lucide-react";
 import Button from "../components/Button";
 import { motion } from "framer-motion";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 function Onboard3() {
+  useEffect(() => {
+    fetch(`${apiUrl}/api/v1/monitors`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "onboard3",
+      }),
+    });
+  }, []);
+
   const navigate = useNavigate();
 
   return (

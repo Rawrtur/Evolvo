@@ -3,6 +3,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import animationData from "../assets/animations/wave.json";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import {useEffect} from "react";
 import {
   School,
   University,
@@ -13,7 +14,21 @@ import {
   BaggageClaim,
 } from "lucide-react";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 function Onboard2() {
+
+  useEffect(()=>{
+      fetch(`${apiUrl}/api/v1/monitors`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "onboard2",
+        })
+      })
+    },[])
+
   const navigate = useNavigate();
 
   const answers = [

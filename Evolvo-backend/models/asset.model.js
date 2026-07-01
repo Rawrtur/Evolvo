@@ -4,6 +4,7 @@ const assetSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Asset Name ist required"],
+    index:true,
   },
   count: {
     type: Number,

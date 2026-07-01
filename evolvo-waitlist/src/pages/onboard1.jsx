@@ -1,11 +1,24 @@
-import React from "react";
+import {useEffect} from "react";
 import Progress from "../components/progress";
 import { Player } from "@lottiefiles/react-lottie-player";
 import animationData from "../assets/animations/wave.json";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 function Onboard1() {
+
+  useEffect(()=>{
+    fetch(`${apiUrl}/api/v1/monitors`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "onboard1",
+      })
+    })
+  },[])
+
   const navigate = useNavigate();
 
   const answers = [

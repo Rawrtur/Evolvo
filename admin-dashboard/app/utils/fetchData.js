@@ -56,3 +56,30 @@ export const fetchProblems = async (setState) => {
     console.error(error);
   }
 };
+
+export const fetchAssets = async (setState) => {
+  try {
+    const response = await fetch(`${api}/api/v1/monitors`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to fetched data");
+    }
+    if (data.error) {
+      console.error("Error while fetching data: ", data.error);
+    }
+
+    const mappedData = data.data.map(item=>{
+      return {
+        name: item.name,
+        sales: item.count
+      }
+    })
+
+    setState(mappedData)
+  } catch (error) {
+    console.error(error);
+  }
+};
