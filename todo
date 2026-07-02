@@ -44,7 +44,7 @@
     [x] Monitor model
     [x] monitor routes
     [x] monitor controller
-    [ ] monitor in admin frontend implentieren
+    [x] monitor in admin frontend implentieren
 [ ] backend effizienter gestalten
 [ ] Onboarding flow
 [x] backend Admin authorize
@@ -61,6 +61,16 @@
     [x] frontend logic erweitern
     [x] User Roles
     [ ] testing
+[ ] Learning flow   
+    [x] time auswahl
+    [x] overview
+    [x] pre study screen
+    [ ] break screen
+    [ ] focus screen
+    [ ] review Screen
+    [ ] fragen hinzufügen
+    [x] timer extern speichern (mit async storage)
+    [ ] flow index speichern
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content

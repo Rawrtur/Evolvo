@@ -7,56 +7,43 @@ export const tabs = [
   { title: "Settings", name: "settings", icon: icons.settings },
 ];
 
-export const recommendedLectures: Lecture[] = [
-  {
-    title: "Mathematics",
-    icon: "calculator",
-    _id: "1234",
-    lastLecture: new Date(),
-    color: "#c6a465",
-    type: "Calculate"
-  },
-  {
-    title: "Theoretical Informatics",
-    icon: "calculator",
-    _id: "5678",
-    lastLecture: new Date(),
-    color: "#5ec9d1",
-    type: "Theory"
-  },
-  {
-    title: "English",
-    icon: "book",
-    _id: "9101",
-    lastLecture: new Date(),
-    color: "#afba63",
-    type: "Practise"
-  },
-];
-
-export const lectures: Lecture[] = [
-  {
-    title: "Mathematics",
-    icon: "calculator",
-    _id: "1234",
-    lastLecture: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-    color: "#f5c542",
-    type: "Calculate"
-  },
-  {
-    title: "Theoretical Informatics",
-    icon: "calculator",
-    _id: "5678",
-    lastLecture: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-    color: "#e8def8",
-    type: "Theory"
-  },
-  {
-    title: "English",
-    icon: "book",
-    _id: "9101",
-    lastLecture: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-    color: "#b8d4e3",
-    type: "Practise"
-  },
-];
+export const flows = {
+  "30 min": [ // 30 min
+    "Focus", "Review"
+  ],
+  "60 min": [ // 60 min
+    "Focus", "Break", "Focus", "Review"
+  ],
+  "90 min": [ // 90 min
+    "Pre Study Reset","Focus", "Break", "Focus", "Break", "Focus", "Review"
+  ],
+  "120 min": [ // 120 min
+    "Pre Study Reset", "Focus", "Break", "Focus", "Review"
+  ],
+  "150 min": [ // 150 min
+    "Pre Study Reset", "Focus", "Break", "Focus", "Break", "Focus", "Review"
+  ],
+  "180 min": [ // 180 min
+    "Pre Study Reset", "Focus", "Break", "Focus", "Break", "Focus",  "Review"
+  ]
+}
+export const times = {
+  "30 min": [ // 30 min
+    25, 5
+  ],
+  "60 min": [ // 60 min
+    25, 5, 25, 5
+  ],
+  "90 min": [ // 90 min
+    1, 25, 5, 25, 5, 24, 5
+  ],
+  "120 min": [ // 120 min
+    1, 50, 10, 49, 10
+  ],
+  "150 min": [ // 150 min
+    1, 50, 10, 50, 10, 24, 5
+  ],
+  "180 min": [ // 180 min
+    1, 50, 10, 50, 10, 49, 10
+  ]
+}

@@ -168,7 +168,7 @@ const LectureDetails = () => {
                     <View className='w-full py-5 gap-3'>
                         <Button title='Start Learning' onPress={async () => {
                             await AsyncStorage.setItem('currentLecture', lecture._id);
-                            router.navigate(`/(flow)/${lecture._id}`);
+                            router.navigate(`/(flow)/init/${lecture._id}`);
                         }} fontStyle='font-rubik-semibold text-white' />
                         <Button title='Learn Questions' disabled={currentQuestions.length === 0} onPress={() => { }} fontStyle='font-rubik-semibold ' style='bg-background border border-black' />
                     </View>

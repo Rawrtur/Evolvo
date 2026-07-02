@@ -71,7 +71,7 @@ const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expa
                             title='Start Lecture'
                             onPress={async () => {
                             await AsyncStorage.setItem('currentLecture', _id);
-                            router.navigate(`/(flow)/${_id}`);
+                            router.navigate(`/(flow)/init/${_id}`);
                         }} 
                             style='bg-black'
                             fontStyle='text-white'

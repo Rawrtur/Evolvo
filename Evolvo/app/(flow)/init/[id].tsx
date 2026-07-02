@@ -16,10 +16,10 @@ const Lecture = () => {
 
     const lecture = lectures.find((lecture) => lecture._id === id);
 
-    const [currentTime, setCurrentTime] = React.useState<string>("120 min");
+    const [currentTime, setCurrentTime] = React.useState<string>("60 min");
 
-    const timers = ["30 min", "45 min", "60 min"]
-    const timers2 = ["90 min", "120 min", "180 min"]
+    const timers = ["30 min", "60 min", "90 min"]
+    const timers2 = ["120 min", "150 min", "180 min"]
 
     return (
         <ScrollView className='w-full h-full bg-background p-5'>
@@ -65,7 +65,7 @@ const Lecture = () => {
             </View>
             <View className='w-full items-center'>
                 <LottieView
-                    source={require('../../assets/animations/thumbup.json')}
+                    source={require('../../../assets/animations/thumbup.json')}
                     autoPlay
                     loop
                     style={{ width: 300, height: 300 }}

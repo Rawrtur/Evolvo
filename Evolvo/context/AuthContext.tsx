@@ -50,7 +50,6 @@ const safeAsyncStorage = {
             const serialized = JSON.stringify(value);
 
             await AsyncStorage.setItem(String(key), serialized ?? null);
-
         } catch (error) {
             if (error instanceof Error && error.message.includes("Native module is null")) {
                 return;
