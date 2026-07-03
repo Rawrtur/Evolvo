@@ -6,6 +6,8 @@ import StudyOverview from '@/components/Overview';
 import Button from '@/components/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import PreStudy from '@/components/PreStudy';
+import Focus from '@/components/Focus';
+import Break from '@/components/Break';
 
 const OverView = () => {
 
@@ -44,6 +46,9 @@ const OverView = () => {
     router.replace('/(tabs)');
   }
 
+  const currentTime = times[time][index - 1] || 0;
+  const currentFlow = flows[time][index - 1] || '';
+  // console.log('Current Time:', currentTime, 'Current Flow:', currentFlow, 'Index:', index);
   return (
     <ScrollView className="h-full bg-background p-5">
       {index === 0 && (
@@ -53,12 +58,22 @@ const OverView = () => {
           <View className="h-[60px]" />
         </>
       )}
-      {index === 1 && (
+      {currentFlow === "Pre Study Reset" && (
         <>
           <PreStudy setIndex={setIndex} />
           <Button title="Skip" onPress={skipPreStudy} shadow fontStyle="font-rubik-bold text-white" />
 
         </>
+      )}
+      {currentFlow === "Focus" && (
+        <View>
+          <Focus time={currentTime} index={index} setIndex={setIndex} />
+        </View>
+      )}
+      {currentFlow === "Break" && (
+        <View>
+          <Break time={currentTime} index={index} setIndex={setIndex} />
+        </View>
       )}
       <View className="w-full items-center justify-center pt-10">
         <Button title="End Session" onPress={endSession} shadow />

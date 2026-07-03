@@ -102,7 +102,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     if (storedLang) {
                         setPrevLanguage(storedLang);
                     }
-
                     let response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/user/${storedUser._id}`, {
                         method: 'GET',
                         headers: { 'Content-Type': 'application/json' },
