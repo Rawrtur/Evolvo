@@ -9,6 +9,7 @@ import PreStudy from '@/components/PreStudy';
 import Focus from '@/components/Focus';
 import Break from '@/components/Break';
 import { useAuth } from '@/context/AuthContext';
+import Review from '@/components/Review';
 
 const OverView = () => {
 
@@ -77,6 +78,9 @@ const OverView = () => {
         <View>
           <Break time={currentTime} index={index} setIndex={setIndex} />
         </View>
+      )}
+      {currentFlow === "Review" && (
+        <Review id={id}/>
       )}
       <View className="w-full items-center justify-center pt-10">
         <Button title="End Session" onPress={endSession} shadow />

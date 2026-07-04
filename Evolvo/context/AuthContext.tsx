@@ -14,7 +14,8 @@ export interface AuthContextType {
     getLectureDetails: (id: string) => Promise<({ success: boolean, message: string, data: object })>;
     deleteLecture: (id: string) => Promise<({ success: boolean, message: string })>;
     createQuestion: (question: string, answer: string, lecture: string, user: string) => Promise<({ success: boolean, message: string })>
-    deleteQuestion: (id: string) => Promise<({ success: boolean, message: string })>
+    deleteQuestion: (id: string) => Promise<({ success: boolean, message: string })>;
+    updateQuestion: (id: string, question: string, answer: string, state: string) => Promise<({ success: boolean, message: string })>
     verified: string | null;
     logout: () => Promise<(void)>;
     error: string | null;
@@ -24,7 +25,7 @@ export interface AuthContextType {
     PrevLanguage: string;
     setPrevLanguage: (lang: string) => void;
     createLecture: (title: string, color: string, icon: string, type: string, user: string) => Promise<({ success: boolean, message: string, lecture: object })>;
-    isInSession: ()=>Promise<boolean>;
+    isInSession: () => Promise<boolean>;
     setSessionState: React.Dispatch<React.SetStateAction<boolean>>;
     sessionState: boolean;
 }
@@ -489,6 +490,38 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         return (value !== null);
     }
 
+    const updateQuestion = async (id: string, question: string, answer: string, state: string) => {
+        try {
+            setIsLoading(true);
+            setError(null);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/questions/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question, answer, state, lastAnswered: new Date() })
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "Resend Failed at line 506 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            setQuestions([...questions.filter(q => q._id !== id), data.updatedQuestion]) // Anzeige updaten
+
+            return data;
+
+        } catch (error) {
+            console.error("Error while updating Question: ", error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     return (
         <AuthContext.Provider
             value={
@@ -507,6 +540,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     deleteLecture,
                     createQuestion,
                     deleteQuestion,
+                    updateQuestion,
                     verified,
                     error,
                     isLoading,

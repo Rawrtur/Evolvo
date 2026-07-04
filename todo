@@ -40,13 +40,13 @@
         [x] Questions Backend router
     [ ] Questions edit
     [ ] Questions durchgehen
-[ ] Monitor
+[x] Monitor
     [x] Monitor model
     [x] monitor routes
     [x] monitor controller
     [x] monitor in admin frontend implentieren
 [ ] backend effizienter gestalten
-[ ] Onboarding flow
+[ ] Onboarding flow fertigstellen
 [x] backend Admin authorize
 [ ] Werbung in Email erlauben ins Settings Einstellung
 [ ] forgot password
@@ -70,7 +70,7 @@
     [ ] review Screen
     [ ] fragen hinzufügen
     [x] timer extern speichern (mit async storage)
-    [ ] flow index speichern
+    [x] flow index speichern
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content

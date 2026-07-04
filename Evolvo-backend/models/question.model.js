@@ -13,7 +13,7 @@ const questionSchema = new mongoose.Schema(
     state: {
       type: String,
       enum: ["short", "long", "medium", "none"],
-      default: "none",
+      default: "short",
     },
     lastAnswered: {
       type: Date,
