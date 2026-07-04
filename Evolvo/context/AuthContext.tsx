@@ -23,8 +23,10 @@ export interface AuthContextType {
     setError: (error: string) => void;
     PrevLanguage: string;
     setPrevLanguage: (lang: string) => void;
-    createLecture: (title: string, color: string, icon: string, type: string, user: string) => Promise<({ success: boolean, message: string, lecture: object })>
-
+    createLecture: (title: string, color: string, icon: string, type: string, user: string) => Promise<({ success: boolean, message: string, lecture: object })>;
+    isInSession: ()=>Promise<boolean>;
+    setSessionState: React.Dispatch<React.SetStateAction<boolean>>;
+    sessionState: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -78,6 +80,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [error, setError] = useState<string | null>(null);
     const [PrevLanguage, setPrevLanguage] = useState<string>("en");
     const [verified, setVerified] = useState<string | null>(null);
+    const [sessionState, setSessionState] = useState(false);
 
     useEffect(() => {
         const initializeAuth = async () => {
@@ -481,6 +484,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }
 
+    const isInSession = async () => {
+        const value = await AsyncStorage.getItem("timerValue");
+        return (value !== null);
+    }
 
     return (
         <AuthContext.Provider
@@ -507,7 +514,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     setError,
                     PrevLanguage,
                     setPrevLanguage,
-                    createLecture
+                    createLecture,
+                    isInSession,
+                    setSessionState,
+                    sessionState
                 }
             }
         >

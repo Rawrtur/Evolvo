@@ -28,11 +28,12 @@ const states = [
 
 const LectureDetails = () => {
     const { id } = useLocalSearchParams();
-    const { getLectureDetails, isLoading, questions, deleteLecture, createQuestion, user, deleteQuestion } = useAuth();
+    const { getLectureDetails, isLoading, questions, deleteLecture, createQuestion, user, deleteQuestion, isInSession, sessionState } = useAuth();
     const [lecture, setLecture] = useState(null);
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     const [loading, setIsloding] = useState(false);
+    const [inSession, setInSession] = useState(false);
 
 
     useEffect(() => {
@@ -50,6 +51,14 @@ const LectureDetails = () => {
 
         fetchLecture();
     }, [id]);
+
+    useEffect(() => {
+        const checkSessionState = async () => {
+            const session = await isInSession() || sessionState;
+            setInSession(session);
+        }
+        checkSessionState()
+    }, [sessionState])
 
 
     const handleDelete = async () => {
@@ -166,15 +175,18 @@ const LectureDetails = () => {
                         </View>
                     )}
                     <View className='w-full py-5 gap-3'>
-                        <Button title='Start Learning' onPress={async () => {
-                            await AsyncStorage.setItem('currentLecture', lecture._id);
-                            router.navigate(`/(flow)/init/${lecture._id}`);
-                        }} fontStyle='font-rubik-semibold text-white' />
+                        <Button
+                            title={inSession ? "Already in a lecture" : 'Start Lecture'}
+                            disabled={inSession}
+                            onPress={async () => {
+                                // await AsyncStorage.setItem('currentLecture', lecture._id);
+                                router.navigate(`/(flow)/init/${lecture._id}`);
+                            }} fontStyle='font-rubik-semibold text-white' />
                         <Button title='Learn Questions' disabled={currentQuestions.length === 0} onPress={() => { }} fontStyle='font-rubik-semibold ' style='bg-background border border-black' />
                     </View>
 
                     <View className='w-full items-center mt-5 mb-5'>
-                        <View className='w-full bg-muted border border-accent rounded-lg p-5'>
+                        <View className='w-full bg-white border border-accent rounded-lg p-5'>
                             <ThemeTextInput
                                 value={question}
                                 onChangeText={setQuestion}

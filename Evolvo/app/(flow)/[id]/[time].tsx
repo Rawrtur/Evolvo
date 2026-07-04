@@ -8,12 +8,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import PreStudy from '@/components/PreStudy';
 import Focus from '@/components/Focus';
 import Break from '@/components/Break';
+import { useAuth } from '@/context/AuthContext';
 
 const OverView = () => {
 
   const { id, time } = useLocalSearchParams();
   const [index, setIndex] = React.useState(0);
-
+  const {setSessionState} = useAuth();
 
   useEffect(() => {
     const setFlowIndex = async () => {
@@ -37,12 +38,14 @@ const OverView = () => {
 
   const beginSession = async () => {
     await AsyncStorage.setItem('flowIndex', '1');
+    setSessionState(true);
     setIndex(1)
   }
 
   const endSession = async () => {
     await AsyncStorage.removeItem('timerValue');
     await AsyncStorage.removeItem('flowIndex');
+    setSessionState(false);
     router.replace('/(tabs)');
   }
 

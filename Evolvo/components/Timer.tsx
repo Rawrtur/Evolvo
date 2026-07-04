@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, Text} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from "@/context/AuthContext";
 
 
 export default function CountdownTimer({ initialTime = 60, onComplete }:{ initialTime?: number, onComplete?: () => void }) {
+
+    const {isInSession} = useAuth();
 
     useEffect(()=> {
         const setTimer = async( ) => {

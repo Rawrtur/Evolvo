@@ -1,5 +1,5 @@
 import { View, Text, Pressable } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import timeAgo from '@/utils/formatter';
 import clsx from 'clsx';
@@ -8,10 +8,24 @@ import { colors } from '@/constants/theme';
 import Button from './Button';
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from '@/context/AuthContext';
 
 
 
 const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expanded, shortTermQuestions, mediumTermQuestions, longTermQuestions, expandedDetails = false }: LectureCardProps) => {
+    
+    const {isInSession, sessionState} = useAuth();
+    const [inSession, setInSession] = useState(false);
+
+    useEffect(()=>{
+        const checkSessionState = async () => {
+            const session = await isInSession() || sessionState;
+            setInSession(session);
+        }
+        checkSessionState()
+    },[sessionState])
+
+
     const animatedStyle = useAnimatedStyle(() => {
         return {
             maxHeight: expanded ? withTiming(300) : withTiming(0),
@@ -68,13 +82,14 @@ const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expa
                     </View>
                     <View className='w-full gap-2'>
                         <Button
-                            title='Start Lecture'
+                            title={inSession ? "Already in a lecture" : 'Start Lecture'}
                             onPress={async () => {
                             await AsyncStorage.setItem('currentLecture', _id);
                             router.navigate(`/(flow)/init/${_id}`);
                         }} 
-                            style='bg-black'
+                            style={`${inSession ? "bg-gray-400" : "bg-black"}`}
                             fontStyle='text-white'
+                            // disabled={inSession}
                         />
                         {expandedDetails && (
                             <Button

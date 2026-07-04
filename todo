@@ -65,8 +65,8 @@
     [x] time auswahl
     [x] overview
     [x] pre study screen
-    [ ] break screen
-    [ ] focus screen
+    [x] break screen
+    [x] focus screen
     [ ] review Screen
     [ ] fragen hinzufügen
     [x] timer extern speichern (mit async storage)
