@@ -43,6 +43,15 @@ declare global {
     lecture: string,
     _id: string;
   }
+  interface DiscplayQuestion {
+    question: string;
+    answer: string;
+    state: string;
+    lastAnswered: Date;
+    lecture: string,
+    _id: string;
+    points:0
+  }
   interface User {
     __v: number;
     _id: string;

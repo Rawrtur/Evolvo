@@ -126,3 +126,22 @@ export const getAllUserLectures = async (req, res, next) => {
     next(error);
   }
 };
+
+export const commitLecture = async (req,res,next) => {
+  try {
+    const lecture = await Lecture.findById(req.params.id);
+
+    lecture.lastLecture = new Date();
+
+    await lecture.save()
+
+    res.status(200).json({
+      success: true,
+      message: "Updated User Lecture",
+      lecture
+    });
+
+  } catch (error) {
+    next(error);
+  }
+}

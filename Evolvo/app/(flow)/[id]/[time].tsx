@@ -15,7 +15,7 @@ const OverView = () => {
 
   const { id, time } = useLocalSearchParams();
   const [index, setIndex] = React.useState(0);
-  const {setSessionState} = useAuth();
+  const {setSessionState, commitLecture} = useAuth();
 
   useEffect(() => {
     const setFlowIndex = async () => {
@@ -44,14 +44,24 @@ const OverView = () => {
   }
 
   const endSession = async () => {
-    await AsyncStorage.removeItem('timerValue');
+    try {
+      await AsyncStorage.removeItem('timerValue');
     await AsyncStorage.removeItem('flowIndex');
     setSessionState(false);
+
+    if (index !== 0)  await commitLecture(id);
+
     router.replace('/(tabs)');
+    } catch (error) {
+      console.error("Error while comitting Lecture: ",error)
+    }
+    
   }
+
 
   const currentTime = times[time][index - 1] || 0;
   const currentFlow = flows[time][index - 1] || '';
+  // const currentFlow = "Review"
   // console.log('Current Time:', currentTime, 'Current Flow:', currentFlow, 'Index:', index);
   return (
     <ScrollView className="h-full bg-background p-5">
@@ -83,7 +93,7 @@ const OverView = () => {
         <Review id={id}/>
       )}
       <View className="w-full items-center justify-center pt-10">
-        <Button title="End Session" onPress={endSession} shadow />
+        <Button title={currentFlow === "Review" ? "Finish Session" : "End Session"} onPress={endSession} shadow style='w-[90%]' fontStyle='font-rubik-bold text-white'/>
       </View>
       <View className='h-[60px]' />
     </ScrollView>

@@ -72,13 +72,14 @@ export const updateQuestion = async (req, res, next) => {
     updatedQuestion.state = state;
     updatedQuestion.lastAnswered = lastAnswered;
 
+    await updatedQuestion.save();
+
     res.status(200).json({
       success: true,
       message: "Question updatet successfully",
       updatedQuestion,
     });
 
-    await updateQuestion.save();
   } catch (error) {
     next(error);
   }

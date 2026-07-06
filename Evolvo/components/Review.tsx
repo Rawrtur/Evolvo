@@ -5,22 +5,48 @@ import { router } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import AnswerQuestion from './AnswerQuestion';
 import Button from './Button';
+import LoadingScreen from './LoadingScreen';
+import { getDaysAgo } from '@/utils/getAge';
 
 
 const Review = ({ id }: { id: String | string[] }) => {
 
     const { questions, isLoading, updateQuestion } = useAuth();
-    const [thisQuestions, setThisQuestions] = React.useState(questions.filter(q => q.lecture === id).map(q => {
-        return {
-            question: q.question,
-            answer: q.answer,
-            state: q.state,
-            lastAnswered: q.lastAnswered,
-            lecture: q.lecture,
-            _id: q._id,
-            points: 0
-        }
-    }));
+    const [thisQuestions, setThisQuestions] = React.useState<DiscplayQuestion[]>([]);
+    const [answeredQuestions, setAnsweresQuestions] = React.useState([])
+    // console.log(questions)
+    useEffect(() => {
+        const currentQuestions = questions.filter(q => q.lecture === id ).map(q => {
+            let points = 0;
+            if (q.lastAnswered) {
+                const daysAgo = getDaysAgo(q.lastAnswered);
+                switch (q.state) {
+                    case "long":
+                        if (daysAgo < 15) points = 1; 
+                        break;
+                    case "medium":
+                        if (daysAgo < 5) points = 1; 
+                        break;
+                    case "short":
+                        if (daysAgo < 1) points = 1; 
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return {
+                question: q.question,
+                answer: q.answer,
+                state: q.state,
+                lastAnswered: q.lastAnswered,
+                lecture: q.lecture,
+                _id: q._id,
+                points
+            }
+        }).filter(q=> q.points === 0)
+        setThisQuestions(currentQuestions);
+    }, [questions])
 
     const handleAgain = () => {
         thisQuestions[0].points -= 1;
@@ -28,7 +54,7 @@ const Review = ({ id }: { id: String | string[] }) => {
         setThisQuestions(newList);
     }
 
-    const handleGood = async() => {
+    const handleGood = async () => {
         let newState = "long"
         switch (thisQuestions[0].state) {
             case "medium":
@@ -55,12 +81,13 @@ const Review = ({ id }: { id: String | string[] }) => {
             default:
                 break;
         }
-        await updateQuestion(thisQuestions[0]._id, thisQuestions[0].question, thisQuestions[0].answer, newState)
+        await updateQuestion(thisQuestions[0]._id, thisQuestions[0].question, thisQuestions[0].answer, newState, new Date())
         let newList = [...thisQuestions.slice(1)];
+        setAnsweresQuestions([...answeredQuestions, thisQuestions[0]._id])
         setThisQuestions(newList);
     }
     // "short", "long", "medium"
-    const handleOnGood = async() => {
+    const handleOnGood = async () => {
         let newState = "long";
         switch (thisQuestions[0].state) {
             case "medium":
@@ -80,9 +107,15 @@ const Review = ({ id }: { id: String | string[] }) => {
             default:
                 break;
         }
-        await updateQuestion(thisQuestions[0]._id, thisQuestions[0].question, thisQuestions[0].answer, newState)
+        await updateQuestion(thisQuestions[0]._id, thisQuestions[0].question, thisQuestions[0].answer, newState, new Date())
         let newList = [...thisQuestions.slice(1)];
+        setAnsweresQuestions([...answeredQuestions, thisQuestions[0]._id])
         setThisQuestions(newList);
+    }
+    if (isLoading) {
+        return (
+            <LoadingScreen />
+        )
     }
 
     return (
@@ -93,15 +126,14 @@ const Review = ({ id }: { id: String | string[] }) => {
             </View>
             <View>
                 {thisQuestions.length === 0 ? (
-                    <View>
+                    <View className='w-full items-center justify-center'>
                         <LottieView
                             source={require("../assets/animations/jump.json")}
                             autoPlay
                             loop
                             style={{ width: 300, height: 300 }}
                         />
-                        <Text className="font-rubik-bold text-2xl">You did it!</Text>
-                        <Button title="Finish Lection" onPress={() => { }} style='bg-black' fontStyle='font-rubik-bold text-white' />
+                        <Text className="font-rubik-bold text-2xl text-center py-5">You did it!</Text>
                     </View>
                 ) : (
                     <AnswerQuestion

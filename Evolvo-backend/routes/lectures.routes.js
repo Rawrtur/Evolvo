@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { limiter } from "../middleware/limiter.middleware.js";
 import {
+  commitLecture,
   createLecture,
   deleteLecture,
   getAllUserLectures,
@@ -18,7 +19,7 @@ lectureRouter.get("/:id", limiter, getLecture);
 
 lectureRouter.post("/", limiter, createLecture);
 
-lectureRouter.put("/:id", limiter, updateLecture);
+lectureRouter.put("/:id", limiter, commitLecture);
 
 lectureRouter.delete("/:id", limiter, deleteLecture);
 

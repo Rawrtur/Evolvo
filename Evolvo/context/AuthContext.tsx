@@ -15,7 +15,7 @@ export interface AuthContextType {
     deleteLecture: (id: string) => Promise<({ success: boolean, message: string })>;
     createQuestion: (question: string, answer: string, lecture: string, user: string) => Promise<({ success: boolean, message: string })>
     deleteQuestion: (id: string) => Promise<({ success: boolean, message: string })>;
-    updateQuestion: (id: string, question: string, answer: string, state: string) => Promise<({ success: boolean, message: string })>
+    updateQuestion: (id: string, question: string, answer: string, state: string, lastAnswered: Date) => Promise<({ success: boolean, message: string })>
     verified: string | null;
     logout: () => Promise<(void)>;
     error: string | null;
@@ -28,6 +28,7 @@ export interface AuthContextType {
     isInSession: () => Promise<boolean>;
     setSessionState: React.Dispatch<React.SetStateAction<boolean>>;
     sessionState: boolean;
+    commitLecture: (id:string) => Promise<({success:true, message:string})>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -490,7 +491,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         return (value !== null);
     }
 
-    const updateQuestion = async (id: string, question: string, answer: string, state: string) => {
+    const updateQuestion = async (id: string, question: string, answer: string, state: string, lastAnswered: Date) => {
         try {
             setIsLoading(true);
             setError(null);
@@ -498,7 +499,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/questions/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question, answer, state, lastAnswered: new Date() })
+                body: JSON.stringify({ question, answer, state, lastAnswered })
             });
             const data = await response.json();
 
@@ -517,6 +518,37 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
         } catch (error) {
             console.error("Error while updating Question: ", error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const commitLecture = async (id: string) => {
+        try {
+            setIsLoading(true);
+            setError(null)
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                // body: JSON.stringify({ question, answer, state, lastAnswered })
+            });
+            const data = await response.json();
+
+            if (!response) {
+                throw new Error(data.message || "Resend Failed at line 538 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            setLectures([...lectures.filter(l => l._id !== id), data.lecture])
+
+            return data;
+        } catch (error) {
+            console.error("Error while commiting Lecture: ", error);
         } finally {
             setIsLoading(false);
         }
@@ -551,7 +583,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     createLecture,
                     isInSession,
                     setSessionState,
-                    sessionState
+                    sessionState,
+                    commitLecture
                 }
             }
         >
