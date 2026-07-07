@@ -2,7 +2,7 @@ export const colors = {
   background: "#fff9e3",
   foreground: "#081126",
   card: "#fff8e7",
-  muted: "#f6eecf",
+  muted: "#e4dec3",
   mutedForeground: "rgba(0, 0, 0, 0.6)",
   primary: "#081126",
   accent: "#ea7a53",

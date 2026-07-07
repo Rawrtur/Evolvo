@@ -29,7 +29,7 @@
     [x] loading screen
 [ ] Lecture Screen 
     [ ] Menu Button Logic
-[ ] Analytic screen
+[x] Analytic screen
 [ ] Settings screen
     [ ] Problem notification/sending (also on Sign In)
     [ ] User Daten ändern
@@ -67,7 +67,7 @@
     [x] pre study screen
     [x] break screen
     [x] focus screen
-    [ ] review Screen
+    [x] review Screen
     [ ] fragen hinzufügen
     [x] timer extern speichern (mit async storage)
     [x] flow index speichern

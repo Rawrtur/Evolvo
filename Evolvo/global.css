@@ -3,12 +3,14 @@
 @import "tailwindcss/utilities.css";
 
 @import "nativewind/theme";
-
+/* * {
+  color: #e4dec3;
+} */
 @theme {
   --color-background: #f6eecf;
   --color-foreground: #081126;
   --color-card: #fff8e7;
-  --color-muted: #f6eecf;
+  --color-muted: #e4dec3;
   --color-muted-foreground: rgba(0, 0, 0, 0.6);
   --color-primary: #081126;
   --color-accent: #ea7a53;

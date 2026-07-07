@@ -14,7 +14,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import ThemeTextInput from '@/components/ThemeTextInput';
 import Button from '@/components/Button';
 import Question from '@/components/Question';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const screenWidth = Dimensions.get("window").width;
@@ -217,7 +216,7 @@ const LectureDetails = () => {
                                     loop
                                     style={{ width: 200, height: 200 }}
                                 />
-                                <Text className='font-rubik-light'>Add questions to show the Pie Chart</Text>
+                                <Text className='font-rubik-light'>Add questions to show them</Text>
                             </View>
                         )}
                     </View>

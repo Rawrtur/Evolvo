@@ -28,7 +28,7 @@ export interface AuthContextType {
     isInSession: () => Promise<boolean>;
     setSessionState: React.Dispatch<React.SetStateAction<boolean>>;
     sessionState: boolean;
-    commitLecture: (id:string) => Promise<({success:true, message:string})>
+    commitLecture: (id: string) => Promise<({ success: true, message: string })>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -179,6 +179,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             await safeAsyncStorage.setItem("lectures", lectures);
             await safeAsyncStorage.setItem("quesions", questions);
 
+
+            setToken(token);
+            setUser(user);
+            setLectures(lectures);
+            setQuestions(questions);
+
             setIsLoggedIn(true);
 
             return { success: true, message: "User logged in successfully" };
@@ -256,6 +262,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             await safeAsyncStorage.setItem("user", user);
             await safeAsyncStorage.setItem("lectures", lectures);
             await safeAsyncStorage.setItem("quesions", questions);
+
+            setToken(token);
+            setUser(user);
+            setLectures(lectures);
+            setQuestions(questions);
 
             setIsLoggedIn(true);
 

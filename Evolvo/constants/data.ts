@@ -47,3 +47,15 @@ export const times = {
     1, 50, 10, 50, 10, 49, 10
   ]
 }
+
+export const profileSettings = [
+  {text: "Change Email", route: "ChangeEmail", icon:"mail"},
+  {text: "Change Password", route: "ChangePassword", icon:"lock-closed"},
+  {text: "Change Name", route: "ChangeName", icon:"at-sharp"},
+  {text: "Delete Account", route: "DeleteAccount", icon:"trash"},
+]
+
+export const emailSettings = [
+  {text: "Allow Newsletter", route: "AllowNewsletter", icon:"newspaper"},
+
+]
