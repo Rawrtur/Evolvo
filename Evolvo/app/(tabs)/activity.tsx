@@ -22,7 +22,11 @@ const activity = () => {
 
   const { questions, lectures, isLoading } = useAuth();
 
-  const history = lectures.filter(l => l.lastLecture).sort((a, b) => new Date(b.lastLecture) - new Date(a.lastLecture))
+  const history = lectures
+    .filter((l) => l.lastLecture)
+    .sort(
+      (a, b) => b.lastLecture!.getTime() - a.lastLecture!.getTime()
+    );
 
   const pieData = states.map(s => ({
     name: s.state,

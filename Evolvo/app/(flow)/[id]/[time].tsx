@@ -13,9 +13,12 @@ import Review from '@/components/Review';
 
 const OverView = () => {
 
-  const { id, time } = useLocalSearchParams();
+  const { id, time } = useLocalSearchParams<{
+    time: "30 min" | "60 min" | "90 min" | "120 min" | "150 min" | "180 min"
+    id: string;
+  }>();
   const [index, setIndex] = React.useState(0);
-  const {setSessionState, commitLecture} = useAuth();
+  const { setSessionState, commitLecture } = useAuth();
 
   useEffect(() => {
     const setFlowIndex = async () => {
@@ -46,16 +49,16 @@ const OverView = () => {
   const endSession = async () => {
     try {
       await AsyncStorage.removeItem('timerValue');
-    await AsyncStorage.removeItem('flowIndex');
-    setSessionState(false);
+      await AsyncStorage.removeItem('flowIndex');
+      setSessionState(false);
 
-    if (index !== 0)  await commitLecture(id);
+      if (index !== 0) await commitLecture(id);
 
-    router.replace('/(tabs)');
+      router.replace('/(tabs)');
     } catch (error) {
-      console.error("Error while comitting Lecture: ",error)
+      console.error("Error while comitting Lecture: ", error)
     }
-    
+
   }
 
 
@@ -90,10 +93,10 @@ const OverView = () => {
         </View>
       )}
       {currentFlow === "Review" && (
-        <Review id={id}/>
+        <Review id={id} />
       )}
       <View className="w-full items-center justify-center pt-10">
-        <Button title={currentFlow === "Review" ? "Finish Session" : "End Session"} onPress={endSession} shadow style='w-[90%]' fontStyle='font-rubik-bold text-white'/>
+        <Button title={currentFlow === "Review" ? "Finish Session" : "End Session"} onPress={endSession} shadow style='w-[90%]' fontStyle='font-rubik-bold text-white' />
       </View>
       <View className='h-[60px]' />
     </ScrollView>
