@@ -1,22 +1,19 @@
 import { View, Text } from 'react-native'
 import React, { useEffect } from 'react'
 import { useAuth } from '@/context/AuthContext'
-import { router } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import AnswerQuestion from './AnswerQuestion';
-import Button from './Button';
 import LoadingScreen from './LoadingScreen';
 import { getDaysAgo } from '@/utils/getAge';
 
 
-const Review = ({ id }: { id: String | string[] }) => {
+const Review = ({ id, showHeader=true }: { id: String | string[], showHeader?:boolean }) => {
 
     const { questions, isLoading, updateQuestion } = useAuth();
     const [thisQuestions, setThisQuestions] = React.useState<DiscplayQuestion[]>([]);
     const [answeredQuestions, setAnsweresQuestions] = React.useState([])
-    // console.log(questions)
     useEffect(() => {
-        const currentQuestions = questions.filter(q => q.lecture === id ).map(q => {
+        const currentQuestions = questions.filter(q => q.lecture === id && q.state !== "none" ).map(q => {
             let points = 0;
             if (q.lastAnswered) {
                 const daysAgo = getDaysAgo(q.lastAnswered);
@@ -30,6 +27,9 @@ const Review = ({ id }: { id: String | string[] }) => {
                     case "short":
                         if (daysAgo < 1) points = 1; 
                         break;
+                    case "none":
+                        points = 1;
+                        break
                     default:
                         break;
                 }
@@ -120,10 +120,10 @@ const Review = ({ id }: { id: String | string[] }) => {
 
     return (
         <View className="w-full p-5">
-            <View className="items-center justify-center w-full">
+            {showHeader && (<View className="items-center justify-center w-full">
                 <Text className="bg-accent text-white py-3 px-10 text-2xl font-rubik-medium rounded-full">Review</Text>
                 <Text className="font-rubik text-center pt-5">Time to review you questions</Text>
-            </View>
+            </View>)}
             <View>
                 {thisQuestions.length === 0 ? (
                     <View className='w-full items-center justify-center'>
@@ -142,6 +142,9 @@ const Review = ({ id }: { id: String | string[] }) => {
                         onGood={handleGood}
                         onVeryGood={handleOnGood}
                         onAgain={handleAgain}
+                        id={thisQuestions[0]._id}
+                        state={thisQuestions[0].state}
+                        lastAnswered={thisQuestions[0].lastAnswered}
                     />
                 )}
 

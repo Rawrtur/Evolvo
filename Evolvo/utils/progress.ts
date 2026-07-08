@@ -9,7 +9,7 @@ export const progress = (questions: Question[]) => {
             default: return 0;
         }
     }).reduce((sum, zahl)=>sum + zahl, 0)
-    const sum = questions.length * 3;
-    return result/sum
+    const sum = questions.filter(q=>q.state !== "none").length * 3;
+    return result/sum*100
     
 }

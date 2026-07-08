@@ -181,7 +181,7 @@ const LectureDetails = () => {
                                 // await AsyncStorage.setItem('currentLecture', lecture._id);
                                 router.navigate(`/(flow)/init/${lecture._id}`);
                             }} fontStyle='font-rubik-semibold text-white' />
-                        <Button title='Learn Questions' disabled={currentQuestions.length === 0} onPress={() => { }} fontStyle='font-rubik-semibold ' style='bg-background border border-black' />
+                        <Button title='Learn Questions' disabled={currentQuestions.length === 0} onPress={() => router.navigate(`/questions/${lecture?._id}`)} fontStyle='font-rubik-semibold ' style='bg-background border border-black' />
                     </View>
 
                     <View className='w-full items-center mt-5 mb-5'>
@@ -206,7 +206,7 @@ const LectureDetails = () => {
                     <View className='w-full pb-5'>
                         <Text className='font-rubik-semibold text-3xl'>Questions:</Text>
                         {currentQuestions.map((q) => (
-                            <Question key={q._id} answer={q.answer} question={q.question} onPress={() => handleDeleteQuestion(q._id)} />
+                            <Question key={q._id} {...q} onPress={() => handleDeleteQuestion(q._id)} />
                         ))}
                         {currentQuestions.length === 0 && (
                             <View className='w-full items-center'>

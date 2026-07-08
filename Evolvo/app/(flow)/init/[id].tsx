@@ -63,12 +63,12 @@ const Lecture = () => {
                 <Button title='Get Started' onPress={() => router.navigate(`/(flow)/${id}/${currentTime}`)} fontStyle="text-white font-rubik-bold" shadow />
                 <Text className="font-rubik-light pt-3 text-center">{currentTime} - guided from start to finish</Text>
             </View>
-            <View className='w-full items-center'>
+            <View className='w-full items-center pt-5'>
                 <LottieView
                     source={require('../../../assets/animations/thumbup.json')}
                     autoPlay
                     loop
-                    style={{ width: 300, height: 300 }}
+                    style={{ width: 350, height: 350 }}
                 />
             </View>
         </ScrollView>
