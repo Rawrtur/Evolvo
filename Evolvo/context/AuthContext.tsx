@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from "expo-router";
 
 export interface AuthContextType {
     isLoggedIn: boolean;
@@ -28,7 +29,10 @@ export interface AuthContextType {
     isInSession: () => Promise<boolean>;
     setSessionState: React.Dispatch<React.SetStateAction<boolean>>;
     sessionState: boolean;
-    commitLecture: (id: string) => Promise<({ success: true, message: string })>
+    commitLecture: (id: string) => Promise<({ success: true, message: string })>;
+    updatePassword: (id: string, newPassword: string, password: string) => Promise<({ success: boolean, message: string })>;
+    updateEmail: (id: string, newEmail: string, password: string) => Promise<({ success: boolean, message: string })>;
+    updateName: (id: string, newName: string, password: string) => Promise<({ success: boolean, message: string })>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -163,7 +167,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Login Failed at line 123 AuthContext.tsx");
             }
 
@@ -212,7 +216,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "SignUp Failed at line 166 AuthContext.tsx");
             }
 
@@ -247,7 +251,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "verification Failed at line 212 AuthContext.tsx");
             }
 
@@ -293,7 +297,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 253 AuthContext.tsx");
             }
 
@@ -323,6 +327,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             await safeAsyncStorage.removeItem("user");
             await safeAsyncStorage.removeItem("lectures");
             await safeAsyncStorage.removeItem("questions");
+            // router.replace("/(auth)")
 
             setToken(null);
             setUser(null);
@@ -353,7 +358,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 314 AuthContext.tsx");
             }
 
@@ -384,7 +389,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 314 AuthContext.tsx");
             }
 
@@ -414,7 +419,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 314 AuthContext.tsx");
             }
 
@@ -446,7 +451,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 417 AuthContext.tsx");
             }
 
@@ -477,7 +482,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 314 AuthContext.tsx");
             }
 
@@ -514,7 +519,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 506 AuthContext.tsx");
             }
 
@@ -546,7 +551,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
             const data = await response.json();
 
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.message || "Resend Failed at line 538 AuthContext.tsx");
             }
 
@@ -560,6 +565,110 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             return data;
         } catch (error) {
             console.error("Error while commiting Lecture: ", error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const updatePassword = async (id: string, newPassword: string, password: string) => {
+        try {
+            setIsLoading(true);
+            setError(null)
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/password/${id}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({ newPassword, password })
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Update Failed at line 584 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+            return data;
+
+        } catch (error) {
+            await logout();
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const updateEmail = async (id: string, newEmail: string, password: string) => {
+        try {
+            setIsLoading(true);
+            setError(null)
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/email/${id}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({ newEmail, password })
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Update Failed at line 625 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            setUser({...user,email:newEmail})
+
+            return data;
+
+        } catch (error) {
+            await logout();
+
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const updateName = async (id: string, newName: string, password: string) => {
+        try {
+            setIsLoading(true);
+            setError(null)
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/name/${id}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({ newName, password })
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Update Failed at line 625 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            setUser({...user,name:newName})
+
+            return data;
+
+        } catch (error) {
+            await logout();
+
         } finally {
             setIsLoading(false);
         }
@@ -595,7 +704,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     isInSession,
                     setSessionState,
                     sessionState,
-                    commitLecture
+                    commitLecture,
+                    updatePassword,
+                    updateEmail,
+                    updateName
                 }
             }
         >
