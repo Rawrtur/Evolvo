@@ -72,6 +72,7 @@
     [x] timer extern speichern (mit async storage)
     [x] flow index speichern
     [ ] anzeigen falls bereits in session
+[ ] connection status
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content

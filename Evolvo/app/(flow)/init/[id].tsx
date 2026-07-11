@@ -6,6 +6,7 @@ import RoundedIconButton from '@/components/RoundedIconButton';
 import { icons } from '@/constants/icons';
 import Button from '@/components/Button';
 import LottieView from 'lottie-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Lecture = () => {
@@ -20,6 +21,12 @@ const Lecture = () => {
 
     const timers = ["30 min", "60 min", "90 min"]
     const timers2 = ["120 min", "150 min", "180 min"]
+
+    const handleStart = async() => {
+        await AsyncStorage.setItem("sessionId", id);
+        await AsyncStorage.setItem("time", currentTime);
+         router.navigate(`/(flow)/${id}/${currentTime}`)
+    }
 
     return (
         <ScrollView className='w-full h-full bg-background p-5'>
@@ -60,7 +67,7 @@ const Lecture = () => {
                 ))}
             </View>
             <View className="pt-10">
-                <Button title='Get Started' onPress={() => router.navigate(`/(flow)/${id}/${currentTime}`)} fontStyle="text-white font-rubik-bold" shadow />
+                <Button title='Get Started' onPress={handleStart} fontStyle="text-white font-rubik-bold" shadow />
                 <Text className="font-rubik-light pt-3 text-center">{currentTime} - guided from start to finish</Text>
             </View>
             <View className='w-full items-center pt-5'>

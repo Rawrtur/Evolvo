@@ -21,11 +21,10 @@ const states = [
 const activity = () => {
 
   const { questions, lectures, isLoading } = useAuth();
-
   const history = lectures
     .filter((l) => l.lastLecture)
     .sort(
-      (a, b) => b.lastLecture!.getTime() - a.lastLecture!.getTime()
+      (a, b) => new Date(b.lastLecture) - new Date (a.lastLecture)
     );
 
   const pieData = states.map(s => ({
@@ -78,7 +77,7 @@ const activity = () => {
                 />
               </View>
             ) : (
-              <View className="w-[80%] overflow-hidden">
+              <View className="w-[90%] overflow-hidden">
                 {states.map((st, key) => (
                   <View key={key} className="flex-row items-center">
                     <View className="h-6 w-6 rounded-full" style={{ backgroundColor: st.color }} />

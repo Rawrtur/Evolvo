@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/AuthContext";
 import "@/global.css"
-import { Text, View, Image, FlatList, ScrollView } from "react-native";
+import { Text, View, Image, FlatList, ScrollView, TouchableOpacity } from "react-native";
 import { router } from 'expo-router'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useState } from "react";
@@ -13,6 +13,9 @@ import LectureCard from "@/components/LectureCard";
 import LoadingScreen from "@/components/LoadingScreen";
 import { recommendedLectures } from "@/utils/recommendedLectures";
 import { progress } from "@/utils/progress";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
+import { colors } from "@/constants/theme";
 
 
 
@@ -20,7 +23,7 @@ export default function App() {
 
   const [expandedLectureId, setExpandedLectureId] = useState<string | null>(null);
 
-  const { user, isLoading, isLoggedIn, lectures, questions } = useAuth();
+  const { user, isLoading, isLoggedIn, lectures, questions, isInSession, sessionState } = useAuth();
   useEffect(() => {
 
     if (!isLoggedIn && !isLoading) {
@@ -28,6 +31,22 @@ export default function App() {
       return;
     }
   }, [isLoggedIn, isLoading])
+
+  const [inSession, setInSession] = useState(false);
+  const [currenSessionId, setCurrentSessionId] = useState<string | null>(null);
+  const [currentTime, setCurrentTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkSessionState = async () => {
+      const session = await isInSession() || sessionState;
+      setInSession(session);
+      const sessionId = await AsyncStorage.getItem("sessionId");
+      setCurrentSessionId(sessionId);
+      const time = await AsyncStorage.getItem("time");
+      setCurrentTime(time);
+    }
+    checkSessionState()
+  }, [sessionState])
 
 
   if (isLoading) return <LoadingScreen />
@@ -37,8 +56,7 @@ export default function App() {
 
 
   return (
-    <View className='w-full h-full bg-background'>
-
+    <View className='w-full h-full bg-background relative'>
       <SafeAreaView className="flex-1 items-center justify-center">
         <ScrollView className="h-full w-full bg-background p-5">
           <View className="home-header">
@@ -151,6 +169,23 @@ export default function App() {
           <View className="h-30" />
         </ScrollView>
       </SafeAreaView>
+      {inSession && (
+        <TouchableOpacity
+          className="absolute border border-accent flex-row bg-white rounded-xl px-3 py-1 shadow-lg items-center justify-center"
+          style={{ right: 10, top: 150 }}
+          onPress={() => router.navigate(`/(flow)/${currenSessionId}/${currentTime}`)}
+        >
+          {/* <LottieView
+            source={require('../../assets/animations/thumbup.json')}
+            autoPlay
+            loop
+            style={{ width: 80, height: 80 }}
+          /> */}
+          <Text className="font-rubik text-center"> Navigate to Session</Text>
+          <Ionicons name="arrow-forward-circle" color={colors.accent} size={40} />
+        </TouchableOpacity>
+      )}
+
     </View>
   );
 }

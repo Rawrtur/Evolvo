@@ -46,13 +46,16 @@ const OverView = () => {
     setIndex(1)
   }
 
+  const currentTime = times[time][index - 1] || 0;
+  const currentFlow = flows[time][index - 1] || '';
+
   const endSession = async () => {
     try {
       await AsyncStorage.removeItem('timerValue');
       await AsyncStorage.removeItem('flowIndex');
       setSessionState(false);
 
-      if (index !== 0) await commitLecture(id);
+      if (currentFlow === "Review") await commitLecture(id);
 
       router.replace('/(tabs)');
     } catch (error) {
@@ -61,9 +64,7 @@ const OverView = () => {
 
   }
 
-
-  const currentTime = times[time][index - 1] || 0;
-  const currentFlow = flows[time][index - 1] || '';
+  
   // const currentFlow = "Review"
   // console.log('Current Time:', currentTime, 'Current Flow:', currentFlow, 'Index:', index);
   return (

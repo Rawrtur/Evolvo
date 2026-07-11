@@ -89,7 +89,7 @@ const LectureCard = ({ title, icon, color, _id, lastLecture, type, onPress, expa
                         }} 
                             style={`${inSession ? "bg-gray-400" : "bg-black"}`}
                             fontStyle='text-white'
-                            // disabled={inSession}
+                            disabled={inSession}
                         />
                         {expandedDetails && (
                             <Button
