@@ -175,12 +175,6 @@ export default function App() {
           style={{ right: 10, top: 150 }}
           onPress={() => router.navigate(`/(flow)/${currenSessionId}/${currentTime}`)}
         >
-          {/* <LottieView
-            source={require('../../assets/animations/thumbup.json')}
-            autoPlay
-            loop
-            style={{ width: 80, height: 80 }}
-          /> */}
           <Text className="font-rubik text-center"> Navigate to Session</Text>
           <Ionicons name="arrow-forward-circle" color={colors.accent} size={40} />
         </TouchableOpacity>

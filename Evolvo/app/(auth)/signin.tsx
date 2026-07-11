@@ -30,7 +30,6 @@ const signin = () => {
         }
 
         const result = await signIn(email, password);
-
         if (result.success) {
             router.replace("/(tabs)")
         } else {

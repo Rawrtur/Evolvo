@@ -1,6 +1,10 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from "expo-router";
+import { Text, ScrollView, View, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import LottieView from "lottie-react-native";
+import Button from "@/components/Button";
 
 export interface AuthContextType {
     isLoggedIn: boolean;
@@ -87,10 +91,35 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [PrevLanguage, setPrevLanguage] = useState<string>("en");
     const [verified, setVerified] = useState<string | null>(null);
     const [sessionState, setSessionState] = useState(false);
+    const [connected, setConnected] = useState(false);
+
+    // backend status prüfen
+    async function isBackendRechable() {
+        // setIsLoading(true);
+        const controller = new AbortController();
+
+        const timeout = setTimeout(() => {
+            controller.abort();
+        }, 3000)
+
+        try {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/health`, {
+                signal: controller.signal,
+            });
+
+            if (response.ok) setConnected(true)
+        } catch (error) {
+            setConnected(false);
+        } finally {
+            clearTimeout(timeout)
+            // setIsLoading(false)
+        }
+    }
 
     useEffect(() => {
         const initializeAuth = async () => {
             try {
+
                 // Small delay to ensure AsyncStorage is ready
                 await new Promise(resolve => setTimeout(resolve, 500));
 
@@ -102,6 +131,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 if (storedVerify) {
                     setVerified(storedVerify);
                 }
+
+                if (!connected) await isBackendRechable();
 
                 if (storedToken && storedUser) {
                     setToken(storedToken);
@@ -153,7 +184,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             }
         };
         initializeAuth();
-    }, [])
+    }, [connected])
 
 
     const signIn = async (email: string, password: string) => {
@@ -165,10 +196,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
+
+
+            if (response.status === 429) {
+                setError("Reached Rate Limit")
+                return { success: false, message: "Reached Rate Limit" }
+            }
+
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || "Login Failed at line 123 AuthContext.tsx");
+                throw new Error(data.error || "Login Failed at line 204 AuthContext.tsx");
             }
 
             if (data.error) {
@@ -181,7 +219,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             await safeAsyncStorage.setItem("authToken", token);
             await safeAsyncStorage.setItem("user", user);
             await safeAsyncStorage.setItem("lectures", lectures);
-            await safeAsyncStorage.setItem("quesions", questions);
+            await safeAsyncStorage.setItem("questions", questions);
 
 
             setToken(token);
@@ -193,10 +231,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             return { success: true, message: "User logged in successfully" };
         } catch (error: any) {
-            const errorMessage = error.message || "An Error occoured during login";
-            setError(errorMessage);
-            console.error("Login Error", error);
-            return { success: false, message: errorMessage };
+            if (error instanceof TypeError) {
+                // fetch konnte keine Verbindung herstellen
+                setConnected(false);
+            } else {
+                setError(error.message);
+            }
+
+            return { success: false, message: error.message };
         } finally {
             setIsLoading(false);
         }
@@ -213,6 +255,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password }),
             });
+
+            if (response.status === 429) {
+                setError("Reached Rate Limit")
+                return { success: false, message: "Reached Rate Limit" }
+            }
 
             const data = await response.json();
 
@@ -249,6 +296,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, code }),
             });
+
+            if (response.status === 429) {
+                setError("Reached Rate Limit")
+                return { success: false, message: "Reached Rate Limit" }
+            }
+
             const data = await response.json();
 
             if (!response.ok) {
@@ -295,6 +348,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email }),
             });
+
+            if (response.status === 429) {
+                setError("Reached Rate Limit")
+                return { success: false, message: "Reached Rate Limit" }
+            }
+
             const data = await response.json();
 
             if (!response.ok) {
@@ -626,7 +685,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 return { success: false, message: data.error }
             }
 
-            setUser({...user,email:newEmail})
+            setUser({ ...user, email: newEmail })
 
             return data;
 
@@ -662,7 +721,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 return { success: false, message: data.error }
             }
 
-            setUser({...user,name:newName})
+            setUser({ ...user, name: newName })
 
             return data;
 
@@ -673,6 +732,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setIsLoading(false);
         }
     }
+
+    if (!connected && !isLoading) return (
+        <SafeAreaView className="w-full h-screen bg-background items-center justify-center">
+            <View className="h-50" />
+            <View className="w-full items-center justify-center pb-10">
+                <LottieView
+                    source={require('../assets/animations/sleep.json')}
+                    autoPlay
+                    loop
+                    style={{ width: 300, height: 300 }}
+                />
+                <Text className="font-rubik-bold text-center text-accent">Server not available</Text>
+                <Button title="Try Again" onPress={isBackendRechable} shadow fontStyle="font-rubik-bold text-white" />
+            </View>
+
+        </SafeAreaView>
+    )
 
     return (
         <AuthContext.Provider
