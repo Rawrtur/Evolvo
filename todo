@@ -71,8 +71,9 @@
     [ ] fragen hinzufügen
     [x] timer extern speichern (mit async storage)
     [x] flow index speichern
-    [ ] anzeigen falls bereits in session
-[ ] connection status
+    [x] anzeigen falls bereits in session
+[x] connection status
+[ ] loading placeholder
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content

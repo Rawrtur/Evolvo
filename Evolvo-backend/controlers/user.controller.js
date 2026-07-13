@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import { generateVerficationCode } from "../utils/codegenerator.util.js";
+
 
 export const getUsers = async (req, res, next) => {
   try {
@@ -132,7 +134,12 @@ export const updateEmail = async (req, res, next) => {
       throw error;
     }
 
+
+
     user.email = newEmail;
+    user.verified = false;
+    user.verificationCode = generateVerficationCode();
+    user.verificationExpiresIn = Date.now() + 15 * 60 * 10000
 
     await user.save();
 

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { View, Text, TextInput} from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
@@ -8,13 +8,17 @@ import { Link, router } from 'expo-router'
 
 const signup = () => {
 
-  const { signUp, error, isLoading, clearError, setError } = useAuth();
+  const { signUp, error, isLoading, clearError, setError, verified } = useAuth();
 
   const [email, setEmail] = useState("nico-dierking@web.de");
   const [name, setName] = useState("Artur");
   const [password, setPassword] = useState("123123");
   const [resumePassword, setResumePassword] = useState("123123");
   const [passwordVisible, setPasswordVisible] = useState(true);
+
+  React.useEffect(() => {
+    if (verified) router.replace("/(auth)/verify")
+  }, [verified])
 
   const handleSignUp = async () => {
     clearError();

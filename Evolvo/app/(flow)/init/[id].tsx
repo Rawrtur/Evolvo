@@ -36,7 +36,7 @@ const Lecture = () => {
                     icon={icons.back}
                 />
                 <Text className='font-rubik-semibold text-2xl max-w-[80%]'>Learning {lecture?.title}</Text>
-                <View></View>
+                <View className='w-9'></View>
             </View>
             <View className='w-full items-center pb-5 pt-3 justify-center'>
                 <Text className="font-rubik-light">Enter your study time.</Text>

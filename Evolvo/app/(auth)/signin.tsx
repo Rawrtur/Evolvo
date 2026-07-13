@@ -8,11 +8,15 @@ import { Link, router } from 'expo-router'
 
 const signin = () => {
 
-    const { signIn, error, isLoading, clearError, setError} = useAuth();
+    const { signIn, error, isLoading, clearError, setError, verified} = useAuth();
 
     const [email, setEmail] = useState("nico-dierking@web.de");
     const [password, setPassword] = useState("123123");
     const [passwordVisible, setPasswordVisible] = useState(true);
+
+    React.useEffect(()=>{
+        if (verified) router.replace("/(auth)/verify")
+    },[verified])
 
     const handleSignIn = async () => {
         clearError();

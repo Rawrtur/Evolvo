@@ -59,9 +59,13 @@ const safeAsyncStorage = {
     },
     setItem: async (key: string, value: string): Promise<void> => {
         try {
-            const serialized = JSON.stringify(value);
+            if (key === "authToken") {
+                await AsyncStorage.setItem(String(key), value);
 
-            await AsyncStorage.setItem(String(key), serialized ?? null);
+            } else {
+                const serialized = JSON.stringify(value);
+                await AsyncStorage.setItem(String(key), serialized ?? null);
+            }
         } catch (error) {
             if (error instanceof Error && error.message.includes("Native module is null")) {
                 return;
@@ -131,7 +135,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 if (storedVerify) {
                     setVerified(storedVerify);
                 }
-
                 if (!connected) await isBackendRechable();
 
                 if (storedToken && storedUser) {
@@ -314,7 +317,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             }
 
             const { token, user, lectures, questions } = data.data;
-
+            console.log(data)
             await safeAsyncStorage.setItem("authToken", token);
             await safeAsyncStorage.setItem("user", user);
             await safeAsyncStorage.setItem("lectures", lectures);
@@ -326,7 +329,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setQuestions(questions);
 
             setIsLoggedIn(true);
-
+            await safeAsyncStorage.removeItem("verified")
             return { success: true, message: data.message };
         } catch (error: any) {
             const errorMessage = error.message || "An Error occoured during Verification.";
@@ -645,7 +648,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || "Update Failed at line 584 AuthContext.tsx");
+                if (data.error !== "Current Password is incorrect") {
+                    throw new Error(data.message || "Update Failed at line 652 AuthContext.tsx");
+                } else {
+                    return { success: false, message: data.error }
+                }
             }
 
             if (data.error) {
@@ -675,9 +682,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 body: JSON.stringify({ newEmail, password })
             });
             const data = await response.json();
-
             if (!response.ok) {
-                throw new Error(data.message || "Update Failed at line 625 AuthContext.tsx");
+                if (data.error !== "Current Password is incorrect") {
+                    throw new Error(data.message || "Update Failed at line 625 AuthContext.tsx");
+                } else {
+                    return { success: false, message: data.error }
+                }
             }
 
             if (data.error) {
@@ -686,10 +696,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             }
 
             setUser({ ...user, email: newEmail })
+            await safeAsyncStorage.setItem("user", { ...user, email: newEmail })
 
-            return data;
+            await safeAsyncStorage.setItem("verified", newEmail);
+            router.replace("/(auth)/verify")
+
+
+            await logout();
+
+            return { success: true, message: "send to verify" }
 
         } catch (error) {
+            console.log(error)
             await logout();
 
         } finally {
@@ -713,7 +731,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || "Update Failed at line 625 AuthContext.tsx");
+                if (data.error !== "Current Password is incorrect") {
+                    throw new Error(data.message || "Update Failed at line 729 AuthContext.tsx");
+                } else {
+                    return { success: false, message: data.error }
+                }
             }
 
             if (data.error) {
@@ -722,8 +744,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             }
 
             setUser({ ...user, name: newName })
-
-            return data;
+            await safeAsyncStorage.setItem("user", { ...user, name: newName })
 
         } catch (error) {
             await logout();

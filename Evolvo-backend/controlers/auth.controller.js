@@ -20,7 +20,7 @@ export const signUp = async (req, res, next) => {
     const existingUser = await User.findOne({ email });
 
     if (ref && mongoose.Types.ObjectId.isValid(ref)) {
-      console.log("increased")
+      console.log("increased");
       await User.findByIdAndUpdate(ref, { $inc: { invited: 1 } });
     }
 
@@ -112,13 +112,16 @@ export const verify = async (req, res, next) => {
       expiresIn: JWT_EXPIRES_IN,
     });
 
+    const lectures = await Lecture.find({ user: user._id });
+    const questions = await Question.find({ user: user._id });
+
     res.json({
       success: true,
       data: {
         token,
         user,
-        questions: [],
-        lectures: [],
+        questions,
+        lectures,
       },
     });
   } catch (error) {

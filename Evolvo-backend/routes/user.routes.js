@@ -23,7 +23,7 @@ userRouter.post("/", limiter, authorizeAdmin, createUser);
 
 userRouter.put("/password/:id", limiter, authorize, updatePassword);
 
-userRouter.put("/email/:id", limiter, authorize, updateEmail);
+userRouter.put("/email/:id",limiter, authorize, updateEmail);
 
 userRouter.put("/name/:id", limiter, authorize, updateName);
 
