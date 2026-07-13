@@ -9,6 +9,7 @@ import LectureCard from '@/components/LectureCard'
 import LottieView from 'lottie-react-native';
 import ThemeTextInput from '@/components/ThemeTextInput'
 import RoundedIconButton from '@/components/RoundedIconButton'
+import AddButton from '@/components/AddButton'
 
 
 const lectures = () => {
@@ -28,10 +29,7 @@ const lectures = () => {
               icon={icons.back}
             />
             <Text className='font-rubik-semibold text-2xl'>My Lectures</Text>
-            <RoundedIconButton
-              onPress={() => { }}
-              icon={icons.menu}
-            />
+            <AddButton onPress={() => router.navigate("/(sites)/createLecture")} />
           </View>
           <View className='w-full'>
             <ThemeTextInput
@@ -68,7 +66,7 @@ const lectures = () => {
               )
             })}
           </View>
-          <View className='h-40'/>
+          <View className='h-40' />
         </ScrollView>
       </SafeAreaView>
     </View>
