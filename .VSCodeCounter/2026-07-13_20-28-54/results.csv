@@ -1,0 +1,167 @@
+"filename", "language", "Markdown", "JavaScript JSX", "JavaScript", "PostCSS", "XML", "JSON", "Dotenv", "HTML", "TypeScript", "JSON with Comments", "TypeScript JSX", "comment", "blank", "total"
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\app.js", "JavaScript", 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 7, 12, 58
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\config\env.js", "JavaScript", 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 6
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\asset.controller.js", "JavaScript", 0, 0, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 73
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\auth.controller.js", "JavaScript", 0, 0, 161, 0, 0, 0, 0, 0, 0, 0, 0, 5, 38, 204
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\lecture.controller.js", "JavaScript", 0, 0, 126, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 147
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\questions.controller.js", "JavaScript", 0, 0, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 87
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\support.controller.js", "JavaScript", 0, 0, 66, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 80
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\user.controller.js", "JavaScript", 0, 0, 205, 0, 0, 0, 0, 0, 0, 0, 0, 0, 49, 254
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\database\mongodb.js", "JavaScript", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 22
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\eslint.config.js", "JavaScript", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\admin.middleware.js", "JavaScript", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 26
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\auth.middleware.js", "JavaScript", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 36
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\error.middleware.js", "JavaScript", 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 4, 8, 41
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\limiter.middleware.js", "JavaScript", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 15
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\asset.model.js", "JavaScript", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 17
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\lecture.model.js", "JavaScript", 0, 0, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 42
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\question.model.js", "JavaScript", 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 39
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\support.model.js", "JavaScript", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 26
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\user.model.js", "JavaScript", 0, 0, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 58
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\package-lock.json", "JSON", 0, 0, 0, 0, 0, 2262, 0, 0, 0, 0, 0, 0, 1, 2263
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\package.json", "JSON", 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 1, 31
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\asset.route.js", "JavaScript", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 17
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\auth.routes.js", "JavaScript", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 20
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\lectures.routes.js", "JavaScript", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 29
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\questions.routes.js", "JavaScript", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 21
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\subcription.routes.js", "JavaScript", 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 23
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\support.route.js", "JavaScript", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 21
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\user.routes.js", "JavaScript", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 35
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\utils\codegenerator.util.js", "JavaScript", 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\utils\sendEmail.util.js", "JavaScript", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 20
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\.claude\settings.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 1, 6
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\.env", "Dotenv", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 3
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\AGENTS.md", "Markdown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\CLAUDE.md", "Markdown", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\README.md", "Markdown", 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 51
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 1, 61
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\_layout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 2, 7
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\signin.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 97, 1, 10, 108
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\signup.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124, 1, 12, 137
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\verify.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 92, 1, 15, 108
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(flow)\[id]\[time].tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 89, 2, 16, 107
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(flow)\init\[id].tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 74, 0, 11, 85
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\AllowNewsletter.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 2, 12
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\ChangeEmail.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 88, 0, 9, 97
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\ChangeName.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 83, 0, 8, 91
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\ChangePassword.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 5, 23
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\DeleteAccount.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 2, 12
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\Help.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 2, 12
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\createLecture.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120, 1, 11, 132
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\recommended.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 91, 1, 8, 100
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\_layout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 57, 0, 6, 63
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\activity.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 1, 11, 122
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 167, 0, 18, 185
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\lectures.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 69, 1, 6, 76
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\settings.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 1, 7, 104
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\_layout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 2, 7, 37
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\lectures\[id].tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 236, 1, 24, 261
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\questions\[id].tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 9, 7, 51
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\confetti.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\jump.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\loading.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\sleep.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\thumbup.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\wave.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\AddButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 2, 19
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\AnswerQuestion.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 118, 2, 8, 128
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Break.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47, 1, 7, 55
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Button.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 3, 19
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\CloseButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 2, 26
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Focus.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31, 0, 5, 36
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\LectureCard.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 9, 108
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\LoadingScreen.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 2, 18
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Overview.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 66, 0, 7, 73
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\PreStudy.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31, 0, 6, 37
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Question.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 0, 5, 51
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\RecommendedLecture.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 2, 27
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Review.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 146, 1, 9, 156
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\RoundedIconButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 2, 15
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\SecondButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 2, 16
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\SquareLoader.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 65, 4, 9, 78
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\ThemeTextInput.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 0, 2, 28
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Timer.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 71, 9, 22, 102
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\data.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 56, 0, 0, 0, 5, 61
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\icons.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 3, 18
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\images.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 4
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\theme.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 0, 0, 3, 51
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\context\AuthContext.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 670, 7, 145, 822
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\eslint.config.js", "JavaScript", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 11
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\global.css", "PostCSS", 0, 0, 0, 148, 0, 0, 0, 0, 0, 0, 0, 3, 39, 190
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\image.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 1, 21
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\metro.config.js", "JavaScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 7
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\nativewind-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 3
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\package-lock.json", "JSON", 0, 0, 0, 0, 0, 14966, 0, 0, 0, 0, 0, 0, 1, 14967
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\package.json", "JSON", 0, 0, 0, 0, 0, 61, 0, 0, 0, 0, 0, 0, 1, 62
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\postcss.config.mjs", "JavaScript", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\tsconfig.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 18
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\type.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 3, 75
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\formatter.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 5, 24
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\getAge.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 4, 9
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\progress.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 1, 1, 15
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\recommendedLectures.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 1, 9
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\README.md", "Markdown", 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\AGENTS.md", "Markdown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 6
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\CLAUDE.md", "Markdown", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\README.md", "Markdown", 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 37
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\globals.css", "PostCSS", 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 5, 27
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\layout.js", "JavaScript", 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 38
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\messages\page.jsx", "JavaScript JSX", 0, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 185
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\overview\page.jsx", "JavaScript JSX", 0, 86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 100
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\page.js", "JavaScript", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\sales\page.jsx", "JavaScript JSX", 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 64
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\users\page.jsx", "JavaScript JSX", 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\utils\fetchData.js", "JavaScript", 0, 0, 79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 85
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\Header.jsx", "JavaScript JSX", 0, 41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 44
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\SalesoverviewShart.jsx", "JavaScript JSX", 0, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 70
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\Sidebar.jsx", "JavaScript JSX", 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 75
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\StatCard.jsx", "JavaScript JSX", 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 23
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\UsersDistributionChart.jsx", "JavaScript JSX", 0, 89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 98
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\UsersTable.jsx", "JavaScript JSX", 0, 155, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 7, 164
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\eslint.config.mjs", "JavaScript", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 17
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\jsconfig.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 1, 8
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\next.config.mjs", "JavaScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 8
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\package-lock.json", "JSON", 0, 0, 0, 0, 0, 7233, 0, 0, 0, 0, 0, 0, 1, 7234
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\package.json", "JSON", 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 1, 27
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\postcss.config.mjs", "JavaScript", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\Flag_of_Germany.svg", "XML", 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\file.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\globe.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\next.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\vercel.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\window.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\.env", "Dotenv", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 1, 4
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\README.md", "Markdown", 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 17
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\eslint.config.js", "JavaScript", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 22
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\index.html", "HTML", 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 1, 14
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\package-lock.json", "JSON", 0, 0, 0, 0, 0, 2956, 0, 0, 0, 0, 0, 0, 1, 2957
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\package.json", "JSON", 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 0, 1, 39
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\public\favicon.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\public\icons.svg", "XML", 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 1, 25
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\App.jsx", "JavaScript JSX", 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 36
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\animations\loading.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\animations\wave.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\react.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\vite.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Button.jsx", "JavaScript JSX", 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Carousel.css", "PostCSS", 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 3, 22
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Caroussel.jsx", "JavaScript JSX", 0, 43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 52
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Footer.jsx", "JavaScript JSX", 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 30
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\InviteBox.jsx", "JavaScript JSX", 0, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 57
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\button.css", "PostCSS", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 2, 22
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\progress.jsx", "JavaScript JSX", 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 29
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\index.css", "PostCSS", 0, 0, 0, 38, 0, 0, 0, 0, 0, 0, 0, 0, 6, 44
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\main.jsx", "JavaScript JSX", 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Code.jsx", "JavaScript JSX", 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 79
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Dashboard.jsx", "JavaScript JSX", 0, 186, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 20, 209
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Landing.jsx", "JavaScript JSX", 0, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 56
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\LogIn.jsx", "JavaScript JSX", 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 114
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\SignUp.jsx", "JavaScript JSX", 0, 161, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 22, 184
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Support.jsx", "JavaScript JSX", 0, 86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 101
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard1.jsx", "JavaScript JSX", 0, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 71
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard2.jsx", "JavaScript JSX", 0, 79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 90
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard3.jsx", "JavaScript JSX", 0, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 100
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard4.jsx", "JavaScript JSX", 0, 92, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 101
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard5.jsx", "JavaScript JSX", 0, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 61
+"c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\vite.config.js", "JavaScript", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 11
+"Total", "-", 113, 2021, 1339, 247, 41, 27580, 2, 13, 258, 90, 3250, 97, 1113, 36164

@@ -28,7 +28,7 @@ declare global {
     _id: string;
     type: "Theory" | "Practise" | "Calculate" | "Experiments" | "Projects";
     lastLecture: Date;
-    onPress: ()=>void;
+    onPress: () => void;
     expanded: boolean;
     shortTermQuestions: number;
     mediumTermQuestions: number;
@@ -40,7 +40,7 @@ declare global {
     answer: string;
     state: string;
     lastAnswered: Date;
-    lecture: string,
+    lecture: string;
     _id: string;
   }
   interface DiscplayQuestion {
@@ -48,26 +48,35 @@ declare global {
     answer: string;
     state: string;
     lastAnswered: Date;
-    lecture: string,
+    lecture: string;
     _id: string;
-    points:0
+    points: 0;
   }
   interface User {
     __v: number;
     _id: string;
-    createdAt: Date,
+    createdAt: Date;
     email: string;
     name: string;
     password: string;
     updatedAt: Date;
-    verficationCode: string|null;
+    verficationCode: string | null;
     verificationExpiresIn: Date;
-    verified: boolean;  
+    verified: boolean;
     profilePicture: ImageSourcePropType;
   }
   interface TabIconProbs {
     focused: boolean;
     icon: ImageSourcePropType;
+  }
+  interface ThemeTextInputProps {
+    value: string;
+    onChangeText: (text: string) => void;
+    placeholder: string;
+    title: string;
+    lines?: number;
+    type?: "default" | "numeric" | "email-address" | "visible-password";
+    visible?: boolean;
   }
 }
 

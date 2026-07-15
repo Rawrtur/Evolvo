@@ -67,7 +67,7 @@ const ChangeName = () => {
             placeholder='enter you password'
             title='Password'
             type='visible-password'
-            visible
+            visible={false}
           />
           <Text>
             {error}

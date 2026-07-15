@@ -80,6 +80,7 @@
 [x] connection status
 [ ] loading placeholder
 [ ] ad lecter rand färben
+[ ] login close Button zu eye button ändern
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content

@@ -1,0 +1,249 @@
+Date : 2026-07-13 20:39:19
+Directory : c:\Users\dierk\OneDrive\Desktop\Evolvo
+Total : 165 files,  34954 codes, 97 comments, 1113 blanks, all 36164 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |         16 |     27,580 |          0 |          8 |     27,588 |
+| TypeScript JSX     |         41 |      3,250 |         46 |        448 |      3,744 |
+| JavaScript JSX     |         28 |      2,021 |         15 |        230 |      2,266 |
+| JavaScript         |         39 |      1,339 |         24 |        287 |      1,650 |
+| TypeScript         |         11 |        258 |          3 |         29 |        290 |
+| PostCSS            |          5 |        247 |          3 |         55 |        305 |
+| Markdown           |          8 |        113 |          2 |         48 |        163 |
+| JSON with Comments |          4 |         90 |          0 |          3 |         93 |
+| XML                |         10 |         41 |          0 |          3 |         44 |
+| HTML               |          1 |         13 |          0 |          1 |         14 |
+| Dotenv             |          2 |          2 |          4 |          1 |          7 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                         | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                            |        165 |     34,954 |         97 |      1,113 |     36,164 |
+| . (Files)                                                                                    |          1 |         44 |          0 |          0 |         44 |
+| Evolvo                                                                                       |         71 |     18,824 |         56 |        547 |     19,427 |
+| Evolvo (Files)                                                                               |         15 |     15,397 |          9 |         74 |     15,480 |
+| Evolvo-backend                                                                               |         30 |      3,444 |         17 |        262 |      3,723 |
+| Evolvo-backend (Files)                                                                       |          4 |      2,337 |          7 |         16 |      2,360 |
+| Evolvo-backend\config                                                                        |          1 |          3 |          0 |          3 |          6 |
+| Evolvo-backend\controlers                                                                    |          6 |        695 |          5 |        145 |        845 |
+| Evolvo-backend\database                                                                      |          1 |         17 |          0 |          5 |         22 |
+| Evolvo-backend\middleware                                                                    |          4 |         90 |          5 |         23 |        118 |
+| Evolvo-backend\models                                                                        |          5 |        162 |          0 |         20 |        182 |
+| Evolvo-backend\routes                                                                        |          7 |        119 |          0 |         47 |        166 |
+| Evolvo-backend\utils                                                                         |          2 |         21 |          0 |          3 |         24 |
+| Evolvo\.claude                                                                               |          1 |          5 |          0 |          1 |          6 |
+| Evolvo\app                                                                                   |         22 |      1,709 |         22 |        199 |      1,930 |
+| Evolvo\app (Files)                                                                           |          1 |         28 |          2 |          7 |         37 |
+| Evolvo\app\(auth)                                                                            |          4 |        318 |          3 |         39 |        360 |
+| Evolvo\app\(flow)                                                                            |          2 |        163 |          2 |         27 |        192 |
+| Evolvo\app\(flow)\[id]                                                                       |          1 |         89 |          2 |         16 |        107 |
+| Evolvo\app\(flow)\init                                                                       |          1 |         74 |          0 |         11 |         85 |
+| Evolvo\app\(sites)                                                                           |          8 |        430 |          2 |         47 |        479 |
+| Evolvo\app\(tabs)                                                                            |          5 |        499 |          3 |         48 |        550 |
+| Evolvo\app\lectures                                                                          |          1 |        236 |          1 |         24 |        261 |
+| Evolvo\app\questions                                                                         |          1 |         35 |          9 |          7 |         51 |
+| Evolvo\assets                                                                                |          6 |          6 |          0 |          0 |          6 |
+| Evolvo\assets\animations                                                                     |          6 |          6 |          0 |          0 |          6 |
+| Evolvo\components                                                                            |         18 |        871 |         17 |        104 |        992 |
+| Evolvo\constants                                                                             |          4 |        121 |          0 |         13 |        134 |
+| Evolvo\context                                                                               |          1 |        670 |          7 |        145 |        822 |
+| Evolvo\utils                                                                                 |          4 |         45 |          1 |         11 |         57 |
+| admin-dashboard                                                                              |         29 |      8,265 |         13 |        111 |      8,389 |
+| admin-dashboard (Files)                                                                      |          9 |      7,314 |          6 |         27 |      7,347 |
+| admin-dashboard\app                                                                          |          8 |        498 |          4 |         51 |        553 |
+| admin-dashboard\app (Files)                                                                  |          3 |         62 |          0 |         12 |         74 |
+| admin-dashboard\app\messages                                                                 |          1 |        174 |          4 |          7 |        185 |
+| admin-dashboard\app\overview                                                                 |          1 |         86 |          0 |         14 |        100 |
+| admin-dashboard\app\sales                                                                    |          1 |         58 |          0 |          6 |         64 |
+| admin-dashboard\app\users                                                                    |          1 |         39 |          0 |          6 |         45 |
+| admin-dashboard\app\utils                                                                    |          1 |         79 |          0 |          6 |         85 |
+| admin-dashboard\components                                                                   |          6 |        439 |          3 |         32 |        474 |
+| admin-dashboard\public                                                                       |          6 |         14 |          0 |          1 |         15 |
+| evolvo-waitlist                                                                              |         34 |      4,377 |         11 |        193 |      4,581 |
+| evolvo-waitlist (Files)                                                                      |          7 |      3,046 |          3 |         15 |      3,064 |
+| evolvo-waitlist\public                                                                       |          2 |         25 |          0 |          1 |         26 |
+| evolvo-waitlist\src                                                                          |         25 |      1,306 |          8 |        177 |      1,491 |
+| evolvo-waitlist\src (Files)                                                                  |          3 |         81 |          1 |         10 |         92 |
+| evolvo-waitlist\src\assets                                                                   |          4 |          4 |          0 |          1 |          5 |
+| evolvo-waitlist\src\assets (Files)                                                           |          2 |          2 |          0 |          1 |          3 |
+| evolvo-waitlist\src\assets\animations                                                        |          2 |          2 |          0 |          0 |          2 |
+| evolvo-waitlist\src\components                                                               |          7 |        194 |          1 |         33 |        228 |
+| evolvo-waitlist\src\pages                                                                    |         11 |      1,027 |          6 |        133 |      1,166 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                     | language           | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\app.js                                 | JavaScript         |         39 |          7 |         12 |         58 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\config\env.js                          | JavaScript         |          3 |          0 |          3 |          6 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\asset.controller.js         | JavaScript         |         62 |          0 |         11 |         73 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\auth.controller.js          | JavaScript         |        161 |          5 |         38 |        204 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\lecture.controller.js       | JavaScript         |        126 |          0 |         21 |        147 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\questions.controller.js     | JavaScript         |         75 |          0 |         12 |         87 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\support.controller.js       | JavaScript         |         66 |          0 |         14 |         80 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\controlers\user.controller.js          | JavaScript         |        205 |          0 |         49 |        254 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\database\mongodb.js                    | JavaScript         |         17 |          0 |          5 |         22 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\eslint.config.js                       | JavaScript         |          6 |          0 |          2 |          8 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\admin.middleware.js         | JavaScript         |         20 |          0 |          6 |         26 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\auth.middleware.js          | JavaScript         |         30 |          1 |          5 |         36 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\error.middleware.js         | JavaScript         |         29 |          4 |          8 |         41 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\middleware\limiter.middleware.js       | JavaScript         |         11 |          0 |          4 |         15 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\asset.model.js                  | JavaScript         |         14 |          0 |          3 |         17 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\lecture.model.js                | JavaScript         |         38 |          0 |          4 |         42 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\question.model.js               | JavaScript         |         35 |          0 |          4 |         39 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\support.model.js                | JavaScript         |         22 |          0 |          4 |         26 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\models\user.model.js                   | JavaScript         |         53 |          0 |          5 |         58 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\package-lock.json                      | JSON               |      2,262 |          0 |          1 |      2,263 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\package.json                           | JSON               |         30 |          0 |          1 |         31 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\asset.route.js                  | JavaScript         |         12 |          0 |          5 |         17 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\auth.routes.js                  | JavaScript         |         16 |          0 |          4 |         20 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\lectures.routes.js              | JavaScript         |         20 |          0 |          9 |         29 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\questions.routes.js             | JavaScript         |         14 |          0 |          7 |         21 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\subcription.routes.js           | JavaScript         |         19 |          0 |          4 |         23 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\support.route.js                | JavaScript         |         14 |          0 |          7 |         21 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\routes\user.routes.js                  | JavaScript         |         24 |          0 |         11 |         35 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\utils\codegenerator.util.js            | JavaScript         |          3 |          0 |          1 |          4 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo-backend\utils\sendEmail.util.js                | JavaScript         |         18 |          0 |          2 |         20 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\.claude\settings.json                          | JSON with Comments |          5 |          0 |          1 |          6 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\.env                                           | Dotenv             |          1 |          2 |          0 |          3 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\AGENTS.md                                      | Markdown           |          2 |          0 |          2 |          4 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\CLAUDE.md                                      | Markdown           |          1 |          0 |          1 |          2 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\README.md                                      | Markdown           |         31 |          0 |         20 |         51 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app.json                                       | JSON with Comments |         60 |          0 |          1 |         61 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\_layout.tsx                         | TypeScript JSX     |          5 |          0 |          2 |          7 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\signin.tsx                          | TypeScript JSX     |         97 |          1 |         10 |        108 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\signup.tsx                          | TypeScript JSX     |        124 |          1 |         12 |        137 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(auth)\verify.tsx                          | TypeScript JSX     |         92 |          1 |         15 |        108 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(flow)\[id]\[time].tsx                     | TypeScript JSX     |         89 |          2 |         16 |        107 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(flow)\init\[id].tsx                       | TypeScript JSX     |         74 |          0 |         11 |         85 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\AllowNewsletter.tsx                | TypeScript JSX     |         10 |          0 |          2 |         12 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\ChangeEmail.tsx                    | TypeScript JSX     |         88 |          0 |          9 |         97 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\ChangeName.tsx                     | TypeScript JSX     |         83 |          0 |          8 |         91 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\ChangePassword.tsx                 | TypeScript JSX     |         18 |          0 |          5 |         23 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\DeleteAccount.tsx                  | TypeScript JSX     |         10 |          0 |          2 |         12 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\Help.tsx                           | TypeScript JSX     |         10 |          0 |          2 |         12 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\createLecture.tsx                  | TypeScript JSX     |        120 |          1 |         11 |        132 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(sites)\recommended.tsx                    | TypeScript JSX     |         91 |          1 |          8 |        100 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\_layout.tsx                         | TypeScript JSX     |         57 |          0 |          6 |         63 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\activity.tsx                        | TypeScript JSX     |        110 |          1 |         11 |        122 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\index.tsx                           | TypeScript JSX     |        167 |          0 |         18 |        185 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\lectures.tsx                        | TypeScript JSX     |         69 |          1 |          6 |         76 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\(tabs)\settings.tsx                        | TypeScript JSX     |         96 |          1 |          7 |        104 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\_layout.tsx                                | TypeScript JSX     |         28 |          2 |          7 |         37 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\lectures\[id].tsx                          | TypeScript JSX     |        236 |          1 |         24 |        261 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\app\questions\[id].tsx                         | TypeScript JSX     |         35 |          9 |          7 |         51 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\confetti.json                | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\jump.json                    | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\loading.json                 | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\sleep.json                   | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\thumbup.json                 | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\assets\animations\wave.json                    | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\AddButton.tsx                       | TypeScript JSX     |         17 |          0 |          2 |         19 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\AnswerQuestion.tsx                  | TypeScript JSX     |        118 |          2 |          8 |        128 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Break.tsx                           | TypeScript JSX     |         47 |          1 |          7 |         55 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Button.tsx                          | TypeScript JSX     |         16 |          0 |          3 |         19 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\CloseButton.tsx                     | TypeScript JSX     |         24 |          0 |          2 |         26 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Focus.tsx                           | TypeScript JSX     |         31 |          0 |          5 |         36 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\LectureCard.tsx                     | TypeScript JSX     |         99 |          0 |          9 |        108 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\LoadingScreen.tsx                   | TypeScript JSX     |         16 |          0 |          2 |         18 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Overview.tsx                        | TypeScript JSX     |         66 |          0 |          7 |         73 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\PreStudy.tsx                        | TypeScript JSX     |         31 |          0 |          6 |         37 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Question.tsx                        | TypeScript JSX     |         46 |          0 |          5 |         51 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\RecommendedLecture.tsx              | TypeScript JSX     |         25 |          0 |          2 |         27 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Review.tsx                          | TypeScript JSX     |        146 |          1 |          9 |        156 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\RoundedIconButton.tsx               | TypeScript JSX     |         13 |          0 |          2 |         15 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\SecondButton.tsx                    | TypeScript JSX     |         14 |          0 |          2 |         16 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\SquareLoader.tsx                    | TypeScript JSX     |         65 |          4 |          9 |         78 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\ThemeTextInput.tsx                  | TypeScript JSX     |         26 |          0 |          2 |         28 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\components\Timer.tsx                           | TypeScript JSX     |         71 |          9 |         22 |        102 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\data.ts                              | TypeScript         |         56 |          0 |          5 |         61 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\icons.ts                             | TypeScript         |         15 |          0 |          3 |         18 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\images.ts                            | TypeScript         |          2 |          0 |          2 |          4 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\constants\theme.ts                             | TypeScript         |         48 |          0 |          3 |         51 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\context\AuthContext.tsx                        | TypeScript JSX     |        670 |          7 |        145 |        822 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\eslint.config.js                               | JavaScript         |          8 |          1 |          2 |         11 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\global.css                                     | PostCSS            |        148 |          3 |         39 |        190 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\image.d.ts                                     | TypeScript         |         20 |          0 |          1 |         21 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\metro.config.js                                | JavaScript         |          4 |          1 |          2 |          7 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\nativewind-env.d.ts                            | TypeScript         |          0 |          2 |          1 |          3 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\package-lock.json                              | JSON               |     14,966 |          0 |          1 |     14,967 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\package.json                                   | JSON               |         61 |          0 |          1 |         62 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\postcss.config.mjs                             | JavaScript         |          5 |          0 |          0 |          5 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\tsconfig.json                                  | JSON with Comments |         18 |          0 |          0 |         18 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\type.d.ts                                      | TypeScript         |         72 |          0 |          3 |         75 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\formatter.ts                             | TypeScript         |         19 |          0 |          5 |         24 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\getAge.ts                                | TypeScript         |          5 |          0 |          4 |          9 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\progress.ts                              | TypeScript         |         13 |          1 |          1 |         15 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\Evolvo\utils\recommendedLectures.ts                   | TypeScript         |          8 |          0 |          1 |          9 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\README.md                                             | Markdown           |         44 |          0 |          0 |         44 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\AGENTS.md                             | Markdown           |          2 |          2 |          2 |          6 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\CLAUDE.md                             | Markdown           |          1 |          0 |          1 |          2 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\README.md                             | Markdown           |         23 |          0 |         14 |         37 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\globals.css                       | PostCSS            |         22 |          0 |          5 |         27 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\layout.js                         | JavaScript         |         33 |          0 |          5 |         38 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\messages\page.jsx                 | JavaScript JSX     |        174 |          4 |          7 |        185 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\overview\page.jsx                 | JavaScript JSX     |         86 |          0 |         14 |        100 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\page.js                           | JavaScript         |          7 |          0 |          2 |          9 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\sales\page.jsx                    | JavaScript JSX     |         58 |          0 |          6 |         64 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\users\page.jsx                    | JavaScript JSX     |         39 |          0 |          6 |         45 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\app\utils\fetchData.js                | JavaScript         |         79 |          0 |          6 |         85 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\Header.jsx                 | JavaScript JSX     |         41 |          0 |          3 |         44 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\SalesoverviewShart.jsx     | JavaScript JSX     |         67 |          0 |          3 |         70 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\Sidebar.jsx                | JavaScript JSX     |         68 |          1 |          6 |         75 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\StatCard.jsx               | JavaScript JSX     |         19 |          0 |          4 |         23 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\UsersDistributionChart.jsx | JavaScript JSX     |         89 |          0 |          9 |         98 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\components\UsersTable.jsx             | JavaScript JSX     |        155 |          2 |          7 |        164 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\eslint.config.mjs                     | JavaScript         |         12 |          2 |          3 |         17 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\jsconfig.json                         | JSON with Comments |          7 |          0 |          1 |          8 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\next.config.mjs                       | JavaScript         |          4 |          2 |          2 |          8 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\package-lock.json                     | JSON               |      7,233 |          0 |          1 |      7,234 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\package.json                          | JSON               |         26 |          0 |          1 |         27 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\postcss.config.mjs                    | JavaScript         |          6 |          0 |          2 |          8 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\Flag_of_Germany.svg            | XML                |          9 |          0 |          1 |         10 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\file.svg                       | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\globe.svg                      | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\next.svg                       | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\vercel.svg                     | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\admin-dashboard\public\window.svg                     | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\.env                                  | Dotenv             |          1 |          2 |          1 |          4 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\README.md                             | Markdown           |          9 |          0 |          8 |         17 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\eslint.config.js                      | JavaScript         |         20 |          0 |          2 |         22 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\index.html                            | HTML               |         13 |          0 |          1 |         14 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\package-lock.json                     | JSON               |      2,956 |          0 |          1 |      2,957 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\package.json                          | JSON               |         38 |          0 |          1 |         39 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\public\favicon.svg                    | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\public\icons.svg                      | XML                |         24 |          0 |          1 |         25 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\App.jsx                           | JavaScript JSX     |         32 |          1 |          3 |         36 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\animations\loading.json    | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\animations\wave.json       | JSON               |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\react.svg                  | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\assets\vite.svg                   | XML                |          1 |          0 |          1 |          2 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Button.jsx             | JavaScript JSX     |         13 |          0 |          3 |         16 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Carousel.css           | PostCSS            |         19 |          0 |          3 |         22 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Caroussel.jsx          | JavaScript JSX     |         43 |          0 |          9 |         52 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\Footer.jsx             | JavaScript JSX     |         26 |          0 |          4 |         30 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\InviteBox.jsx          | JavaScript JSX     |         48 |          1 |          8 |         57 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\button.css             | PostCSS            |         20 |          0 |          2 |         22 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\components\progress.jsx           | JavaScript JSX     |         25 |          0 |          4 |         29 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\index.css                         | PostCSS            |         38 |          0 |          6 |         44 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\main.jsx                          | JavaScript JSX     |         11 |          0 |          1 |         12 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Code.jsx                    | JavaScript JSX     |         68 |          0 |         11 |         79 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Dashboard.jsx               | JavaScript JSX     |        186 |          3 |         20 |        209 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Landing.jsx                 | JavaScript JSX     |         51 |          1 |          4 |         56 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\LogIn.jsx                   | JavaScript JSX     |         99 |          0 |         15 |        114 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\SignUp.jsx                  | JavaScript JSX     |        161 |          1 |         22 |        184 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\Support.jsx                 | JavaScript JSX     |         86 |          0 |         15 |        101 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard1.jsx                | JavaScript JSX     |         61 |          0 |         10 |         71 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard2.jsx                | JavaScript JSX     |         79 |          0 |         11 |         90 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard3.jsx                | JavaScript JSX     |         90 |          0 |         10 |        100 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard4.jsx                | JavaScript JSX     |         92 |          0 |          9 |        101 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\src\pages\onboard5.jsx                | JavaScript JSX     |         54 |          1 |          6 |         61 |
+| c:\Users\dierk\OneDrive\Desktop\Evolvo\evolvo-waitlist\vite.config.js                        | JavaScript         |          9 |          1 |          1 |         11 |
+| Total                                                                                        |                    |     34,954 |         97 |      1,113 |     36,164 |
++----------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
