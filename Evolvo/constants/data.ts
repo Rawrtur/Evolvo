@@ -52,7 +52,12 @@ export const profileSettings = [
   {text: "Change Email", route: "ChangeEmail", icon:"mail"},
   {text: "Change Password", route: "ChangePassword", icon:"lock-closed"},
   {text: "Change Name", route: "ChangeName", icon:"at-sharp"},
-  {text: "Delete Account", route: "DeleteAccount", icon:"trash"},
+  // {text: "Delete Account", route: "DeleteAccount", icon:"trash"},
+]
+
+export const subscriptionSettings = [
+  {text: "View Subscriptions", route: "ViewSubscription", icon:"bag"},
+  {text: "Cancel Subscription", route: "CancelSubscription", icon:"ban-outline"},
 ]
 
 export const emailSettings = [

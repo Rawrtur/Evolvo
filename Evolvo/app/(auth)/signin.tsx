@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { View, Text, TextInput} from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
@@ -8,15 +8,15 @@ import { Link, router } from 'expo-router'
 
 const signin = () => {
 
-    const { signIn, error, isLoading, clearError, setError, verified} = useAuth();
+    const { signIn, error, isLoading, clearError, setError, verified } = useAuth();
 
     const [email, setEmail] = useState("nico-dierking@web.de");
     const [password, setPassword] = useState("123123");
     const [passwordVisible, setPasswordVisible] = useState(true);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         if (verified) router.replace("/(auth)/verify")
-    },[verified])
+    }, [verified])
 
     const handleSignIn = async () => {
         clearError();
@@ -98,6 +98,12 @@ const signin = () => {
                 <Text className='font-rubik text-center'>
                     {"You don't have an account?"} <Link href="/(auth)/signup" className='underline pl-2 text-accent'>
                         Sign Up here!
+                    </Link>
+                </Text>
+                <Text className='font-rubik text-center pt-5'>
+                    You have Problems while log in? {'\n'}
+                    <Link href="/(sites)/Help" className='underline pl-2 text-accent'>
+                        Create a Ticket here!
                     </Link>
                 </Text>
             </View>

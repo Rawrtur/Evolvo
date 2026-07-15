@@ -9,7 +9,7 @@ import { icons } from "@/constants/icons";
 import LoadingScreen from "@/components/LoadingScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "@/constants/theme";
-import { emailSettings, profileSettings } from "@/constants/data";
+import { emailSettings, profileSettings, subscriptionSettings } from "@/constants/data";
 
 const SettingsNavigatorItem = ({ icon, text, route }: { icon: string, text: string, route: string }) => (
   <TouchableOpacity
@@ -79,9 +79,13 @@ export default function settings() {
             <View className="w-full bg-white rounded-xl p-3 gap-5">
               {emailSettings.map((item, key) => <SettingsNavigatorItem key={key} {...item} />)}
             </View>
+            <Text className="font-rubik-light text-gray-500 pt-5">SUBSCRIPTIONS</Text>
+            <View className="w-full bg-white rounded-xl p-3 gap-5">
+              {subscriptionSettings.map((item, key) => <SettingsNavigatorItem key={key} {...item} />)}
+            </View>
             <Text className="font-rubik-light text-gray-500 pt-5">TICKET SUPPORT</Text>
             <View className="w-full bg-white rounded-xl p-3 gap-5">
-              <SettingsNavigatorItem route="Help" icon="ticket" text="Help"/>
+              <SettingsNavigatorItem route="Help" icon="ticket" text="Help" />
             </View>
           </View>
           <View className="border-t border-accent mt-10 pt-5">
@@ -96,7 +100,7 @@ export default function settings() {
               <Ionicons name="chevron-forward" size={30} />
             </TouchableOpacity>
           </View>
-          <View className="h-40"/>
+          <View className="h-40" />
         </ScrollView>
       </SafeAreaView>
     </View>

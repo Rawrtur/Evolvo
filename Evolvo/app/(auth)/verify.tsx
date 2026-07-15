@@ -100,6 +100,12 @@ const verify = () => {
                         Sign In here!
                     </Link>
                 </Text>
+                <Text className='font-rubik text-center pt-5'>
+                    You have Problems in verification? {'\n'}
+                    <Link href="/(sites)/Help" className='underline pl-2 text-accent'>
+                        Create a Ticket here!
+                    </Link>
+                </Text>
             </View>
         </View>
     )

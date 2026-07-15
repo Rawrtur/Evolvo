@@ -37,6 +37,7 @@ export interface AuthContextType {
     updatePassword: (id: string, newPassword: string, password: string) => Promise<({ success: boolean, message: string })>;
     updateEmail: (id: string, newEmail: string, password: string) => Promise<({ success: boolean, message: string })>;
     updateName: (id: string, newName: string, password: string) => Promise<({ success: boolean, message: string })>;
+    submitProblem: (user:string|undefined, problem: string) => Promise<({success:boolean, message:string})>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -754,6 +755,37 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }
 
+    const submitProblem = async (user:string|undefined, problem:string) => {
+        try {
+            setError(null)
+            setIsLoading(true);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/support`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user, problem  })
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Resend Failed at line 771 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error }
+            }
+
+            return {success:true, message:data.message}
+            
+        } catch (error) {
+            console.error("Error while Submit Problem: ", error);
+            
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     if (!connected && !isLoading) return (
         <SafeAreaView className="w-full h-screen bg-background items-center justify-center">
             <View className="h-50" />
@@ -804,7 +836,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     commitLecture,
                     updatePassword,
                     updateEmail,
-                    updateName
+                    updateName,
+                    submitProblem
                 }
             }
         >
