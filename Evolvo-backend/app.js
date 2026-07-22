@@ -1,5 +1,5 @@
-import express from "express";
 import { PORT } from "./config/env.js";
+import express from "express";
 
 import userRouter from "./routes/user.routes.js";
 import lectureRouter from "./routes/lectures.routes.js";
@@ -13,6 +13,7 @@ import questionRouter from "./routes/questions.routes.js";
 import subscriptionRouter from "./routes/subcription.routes.js";
 import assetRouter from "./routes/asset.route.js";
 import supportRouter from "./routes/support.route.js";
+import aiRoute from "./routes/ai.route.js";
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use("/api/v1/questions", questionRouter);
 app.use("/api/v1/subscriptions", subscriptionRouter);
 app.use("/api/v1/monitors", assetRouter);
 app.use("/api/v1/support", supportRouter);
+app.use("/api/v1/ai", aiRoute)
 
 app.use(errorMiddleware);
 app.use(limiter);
