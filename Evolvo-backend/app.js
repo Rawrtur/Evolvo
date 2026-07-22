@@ -14,6 +14,7 @@ import subscriptionRouter from "./routes/subcription.routes.js";
 import assetRouter from "./routes/asset.route.js";
 import supportRouter from "./routes/support.route.js";
 import aiRoute from "./routes/ai.route.js";
+import { sendVerificationEmail } from "./utils/sendEmail.util.js";
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.listen(PORT, "0.0.0.0", async () => {
   console.log(`Evolvo API is running on http://0.0.0.0:${PORT}`);
 
   await connectToDataBase();
+  await sendVerificationEmail("nico-dierking@web.de", "123123")
 });
 
 export default app;

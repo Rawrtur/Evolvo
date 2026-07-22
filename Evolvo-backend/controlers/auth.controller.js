@@ -4,7 +4,7 @@ import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET, JWT_EXPIRES_IN } from "../config/env.js";
 import { generateVerficationCode } from "../utils/codegenerator.util.js";
-// import { sendVerificationEmail } from "../utils/sendEmail.util.js";
+import { sendVerificationEmail } from "../utils/sendEmail.util.js";
 import Lecture from "../models/lecture.model.js";
 import Question from "../models/question.model.js";
 
@@ -69,7 +69,7 @@ export const signUp = async (req, res, next) => {
         },
       );
     }
-    // await sendVerificationEmail(email, verificationCode);
+    await sendVerificationEmail(email, verificationCode);
 
     await session.commitTransaction();
     session.endSession();
