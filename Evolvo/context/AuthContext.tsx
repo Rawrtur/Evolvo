@@ -307,18 +307,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             }
 
             const data = await response.json();
-
             if (!response.ok) {
                 throw new Error(data.message || "verification Failed at line 212 AuthContext.tsx");
             }
-
             if (data.error) {
                 setError(data.error);
                 return { success: false, message: data.error }
             }
 
             const { token, user, lectures, questions } = data.data;
-            console.log(data)
             await safeAsyncStorage.setItem("authToken", token);
             await safeAsyncStorage.setItem("user", user);
             await safeAsyncStorage.setItem("lectures", lectures);
@@ -674,6 +671,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setIsLoading(true);
             setError(null)
 
+            // if (user?.email === newEmail) return {success:true, message:"successfully"}
+
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/email/${id}`, {
                 method: 'PUT',
                 headers: {
@@ -700,10 +699,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             await safeAsyncStorage.setItem("user", { ...user, email: newEmail })
 
             await safeAsyncStorage.setItem("verified", newEmail);
-            router.replace("/(auth)/verify")
+            setVerified(newEmail)
+            router.replace("/(sites)/verify")
 
 
-            await logout();
 
             return { success: true, message: "send to verify" }
 

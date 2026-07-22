@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateVerficationCode } from "../utils/codegenerator.util.js";
-
+import { sendVerificationEmail } from "../utils/sendEmail.util.js";
 
 export const getUsers = async (req, res, next) => {
   try {
@@ -126,6 +126,12 @@ export const updateEmail = async (req, res, next) => {
       throw error;
     }
 
+    // if (user.email === newEmail)
+    //   return res.status(200).json({
+    //     success: true,
+    //     message: "Updated email successfully",
+    //   });
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
@@ -134,13 +140,13 @@ export const updateEmail = async (req, res, next) => {
       throw error;
     }
 
-
+    const verificationCode = generateVerficationCode();
 
     user.email = newEmail;
     user.verified = false;
-    user.verificationCode = generateVerficationCode();
-    user.verificationExpiresIn = Date.now() + 15 * 60 * 10000
-
+    user.verificationCode = verificationCode;
+    user.verificationExpiresIn = Date.now() + 15 * 60 * 10000;
+    await sendVerificationEmail(newEmail, verificationCode);
     await user.save();
 
     res.status(200).json({

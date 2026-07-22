@@ -146,6 +146,8 @@ export const resendVerify = async (req, res, next) => {
     user.verificationCode = verificationCode;
     user.verificationExpiresIn = Date.now() + 15 * 60 * 10000;
 
+    await sendVerificationEmail(email, verificationCode);
+
     await user.save();
 
     res.status(200).json({
