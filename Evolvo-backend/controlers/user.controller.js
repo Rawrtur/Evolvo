@@ -126,11 +126,11 @@ export const updateEmail = async (req, res, next) => {
       throw error;
     }
 
-    // if (user.email === newEmail)
-    //   return res.status(200).json({
-    //     success: true,
-    //     message: "Updated email successfully",
-    //   });
+    if (user.email === newEmail)
+      return res.status(200).json({
+        success: true,
+        message: "Updated email successfully",
+      });
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 

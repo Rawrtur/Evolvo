@@ -61,7 +61,6 @@ export default function App() {
         <ScrollView className="h-full w-full bg-background p-5">
           <View className="home-header">
             <View className="home-user">
-              <Image source={images.avatar} className="home-avatar" />
               <Text className="home-user-name"> {user?.name || "User"} </Text>
             </View>
             <AddButton onPress={() => router.navigate("/(sites)/createLecture")} />

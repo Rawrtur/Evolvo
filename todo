@@ -10,8 +10,8 @@
 [ ] Loginlogic Backend
     [x] authentification
     [ ] email Logic
-        [ ] email erstellen (über google am besten)
-        [ ] verificationcode senden
+        [x] email erstellen (über google am besten)
+        [x] verificationcode senden
         [ ] verificationcode hashen
     [x] send new Code
     [x] backend returns
@@ -31,11 +31,11 @@
     [x] Menu Button Logic
 [x] Analytic screen
 [ ] Settings screen
-    [ ] Problem notification/sending (also on Sign In)
+    [x] Problem notification/sending (also on Sign In)
     [ ] User Daten ändern
         [x] Change Email
         [x] Change Name
-        [ ] Change Password
+        [x] Change Password
         [ ] Delete Account
         [ ] Allow Newsletter
 [ ] Lecture Details Screen
@@ -43,8 +43,8 @@
     [x] Questions anzeigen
     [x] Questions löschen
         [x] Questions Backend router
-    [ ] Questions edit
-    [ ] Questions durchgehen
+    [x] Questions edit
+    [x] Questions durchgehen
 [x] Monitor
     [x] Monitor model
     [x] monitor routes
@@ -53,7 +53,6 @@
 [ ] backend effizienter gestalten
 [ ] Onboarding flow fertigstellen
 [x] backend Admin authorize
-[ ] Werbung in Email erlauben ins Settings Einstellung
 [ ] forgot password
     [ ] backend reset Password
     [ ] frontend reset password
@@ -79,14 +78,14 @@
     [x] anzeigen falls bereits in session
 [x] connection status
 [ ] loading placeholder
-[ ] ad lecter rand färben
+[ ] add lecture rand färben
 [ ] login close Button zu eye button ändern
+[ ] affirmations
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content
-[ ] Ki Fragen generieren
+[x] Ki Fragen generieren
 [ ] KI Tests generieren (mit pdf vorlage?)
-[ ] Lernlectures
+[ ] Lernlectures recommendations
+[ ] Ai flow?
 [ ] Feyman technique Ai
-
-[ ] dark theme ?

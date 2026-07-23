@@ -671,7 +671,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setIsLoading(true);
             setError(null)
 
-            // if (user?.email === newEmail) return {success:true, message:"successfully"}
+            if (user?.email === newEmail) return {success:true, message:"successfully"}
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/email/${id}`, {
                 method: 'PUT',

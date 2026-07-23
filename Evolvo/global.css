@@ -76,7 +76,7 @@
   }
 
   .home-user-name {
-    @apply ml-4 text-2xl text-primary font-rubik-semibold;
+    @apply text-2xl text-primary font-rubik-semibold;
   }
 
   .board {
