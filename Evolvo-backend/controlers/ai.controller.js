@@ -1,9 +1,9 @@
-import client from "../config/openai.js";
 import {
   generateFeymanFeedback,
   generateQuestions,
+  transriptAudio,
 } from "../services/ai.service.js";
-import fs from "fs";
+import fs from "fs/promises";
 
 export async function generate(req, res, next) {
   try {
@@ -26,29 +26,30 @@ export async function generate(req, res, next) {
   }
 }
 
-
 export async function feynman(req, res, next) {
+  const filePath = req.file.path;
   try {
     const { topic } = req.body;
 
-    console.log(req.file);
-
-    const transcript = await client.audio.transcriptions.create({
-      file: fs.createReadStream(req.file.path),
-      model: "gpt-4o-mini-transcribe",
-    });
+    const transcript = await transriptAudio(filePath);
 
     const result = await generateFeymanFeedback(topic, transcript.text);
+
     const feedback = result
       .replace(/^```(?:json)?\s*/i, "")
       .replace(/\s*```$/, "")
       .trim();
+
     res.status(200).json({
       success: true,
       message: "generated feedback",
-      feedback: JSON.parse(feedback)
+      feedback: JSON.parse(feedback),
     });
   } catch (error) {
     next(error);
+  } finally {
+    await fs.unlink(filePath).catch((err) => {
+      console.error("Audio konnte nicht gelöscht werden:", err.message);
+    });
   }
 }
