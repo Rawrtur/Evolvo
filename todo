@@ -88,4 +88,4 @@ request -> look for subscription -> if yes then generate content
 [ ] KI Tests generieren (mit pdf vorlage?)
 [ ] Lernlectures recommendations
 [ ] Ai flow?
-[ ] Feyman technique Ai
+[x] Feyman technique Ai
