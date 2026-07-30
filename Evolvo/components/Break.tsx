@@ -36,7 +36,6 @@ const Break = ({ time, setIndex, index }: { time: number, setIndex: (index: numb
                             style={{ width: 300, height: 300 }}
                         />
                         <Text className="font-rubik-bold text-2xl">Take a Break</Text>
-
                     </>
                 )}
                 {randomNumber === 1 && (

@@ -37,7 +37,8 @@ export interface AuthContextType {
     updatePassword: (id: string, newPassword: string, password: string) => Promise<({ success: boolean, message: string })>;
     updateEmail: (id: string, newEmail: string, password: string) => Promise<({ success: boolean, message: string })>;
     updateName: (id: string, newName: string, password: string) => Promise<({ success: boolean, message: string })>;
-    submitProblem: (user:string|undefined, problem: string) => Promise<({success:boolean, message:string})>;
+    submitProblem: (user: string | undefined, problem: string) => Promise<({ success: boolean, message: string })>;
+    generateQuestions: (topic:string) => Promise<({success:boolean, message:string})>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -671,7 +672,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setIsLoading(true);
             setError(null)
 
-            if (user?.email === newEmail) return {success:true, message:"successfully"}
+            if (user?.email === newEmail) return { success: true, message: "successfully" }
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/email/${id}`, {
                 method: 'PUT',
@@ -745,16 +746,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             setUser({ ...user, name: newName })
             await safeAsyncStorage.setItem("user", { ...user, name: newName })
+            return {success:true, message: "Updatet Name successfully"}
 
         } catch (error) {
-            await logout();
-
+            console.error(error);
         } finally {
             setIsLoading(false);
         }
     }
 
-    const submitProblem = async (user:string|undefined, problem:string) => {
+    const submitProblem = async (user: string | undefined, problem: string) => {
         try {
             setError(null)
             setIsLoading(true);
@@ -762,7 +763,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/support`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ user, problem  })
+                body: JSON.stringify({ user, problem })
             });
             const data = await response.json();
 
@@ -775,13 +776,44 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 return { success: false, message: data.error }
             }
 
-            return {success:true, message:data.message}
-            
+            return { success: true, message: data.message }
+
         } catch (error) {
             console.error("Error while Submit Problem: ", error);
-            
+
         } finally {
             setIsLoading(false)
+        }
+    }
+
+    const generateQuestions = async (topic: string) => {
+        try {
+            setIsLoading(true);
+            setError(null);
+
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/ai/questions`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ topic, userId: user?._id })
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                setError(data.message)
+                throw new Error(data.message || "Resend Failed at line 802 AuthContext.tsx");
+            }
+
+            if (data.error) {
+                setError(data.error);
+                return { success: false, message: data.error };
+            }
+
+            return data;
+
+        } catch (error:any) {
+            console.error(error)
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -836,7 +868,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     updatePassword,
                     updateEmail,
                     updateName,
-                    submitProblem
+                    submitProblem,
+                    generateQuestions
                 }
             }
         >

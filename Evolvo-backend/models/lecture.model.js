@@ -10,7 +10,7 @@ const lectureSchema = new mongoose.Schema(
     },
     color: {
       type: String,
-      enum: ["#f5c542","#e8def8","#b8d4e3","#b8e8d0"],
+      enum: ["#f5c542","#e8def8","#b8d4e3","#b8e8d0","#ba6363"],
       default: "#f5c542",
     },
     type: {

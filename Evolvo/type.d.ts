@@ -64,6 +64,7 @@ declare global {
     verificationExpiresIn: Date;
     verified: boolean;
     profilePicture: ImageSourcePropType;
+    role: "Tester"| "Premium" | "Admin" | "User"
   }
   interface TabIconProbs {
     focused: boolean;

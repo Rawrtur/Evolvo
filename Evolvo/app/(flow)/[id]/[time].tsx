@@ -64,7 +64,7 @@ const OverView = () => {
 
   }
 
-  
+
   // const currentFlow = "Review"
   // console.log('Current Time:', currentTime, 'Current Flow:', currentFlow, 'Index:', index);
   return (
@@ -79,8 +79,9 @@ const OverView = () => {
       {currentFlow === "Pre Study Reset" && (
         <>
           <PreStudy setIndex={setIndex} />
-          <Button title="Skip" onPress={skipPreStudy} shadow fontStyle="font-rubik-bold text-white" />
-
+          <Button title="Skip" onPress={skipPreStudy} fontStyle="font-rubik-bold text-white"
+            style='bg-background border border-black'
+          />
         </>
       )}
       {currentFlow === "Focus" && (
@@ -97,7 +98,10 @@ const OverView = () => {
         <Review id={id} />
       )}
       <View className="w-full items-center justify-center pt-10">
-        <Button title={currentFlow === "Review" ? "Finish Session" : "End Session"} onPress={endSession} shadow style='w-[90%]' fontStyle='font-rubik-bold text-white' />
+        <Button
+          title={currentFlow === "Review" ? "Finish Session" : "End Session"}
+          onPress={endSession} style='bg-background border border-black w-[90%]'
+          fontStyle='font-rubik-bold' />
       </View>
       <View className='h-[60px]' />
     </ScrollView>

@@ -14,7 +14,7 @@ const Question = ({ answer, question, onPress, state,_id, lastAnswered }: { answ
 
     return (
         <View className='border-b border-accent py-2 flex-row items-center justify-between'>
-            <View>
+            <View className='w-[80%]'>
                 <Text className='font-rubik-semibold' numberOfLines={1}>{question}</Text>
                 <Text className='font-rubik-ligt text-gray-600' numberOfLines={1}>{answer}</Text>
             </View>

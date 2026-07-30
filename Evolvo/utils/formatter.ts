@@ -18,6 +18,10 @@ function timeAgo(date: Date): string {
         return `${minutes} ${minutes === 1 ? "minute" : "minutes"} ago`;
     }
 
+    if (seconds <= 0) {
+        return `Just now`
+    }
+
     return `${seconds} ${seconds === 1 ? "second" : "seconds"} ago`;
 }
 

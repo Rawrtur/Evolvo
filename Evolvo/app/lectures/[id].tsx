@@ -19,9 +19,9 @@ import Question from '@/components/Question';
 const screenWidth = Dimensions.get("window").width;
 
 const states = [
-    { state: "short", color: "#238200" },
+    { state: "short", color: "#b80000" },
     { state: "medium", color: "#dfcd00" },
-    { state: "long", color: "#b80000" },
+    { state: "long", color: "#238200" },
     { state: "none", color: "#3e3e3e" }
 ]
 
@@ -110,6 +110,14 @@ const LectureDetails = () => {
                 <Text>Lecture not found</Text>
             </View>
         );
+    }
+
+    const handleAiPress = () => {
+        if (user?.role !== "Premium") {
+            router.navigate("/(sites)/Premium")
+            return
+        }
+        router.navigate(`/generate/${lecture._id}`)
     }
 
     const createQuestionButtonEnable = isLoading || (question.length === 0) || (answer.length === 0)
@@ -230,7 +238,7 @@ const LectureDetails = () => {
                         </Text>
                         <TouchableOpacity
                             className='border border-accent border-2'
-                            onPress={() => { }}
+                            onPress={handleAiPress}
                         >
                             <LinearGradient
                                 colors={["#FBBF24", "#F59E0B"]}

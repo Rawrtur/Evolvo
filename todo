@@ -81,6 +81,7 @@
 [ ] add lecture rand färben
 [ ] login close Button zu eye button ändern
 [ ] affirmations
+[ ] drittes flow pausen screen einbauen
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content
