@@ -18,7 +18,7 @@ const OverView = () => {
     id: string;
   }>();
   const [index, setIndex] = React.useState(0);
-  const { setSessionState, commitLecture } = useAuth();
+  const { setSessionState, commitLecture, lectures } = useAuth();
 
   useEffect(() => {
     const setFlowIndex = async () => {
@@ -48,6 +48,8 @@ const OverView = () => {
 
   const currentTime = times[time][index - 1] || 0;
   const currentFlow = flows[time][index - 1] || '';
+
+  const currentLecture = lectures.find((lecture) => lecture._id === id) || {title:""};
 
   const endSession = async () => {
     try {
@@ -79,14 +81,14 @@ const OverView = () => {
       {currentFlow === "Pre Study Reset" && (
         <>
           <PreStudy setIndex={setIndex} />
-          <Button title="Skip" onPress={skipPreStudy} fontStyle="font-rubik-bold text-white"
+          <Button title="Skip" onPress={skipPreStudy} fontStyle="font-rubik-bold"
             style='bg-background border border-black'
           />
         </>
       )}
       {currentFlow === "Focus" && (
         <View>
-          <Focus time={currentTime} index={index} setIndex={setIndex} id={id}/>
+          <Focus time={currentTime} index={index} setIndex={setIndex} id={id} topic={currentLecture?.title} />
         </View>
       )}
       {currentFlow === "Break" && (
