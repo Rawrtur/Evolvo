@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, ScrollView, Alert } from 'react-native'
 import React, { useEffect } from 'react'
 import { router, useLocalSearchParams } from 'expo-router';
 import { flows, times } from '../../../constants/data';
@@ -100,7 +100,10 @@ const OverView = () => {
       <View className="w-full items-center justify-center pt-10">
         <Button
           title={currentFlow === "Review" ? "Finish Session" : "End Session"}
-          onPress={endSession} style='bg-background border border-black w-[90%]'
+          onPress={() => Alert.alert("End Session", "Do you want to end the session?", [
+            { text: "Yes", onPress: endSession },
+            { text: "I don't want to", onPress: () => { }, style: "cancel" }
+          ])} style='bg-background border border-black w-[90%]'
           fontStyle='font-rubik-bold' />
       </View>
       <View className='h-[60px]' />

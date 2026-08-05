@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Lecture from "../models/lecture.model.js";
 import Question from "../models/question.model.js";
+import User from "../models/user.model.js";
 
 export const getLectures = async (req, res, next) => {
   try {
@@ -130,6 +131,19 @@ export const getAllUserLectures = async (req, res, next) => {
 export const commitLecture = async (req,res,next) => {
   try {
     const lecture = await Lecture.findById(req.params.id);
+    const user = await User.findById(lecture.user);
+
+    user.streak = user.streak + 1;
+
+    if (user.lastStreakDate) {
+      const lastStreakDate = new Date(user.lastStreakDate);
+      const today = new Date();
+      const diffTime = Math.abs(today - lastStreakDate);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      if (diffDays > 1) {
+        user.streak = 1;
+      }
+    }
 
     lecture.lastLecture = new Date();
 

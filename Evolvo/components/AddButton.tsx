@@ -7,7 +7,7 @@ const AddButton = ({ onPress, style }: AddButtonProps) => {
     <TouchableOpacity
       onPress={onPress}
       key={1}
-      className={`border rounded-full border-accent w-[40px] h-[40px] items-center justify-center ${style}`}
+      className={`border rounded-full w-[40px] h-[40px] items-center justify-center ${style}`}
     >
       <Text className='text-4xl text-center text-accent'>
         <Image source={icons.add} />

@@ -54,6 +54,17 @@ export default function App() {
   const n = (lectures.length + (lectures.length % 2 === 0 ? 0 : 1)) / 2;
   const recommended = recommendedLectures(lectures).slice(0, n);
 
+  const streak = user?.streak || 0;
+
+  const lastStreakDate = new Date(user.lastStreakDate);
+  const today = new Date();
+  const diffTime = Math.abs(today - lastStreakDate);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays > 1 && streak > 0) {
+    user.streak = 0;
+  }
+
 
   return (
     <View className='w-full h-full bg-background relative'>
@@ -61,7 +72,7 @@ export default function App() {
         <ScrollView className="h-full w-full bg-background p-5">
           <View className="home-header">
             <View className="home-user">
-              <Text className="home-user-name"> {user?.name || "User"} </Text>
+              <Text className="home-user-name"><Text className="font-rubik-bold text-accent">{streak}</Text>🔥 {user?.name || "User"} </Text>
             </View>
             <AddButton onPress={() => router.navigate("/(sites)/createLecture")} />
           </View>

@@ -14,7 +14,7 @@ import Button from '@/components/Button';
 const ShowQuestion = ({ question, answer, onTrash, onPass }: { question: string, answer: string, onTrash: () => void, onPass: () => void }) => {
     return (
         <TouchableOpacity
-            className='p-3 border border-accent rounded-2xl'
+            className='p-3 border border-accent rounded-2xl shdow-lg'
         >
             <View>
                 <Text className='font-rubik-bold'>{question}</Text>

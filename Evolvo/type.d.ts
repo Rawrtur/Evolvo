@@ -64,7 +64,9 @@ declare global {
     verificationExpiresIn: Date;
     verified: boolean;
     profilePicture: ImageSourcePropType;
-    role: "Tester"| "Premium" | "Admin" | "User"
+    role: "Tester"| "Premium" | "Admin" | "User",
+    streak: number;
+    lastStreakDate: Date;
   }
   interface TabIconProbs {
     focused: boolean;

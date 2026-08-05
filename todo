@@ -14,7 +14,7 @@
         [x] verificationcode senden
         [ ] verificationcode hashen
     [x] send new Code
-    [x] backend returns
+    [x] backend returns Chemie
 [x] Login Logic Frontend
     [x] sing up
     [x] code verification
@@ -73,15 +73,16 @@
     [x] focus screen
     [x] review Screen
     [ ] fragen hinzufügen
+    [ ] feynman
     [x] timer extern speichern (mit async storage)
     [x] flow index speichern
     [x] anzeigen falls bereits in session
 [x] connection status
 [ ] loading placeholder
-[ ] add lecture rand färben
-[ ] login close Button zu eye button ändern
-[ ] affirmations
+[x] add lecture rand färben
+[x] login close Button zu eye button ändern
 [ ] drittes flow pausen screen einbauen
+[ ] streaks
     
 AI FLOW:
 request -> look for subscription -> if yes then generate content
