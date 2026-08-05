@@ -12,6 +12,7 @@ declare global {
   interface AddButtonProps {
     onPress: () => void;
     style?: string;
+    size?:number;
   }
   interface Lecture {
     title: string;

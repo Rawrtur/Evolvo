@@ -86,7 +86,7 @@ const OverView = () => {
       )}
       {currentFlow === "Focus" && (
         <View>
-          <Focus time={currentTime} index={index} setIndex={setIndex} />
+          <Focus time={currentTime} index={index} setIndex={setIndex} id={id}/>
         </View>
       )}
       {currentFlow === "Break" && (

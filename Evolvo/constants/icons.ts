@@ -5,6 +5,7 @@ import home from "@/assets/icons/home.png";
 import menu from "@/assets/icons/menu.png";
 import settings from "@/assets/icons/setting.png";
 import lecture from "@/assets/icons/lecture.png"
+import feynman from "@/assets/icons/feynman.png"
 
 export const icons = {
     home,
@@ -13,7 +14,8 @@ export const icons = {
     back,
     add,
     activity,
-    lecture
+    lecture,
+    feynman
 } as const;
 
 export type IconKey = keyof typeof icons;

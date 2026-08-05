@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { icons } from '@/constants/icons'
 
-const CloseButton = ({ onPress, style }: AddButtonProps) => {
+const CloseButton = ({ onPress, style, size=1 }: AddButtonProps) => {
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -13,8 +13,8 @@ const CloseButton = ({ onPress, style }: AddButtonProps) => {
                 <Image
                     source={icons.add}
                     style={{
-                        width: 24,
-                        height: 24,
+                        width: 24 *size,
+                        height: 24 *size,
                         transform: [{ rotate: '45deg' }],
                     }}
                 />

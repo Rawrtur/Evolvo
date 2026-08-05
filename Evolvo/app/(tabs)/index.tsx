@@ -1,10 +1,9 @@
 import { useAuth } from "@/context/AuthContext";
 import "@/global.css"
-import { Text, View, Image, FlatList, ScrollView, TouchableOpacity } from "react-native";
+import { Text, View, FlatList, ScrollView, TouchableOpacity } from "react-native";
 import { router } from 'expo-router'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useState } from "react";
-import images from "@/constants/images";
 import AddButton from "@/components/AddButton";
 import LottieView from 'lottie-react-native';
 import SecondButton from "@/components/SecondButton";

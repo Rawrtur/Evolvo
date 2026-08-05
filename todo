@@ -82,8 +82,9 @@
 [x] add lecture rand färben
 [x] login close Button zu eye button ändern
 [ ] drittes flow pausen screen einbauen
-[ ] streaks
-    
+[x] streaks
+[ ] new streak share image 
+
 AI FLOW:
 request -> look for subscription -> if yes then generate content
 [x] Ki Fragen generieren
