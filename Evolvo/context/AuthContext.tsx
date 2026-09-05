@@ -106,18 +106,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
         const timeout = setTimeout(() => {
             controller.abort();
-        }, 3000)
+        }, 5000)
 
+        setIsLoading(true);
         try {
+            // console.log(1)
+            // console.log(process.env.EXPO_PUBLIC_API_URL)
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/health`, {
                 signal: controller.signal,
             });
 
             if (response.ok) setConnected(true)
         } catch (error) {
+            console.log(error);
             setConnected(false);
         } finally {
             clearTimeout(timeout)
+            setIsLoading(false)
             // setIsLoading(false)
         }
     }
@@ -414,7 +419,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
                 body: JSON.stringify({ title, color, icon, type, user }),
             });
             const data = await response.json();
@@ -446,7 +454,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/${id}`, {
                 method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
             });
             const data = await response.json();
 
@@ -476,7 +487,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/${id}`, {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
             });
             const data = await response.json();
 
@@ -507,7 +521,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/questions`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
                 body: JSON.stringify({ question, answer, lecture, user }),
             });
             const data = await response.json();
@@ -539,7 +556,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/questions/${id}`, {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
             });
             const data = await response.json();
 
@@ -575,7 +595,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/questions/${id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
                 body: JSON.stringify({ question, answer, state, lastAnswered })
             });
             const data = await response.json();
@@ -607,7 +630,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/lectures/${id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
                 // body: JSON.stringify({ question, answer, state, lastAnswered })
             });
             const data = await response.json();
@@ -636,7 +662,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setIsLoading(true);
             setError(null)
 
-            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/password/${id}`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/password/me`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -674,7 +700,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             if (user?.email === newEmail) return { success: true, message: "successfully" }
 
-            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/email/${id}`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/email/me`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -721,7 +747,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setIsLoading(true);
             setError(null)
 
-            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/name/${id}`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/users/name/me`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -794,7 +820,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/v1/ai/questions`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ topic, userId: user?._id })
+                body: JSON.stringify({ topic, user })
             });
             const data = await response.json();
 

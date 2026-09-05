@@ -6,15 +6,16 @@ import {
   getAllUserQuestions,
   updateQuestion,
 } from "../controlers/questions.controller.js";
+import authorize from "../middleware/auth.middleware.js";
 
 const questionRouter = Router();
 
-questionRouter.get("/user/:id", limiter, getAllUserQuestions);
+questionRouter.get("/user/:id", limiter,authorize, getAllUserQuestions);
 
-questionRouter.delete("/:id", limiter, deleteQuestion);
+questionRouter.delete("/:id", limiter,authorize, deleteQuestion);
 
-questionRouter.put("/:id", limiter, updateQuestion);
+questionRouter.put("/:id", limiter,authorize, updateQuestion);
 
-questionRouter.post("/", limiter, createQuestion);
+questionRouter.post("/", limiter,authorize, createQuestion);
 
 export default questionRouter;

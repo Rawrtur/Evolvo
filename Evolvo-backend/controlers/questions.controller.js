@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 import Question from "../models/question.model.js";
+import Lecture from "../models/lecture.model.js";
 
 export const getAllUserQuestions = async (req, res, next) => {
   try {
-    const questions = await Question.find({ user: req.params.id }).select(
+    const questions = await Question.find({ user: req.user._id }).select(
       "-__v -createdAt -updatedAt",
     );
     res.status(200).json({
@@ -20,7 +21,18 @@ export const createQuestion = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
-    const { question, answer, lecture, user } = req.body;
+    const { question, answer, lecture } = req.body;
+
+    const ownedLecture = await Lecture.findOne({
+      _id: lecture,
+      user: req.user._id,
+    });
+
+    if (!ownedLecture) {
+      const error = new Error("Lecture not found");
+      error.statusCode = 404;
+      throw error;
+    }
 
     const newQuestions = await Question.create(
       [
@@ -28,7 +40,7 @@ export const createQuestion = async (req, res, next) => {
           question,
           answer,
           lecture,
-          user,
+          user: req.user._id,
           state: "short",
         },
       ],
@@ -51,7 +63,19 @@ export const createQuestion = async (req, res, next) => {
 
 export const deleteQuestion = async (req, res, next) => {
   try {
-    await Question.deleteOne({ _id: req.params.id });
+    const question = await Question.findOne({
+      _id: req.params.id,
+      user: req.user._id,
+    });
+
+    if (!question) {
+      return res.status(404).json({
+        success: false,
+        message: "Question not found",
+      });
+    }
+
+    await Question.deleteOne({ _id: req.params.id, user: req.user._id });
     res.status(200).json({
       success: true,
       message: "Question deleted successfully",
@@ -65,7 +89,16 @@ export const updateQuestion = async (req, res, next) => {
   try {
     const { question, answer, state, lastAnswered } = req.body;
 
-    const updatedQuestion = await Question.findById(req.params.id);
+    const updatedQuestion = await Question.findOne({
+      _id: req.params.id,
+      user: req.user._id,
+    });
+
+    if (!updatedQuestion) {
+      const error = new Error("Question not found");
+      error.statusCode = 404;
+      throw error;
+    }
 
     updatedQuestion.question = question;
     updatedQuestion.answer = answer;
@@ -79,7 +112,6 @@ export const updateQuestion = async (req, res, next) => {
       message: "Question updatet successfully",
       updatedQuestion,
     });
-
   } catch (error) {
     next(error);
   }

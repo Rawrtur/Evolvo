@@ -50,7 +50,7 @@ export default function Dashboard() {
   const leave = async () => {
     try {
 
-      const res = await fetch(`${apiUrl}/api/v1/users/${user._id}`, {
+      const res = await fetch(`${apiUrl}/api/v1/users/me`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +80,7 @@ export default function Dashboard() {
 
     const fetchData = async () => {
       const res = await fetch(
-        `${apiUrl}/api/v1/users/leaderboard/${user._id}`,
+        `${apiUrl}/api/v1/users/leaderboard/me`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },

@@ -1,21 +1,13 @@
-import Subscription from "../models/subscription.model.js";
+import { getActiveSubscription } from "../services/subscription/subscription.service.js";
 
 const requireSubscription = async (req, res, next) => {
   try {
-    const { userId } = req.body;
-
-    const subscription = await Subscription.findOne({ userId });
+    const subscription = await getActiveSubscription(req.user._id);
 
     if (!subscription) {
-      return res
-        .status(401)
-        .json({ message: "No Subscription for this user", success: false });
-    }
-
-    if (subscription.status !== "active") {
-      return res.status(400).json({
-        message: "Please renew your subscription",
+      return res.status(403).json({
         success: false,
+        message: "Active Subscription required",
       });
     }
 
@@ -23,10 +15,7 @@ const requireSubscription = async (req, res, next) => {
 
     next();
   } catch (error) {
-    res.status(401).json({
-      message: "No Subscription for this user",
-      error: error.message,
-    });
+    next(error)
   }
 };
 

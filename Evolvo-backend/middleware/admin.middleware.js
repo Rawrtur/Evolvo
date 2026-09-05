@@ -1,26 +1,23 @@
-import { ADMIN_PASSWORD } from "../config/env.js";
-
-
 const authorizeAdmin = (req, res, next) => {
   try {
-    const password = req.headers["x-admin-password"];
-
-    if (!password) {
-      return res.status(401).json({ message: "Unauthorized" });
+    if (!req.user) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
     }
 
-    if (password !== ADMIN_PASSWORD) {
-      return res.status(401).json({ message: "Unauthorized" });
+    if (req.user.role !== "Admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Forbidden",
+      });
     }
-
-    req.admin = true;
 
     next();
   } catch (error) {
-    res.status(401).json({
-      message: "Unauthorized",
-      error: error.message,
-    });
+    next(error);
   }
 };
+
 export default authorizeAdmin;

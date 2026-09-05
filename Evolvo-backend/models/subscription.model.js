@@ -1,50 +1,169 @@
 import mongoose from "mongoose";
 
+
 const subscriptionSchema = new mongoose.Schema(
   {
     userId: {
-      type: mongoose.Schema.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "User is required"],
+      required: true,
       index: true,
     },
-    status: {
-      type: String,
-      enum: ["active", "cancelled", "expired", "trialing", "past_due"],
-      default: "active",
-    },
-    startDate: {
-      type: Date,
-    },
-    endDate: {
-      type: Date,
-    },
-    autoRenew: {
-      type: Boolean,
-      default: true,
-    },
-    plan: {
-      type: String,
-      enum: ["weekly", "monthly", "yearly"],
-      default: "weekly",
-    },
+
     provider: {
       type: String,
-      enum: ["stripe", "apple", "google"],
-      required: [true, "Provider is required"],
+      enum: ["apple", "google", "stripe"],
+      required: true,
+      index: true,
     },
-    providerCustomerId: {
+
+    productId: {
       type: String,
-      required: [true, "Provider Customer Id is required"],
+      required: true,
+      trim: true,
     },
+
+    status: {
+      type: String,
+      enum: [
+        "active",
+        "grace_period",
+        "billing_retry",
+        "paused",
+        "cancelled",
+        "expired",
+        "revoked",
+      ],
+      required: true,
+      default: "active",
+      index: true,
+    },
+
+    startedAt: {
+      type: Date,
+      required: true,
+    },
+
+    expiresAt: {
+      type: Date,
+      required: true,
+      index: true,
+    },
+
+    autoRenew: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+
     providerSubscriptionId: {
       type: String,
-      required: [true, "Provider Subscription Id is required"],
+      default: null,
+      trim: true,
+    },
+
+    providerTransactionId: {
+      type: String,
+      default: null,
+      trim: true,
+    },
+
+    providerOriginalTransactionId: {
+      type: String,
+      default: null,
+      trim: true,
+    },
+
+    providerPurchaseToken: {
+      type: String,
+      default: null,
+      trim: true,
+    },
+
+    lastVerifiedAt: {
+      type: Date,
+      default: null,
+    },
+
+    providerSignedDate: {
+      type: Date,
+      default: null,
+    },
+
+    environment: {
+      type: String,
+      enum: ["sandbox", "production"],
+      default: null,
+    },
+
+    cancelledAt: {
+      type: Date,
+      default: null,
+    },
+
+    revokedAt: {
+      type: Date,
+      default: null,
+    },
+
+    rawProviderData: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
+      select: false,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
 
-const Subscription = mongoose.model("Subscription", subscriptionSchema);
+
+subscriptionSchema.index({
+  userId: 1,
+  status: 1,
+  expiresAt: 1,
+});
+
+
+subscriptionSchema.index(
+  {
+    provider: 1,
+    providerTransactionId: 1,
+  },
+  {
+    unique: true,
+    sparse: true,
+  },
+);
+
+
+subscriptionSchema.index(
+  {
+    provider: 1,
+    providerOriginalTransactionId: 1,
+  },
+  {
+    unique: true,
+    sparse: true,
+  },
+);
+
+
+subscriptionSchema.index(
+  {
+    provider: 1,
+    providerPurchaseToken: 1,
+  },
+  {
+    unique: true,
+    sparse: true,
+  },
+);
+
+
+const Subscription = mongoose.model(
+  "Subscription",
+  subscriptionSchema,
+);
 
 export default Subscription;

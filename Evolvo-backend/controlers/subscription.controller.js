@@ -1,20 +1,18 @@
 import mongoose from "mongoose";
 import Subscription from "../models/subscription.model.js";
-import User from "../models/user.model.js";
 
 export const createSubscription = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
     const {
-      userId,
       plan,
       provider,
       providerCustomerId,
       providerSubscriptionId,
     } = req.body;
 
-    const user = await User.findById(userId);
+    const user = await Subscription.findOne({userId: req.user._id, status: "active"});
 
     if (user) {
       const error = new Error("User already has a subscription");
@@ -27,7 +25,7 @@ export const createSubscription = async (req, res, next) => {
 
     const newSubscriptions = await Subscription.create([
       {
-        userId,
+        userId: req.user._id,
         status: "active",
         startDate: new Date(),
         endDate: Date.now() + nextPaymentInDays * 24 * 60 * 60 * 1000,
@@ -57,7 +55,7 @@ export const updateSubscription = async (req, res, next) => {
   try {
     const { status, autoRenew, plan } = req.body;
 
-    const subscription = await Subscription.findById(req.params.id);
+    const subscription = await Subscription.findOne({ userId: req.user._id });
 
     if (!subscription) {
       const error = new Error("No subscription was found");
@@ -91,7 +89,7 @@ export const updateSubscription = async (req, res, next) => {
 
 export const getUserSubscription = async (req, res, next) => {
   try {
-    const subscription = await Subscription.findOne({ userId: req.params.id });
+    const subscription = await Subscription.findOne({ userId: req.user._id, status: "active" });
 
     if (!subscription) {
       const error = new Error("This user has no subscription");
@@ -111,7 +109,7 @@ export const getUserSubscription = async (req, res, next) => {
 
 export const cancelSubscription = async (req, res, next) => {
   try {
-    await Subscription.deleteOne({ _id: req.params.id });
+    await Subscription.deleteOne({ userId: req.user._id, status: "active" });
 
     res.status(200).json({
       success: true,

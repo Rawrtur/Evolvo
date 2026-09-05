@@ -1,40 +1,55 @@
 const errorMiddleware = (err, req, res, next) => {
-  try {
-    // try to decode error
-    let error = { ...err };
+  console.error("API Error:", {
+    name: err.name,
+    message: err.message,
+    stack: err.stack,
+    path: req.path,
+    method: req.method,
+  });
 
-    error.message = err.message;
-
-    console.error(err);
-
-    // Mongoose Bad ObjectId
-    if (err.name === "CastError") {
-      const message = "Resource not found";
-      error = new Error(message);
-      error.statusCode = 404;
-    }
-
-    // Mongoose duplicate Key
-    if (err.Code === 11000) {
-      const message = "Duplicate field value entered";
-      error = new Error(message);
-      error.statusCode = 400;
-    }
-
-    // Mongoose validation Error
-    if (err.name === "ValidationError") {
-      const message = Object.values(err.errors).map((val) => val.message);
-      error = new Error(message.join(", "));
-      error.statusCode = 400;
-    }
-
-    res.status(error.statusCode || 500).json({
+  // Mongoose: invalid ObjectId
+  if (err.name === "CastError") {
+    return res.status(400).json({
       success: false,
-      error: error.message || "Unkonw Server Error",
+      message: "Invalid resource identifier",
     });
-  } catch (error) {
-    next(error);
   }
+
+  // MongoDB: duplicate key
+  if (err.code === 11000) {
+    return res.status(409).json({
+      success: false,
+      message: "A resource with this value already exists",
+    });
+  }
+
+  // Mongoose validation error
+  if (err.name === "ValidationError") {
+    const fields = Object.values(err.errors).map((error) => ({
+      field: error.path,
+      message: error.message,
+    }));
+
+    return res.status(400).json({
+      success: false,
+      message: "Validation failed",
+      fields,
+    });
+  }
+
+  // Explicit application error
+  if (err.statusCode) {
+    return res.status(err.statusCode).json({
+      success: false,
+      message: err.message || "Request failed",
+    });
+  }
+
+  // Unknown/unexpected error
+  return res.status(500).json({
+    success: false,
+    message: "Internal server error",
+  });
 };
 
 export default errorMiddleware;

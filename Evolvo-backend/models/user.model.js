@@ -14,45 +14,69 @@ const userSchema = new mongoose.Schema(
       required: [true, "User Email is required."],
       trim: true,
       unique: true,
-      lowerCase: true,
+      lowercase: true,
       minLength: 5,
       maxLength: 255,
+      match: [/\S+@\S+\.\S+/, "Please fill a valid email address"],
+    },
+    pendingEmail: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      minLength: 5,
+      maxLength: 255,
+      default: null,
       match: [/\S+@\S+\.\S+/, "Please fill a valid email address"],
     },
     password: {
       type: String,
       required: [true, "User Password is required."],
-      minLength: 6,
     },
     verified: {
-      type:Boolean,
-      required: [true, "Verified is required"]
+      type: Boolean,
+      default: false,
+      required: [true, "Verified is required"],
     },
     verificationCode: {
       type: String,
+      default: null,
     },
     verificationExpiresIn: {
       type: Date,
-      required: [true, "VerficationExpiresIn is required"],
+      default: null,
     },
     invited: {
       type: Number,
-      default: 0
+      default: 0,
+      min: 0,
     },
     role: {
       type: String,
-      enum: ["Tester", "Premium", "Admin", "User"],
+      enum: ["Tester", "Admin", "User"],
       default: "User",
-    },
-    subscription : {
-      type: Boolean,
     },
     streak: {
       type: Number,
-      default: 0
+      default: 0,
+      min: 0,
     },
     lastStreakDate: {
       type: Date,
+      default: null,
+    },
+    resetPasswordToken: {
+      type: String,
+      default: null,
+    },
+    resetPasswordExpires: {
+      type: Date,
+      default: null,
+    },
+    appleAccountToken: {
+      type: String,
+      unique: true,
+      sparse: true,
+      default: null,
     },
   },
   { timestamps: true },
@@ -61,4 +85,3 @@ const userSchema = new mongoose.Schema(
 const User = mongoose.model("User", userSchema);
 
 export default User;
-

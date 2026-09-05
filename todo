@@ -85,6 +85,9 @@
 [x] streaks
 [ ] new streak share image 
 
+[ ] Admin security
+[ ] cancel Subscription bei Account deletion
+
 AI FLOW:
 request -> look for subscription -> if yes then generate content
 [x] Ki Fragen generieren
@@ -92,3 +95,18 @@ request -> look for subscription -> if yes then generate content
 [ ] Lernlectures recommendations
 [ ] Ai flow?
 [x] Feyman technique Ai
+
+FOR AI SAFITY
+
+max topic length
+max transcript length
+max PDF size
+max audio duration
+rate limit
+subscription check
+AI cost limit
+
+
+## Tests
+
+sign up -> verify skippen -> sign in  (wird zu verify weitergeleitet oder kann man verify selbst erreichen?)

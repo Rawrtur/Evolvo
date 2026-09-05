@@ -2,22 +2,23 @@ import { Router } from "express";
 import { limiter } from "../middleware/limiter.middleware.js";
 import {
   cancelSubscription,
-  createSubscription,
-  getAllSubscriptions,
   getUserSubscription,
-  updateSubscription,
 } from "../controlers/subscription.controller.js";
+import authorize from "../middleware/auth.middleware.js";
+import { verifyApplePurchase } from "../controlers/apple.controller.js";
 
 const subscriptionRouter = Router();
 
-subscriptionRouter.post("/", limiter, createSubscription);
+subscriptionRouter.get("/me",limiter,authorize, getUserSubscription);
 
-subscriptionRouter.post("/:id", limiter, updateSubscription);
+subscriptionRouter.post("/apple/verify",verifyApplePurchase)
 
-subscriptionRouter.delete("/:id", limiter, cancelSubscription);
+subscriptionRouter.post("/google/verify",)
 
-subscriptionRouter.get("/:id", limiter, getUserSubscription);
+subscriptionRouter.post("/apple/notifications",)
 
-subscriptionRouter.get("/", getAllSubscriptions);
+subscriptionRouter.post("/google/notifications",)
+
+subscriptionRouter.post("/me/cancel",limiter,authorize, cancelSubscription)
 
 export default subscriptionRouter;

@@ -14,6 +14,6 @@ authRouter.post("/sign-up",authLimiter, signUp);
 authRouter.post("/verify", authLimiter, verify);
 authRouter.post("/resend-verify", authLimiter, resendVerify);
 authRouter.post("/sign-in", authLimiter, signIn);
-authRouter.post("/sign-out", authLimiter, signOut);
+authRouter.post("/sign-out", signOut);
 
 export default authRouter;

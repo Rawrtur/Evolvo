@@ -7,22 +7,22 @@ import {
   getAllUserLectures,
   getLecture,
   getLectures,
-  updateLecture,
 } from "../controlers/lecture.controller.js";
 import authorize from "../middleware/auth.middleware.js";
 
 const lectureRouter = Router();
 
-lectureRouter.get("/", limiter, getLectures);
+lectureRouter.get("/", limiter,authorize, getLectures);
 
-lectureRouter.get("/:id", limiter, getLecture);
+lectureRouter.get("/user/:id",limiter,authorize, getAllUserLectures);
 
-lectureRouter.post("/", limiter, createLecture);
+lectureRouter.get("/:id", limiter,authorize, getLecture);
 
-lectureRouter.put("/:id", limiter, commitLecture);
+lectureRouter.post("/", limiter,authorize, createLecture);
 
-lectureRouter.delete("/:id", limiter, deleteLecture);
+lectureRouter.put("/:id", limiter,authorize, commitLecture);
 
-lectureRouter.get("/user/:id", getAllUserLectures);
+lectureRouter.delete("/:id", limiter,authorize, deleteLecture);
+
 
 export default lectureRouter;
